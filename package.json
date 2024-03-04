@@ -1,0 +1,17 @@
+{
+  "name": "me",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vue": "^4.0.8",
+    "astro": "^4.4.4",
+    "vue": "^3.4.20"
+  }
+}
