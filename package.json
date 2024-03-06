@@ -13,5 +13,9 @@
     "@astrojs/vue": "^4.0.8",
     "astro": "^4.4.4",
     "vue": "^3.4.20"
+  },
+  "devDependencies": {
+    "@unocss/reset": "^0.58.5",
+    "unocss": "^0.58.5"
   }
 }
