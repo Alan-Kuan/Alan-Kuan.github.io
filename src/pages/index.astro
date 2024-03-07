@@ -1,11 +1,22 @@
 ---
 import BaseLayout from '../layouts/Base.astro';
+import ProfileCard from '../components/ProfileCard.vue';
+
+const title = 'Alan Kuan | 官澔恩';
+const desc = 'A place telling things about Alan Kuan';
+
+const name = '官澔恩 Alan Kuan';
+const profile_url = 'https://github.com/Alan-Kuan.png';
 ---
 
 <BaseLayout
-  title="Alan Kuan | 官澔恩"
-  desc="A place telling things about Alan Kuan"
+  title={title}
+  desc={desc}
 >
   <main>
+    <ProfileCard
+      name={name}
+      profile_url={profile_url}
+    />
   </main>
 </BaseLayout>
