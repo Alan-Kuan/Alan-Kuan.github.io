@@ -2,22 +2,35 @@ import { defineConfig } from 'unocss';
 import presetIcons from '@unocss/preset-icons';
 import presetUno from '@unocss/preset-uno';
 
+const safe_icons = [
+  'linkedin',
+  'github',
+  'youtube',
+].map(icon => `i-mdi-${icon}`);
+
 export default defineConfig({
   presets: [
     presetIcons(),
     presetUno(),
   ],
+  safelist: safe_icons,
   theme: {
     colors: {
       light: {
-        bg: '#fee0a8',
+        bg: {
+          page: '#ffeecd',
+          profile_card: '#fee0a8',
+        },
         primary: '#74482d',
         secondary: '#2b8ebb',
         accent: '#fda229',
         text: '#3f454e',
       },
       dark: {
-        bg: '#2f2a20',
+        bg: {
+          page: '#2f2a20',
+          profile_card: '',  // TODO: find a better color
+        },
         primary: '#74482d',
         secondary: '#2b8ebb',
         accent: '#fda229',

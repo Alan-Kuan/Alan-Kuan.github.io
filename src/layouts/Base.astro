@@ -16,14 +16,15 @@ const { title, desc } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="
+    bg-light-bg-page dark:bg-dark-bg-page
+    text-light-text dark:text-dark-text"
+  >
 		<slot />
 	</body>
 </html>
 
 <style is:global>
-	:root {
-	}
 	html {
 		font-family: system-ui, sans-serif;
 	}

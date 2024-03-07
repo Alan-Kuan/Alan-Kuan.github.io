@@ -5,18 +5,42 @@ import ProfileCard from '../components/ProfileCard.vue';
 const title = 'Alan Kuan | 官澔恩';
 const desc = 'A place telling things about Alan Kuan';
 
-const name = '官澔恩 Alan Kuan';
-const profile_url = 'https://github.com/Alan-Kuan.png';
+const profile = {
+  profile_url: 'https://github.com/Alan-Kuan.png',
+  name: '官澔恩 / Alan Kuan',
+  title: 'Lorem ipsum dolor',
+  links: [
+    {
+      title: 'My Linkedin Profile',
+      icon: 'linkedin',
+      url: 'https://www.linkedin.com/in/alankuan945',
+    },
+    {
+      title: 'My GitHub Profile',
+      icon: 'github',
+      url: 'https://github.com/Alan-Kuan',
+    },
+    {
+      title: 'My YouTube Channel',
+      icon: 'youtube',
+      url: 'https://www.youtube.com/@alankuan',
+    },
+  ],
+  intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in tristique libero. Morbi fermentum venenatis lectus sit amet mattis. Etiam non velit ac sapien finibus lobortis id et ex. Etiam venenatis vulputate neque, sed finibus nunc aliquet consectetur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec egestas quis nisi quis tempor. Pellentesque eu lacinia justo.',
+};
 ---
 
 <BaseLayout
-  title={title}
-  desc={desc}
+  {title}
+  {desc}
 >
   <main>
     <ProfileCard
-      name={name}
-      profile_url={profile_url}
+      profile_url={profile.profile_url}
+      name={profile.name}
+      title={profile.title}
+      links={profile.links}
+      intro={profile.intro}
     />
   </main>
 </BaseLayout>
