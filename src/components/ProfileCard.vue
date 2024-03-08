@@ -28,7 +28,7 @@ defineProps({
     <div class="w-50 mt-5 flex justify-around">
       <a
         v-for="link in links"
-        class="text-3xl text-light-secondary"
+        class="text-3xl text-light-secondary hover:text-blue-400"
         :href="link.url"
         :title="link.title"
         target="_blank"
