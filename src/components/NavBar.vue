@@ -18,7 +18,7 @@ defineProps({
     <div>
       <a href="/">
         <img
-          class="w-15"
+          class="w-15 logo"
           :src="logo_img.src"
         />
       </a>
@@ -38,3 +38,12 @@ defineProps({
     </div>
   </nav>
 </template>
+
+<style scoped>
+.logo:hover {
+  filter: drop-shadow(2px 0 2px rgba(255, 255, 255, 0.5))
+    drop-shadow(-2px 0 2px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 2px 2px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 -2px 2px rgba(255, 255, 255, 0.5));
+}
+</style>
