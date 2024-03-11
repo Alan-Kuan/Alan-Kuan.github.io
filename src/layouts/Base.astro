@@ -1,10 +1,18 @@
 ---
+import NavBar from '../components/NavBar.vue';
+
 interface Props {
   title: string;
   desc: string;
 }
 
 const { title, desc } = Astro.props;
+
+const nav_links = [
+  { text: 'Projects', route: '/projects' },
+  { text: 'Configs', route: '/configs' },
+  { text: 'Publications', route: '/publications' },
+];
 ---
 
 <!doctype html>
@@ -20,6 +28,9 @@ const { title, desc } = Astro.props;
     bg-light-bg-page dark:bg-dark-bg-page
     text-light-text dark:text-dark-text"
   >
+    <NavBar
+      links={nav_links}
+    />
 		<slot />
 	</body>
 </html>

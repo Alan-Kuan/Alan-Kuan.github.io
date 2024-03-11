@@ -1,17 +1,10 @@
 ---
 import BaseLayout from '../layouts/Base.astro';
-import NavBar from '../components/NavBar.vue';
 import ProfileCard from '../components/ProfileCard.vue';
 import ArticleList from '../components/ArticleList.vue';
 
 const title = 'Alan Kuan | 官澔恩';
 const desc = 'A place telling things about Alan Kuan';
-
-const nav_links = [
-  { text: 'Projects', route: '/projects' },
-  { text: 'Configs', route: '/configs' },
-  { text: 'Publications', route: '/publications' },
-];
 
 const profile = {
   profile_url: 'https://github.com/Alan-Kuan.png',
@@ -48,9 +41,6 @@ const articles = [
   {desc}
 >
   <main>
-    <NavBar
-      links={nav_links}
-    />
     <div class="flex">
       <ProfileCard
         profile_url={profile.profile_url}
