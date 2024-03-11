@@ -4,6 +4,7 @@ defineProps({
   name: String,
   title: String,
   links: Array,
+  email_b64: String,
   intro: String,
 });
 </script>
@@ -25,15 +26,30 @@ defineProps({
     <div class="mt-3">
       {{ title }}
     </div>
-    <div class="w-50 mt-5 flex justify-around">
+    <div
+      class="
+        w-50 mt-5
+        flex justify-around
+        text-3xl text-light-secondary
+      "
+    >
       <a
         v-for="link in links"
-        class="text-3xl text-light-secondary hover:text-blue-400"
+        class="hover:text-blue-400"
         :href="link.url"
         :title="link.title"
         target="_blank"
       >
         <div :class="`i-mdi-${link.icon}`" />
+      </a>
+      <a
+        class="hover:text-blue-400"
+        href="#"
+        title="My E-mail Address"
+        :data-email="email_b64"
+        onfocus="this.href = 'mailto:' + atob(this.dataset.email) || ''"
+      >
+        <div class="i-mdi-email" />
       </a>
     </div>
     <div class="mt-5">
