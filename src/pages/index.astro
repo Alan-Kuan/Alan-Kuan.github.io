@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/Base.astro';
 import ProfileCard from '../components/ProfileCard.vue';
 import ArticleList from '../components/ArticleList.vue';
+import Footer from '../components/Footer.vue';
 
 const title = 'Alan Kuan | 官澔恩';
 const desc = 'A place telling things about Alan Kuan';
@@ -49,7 +50,10 @@ const articles = [
         links={profile.links}
         intro={profile.intro}
       />
-      <ArticleList {articles} />
+      <div>
+        <ArticleList {articles} />
+        <Footer />
+      </div>
     </div>
   </main>
 </BaseLayout>
