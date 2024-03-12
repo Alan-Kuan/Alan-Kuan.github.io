@@ -1,12 +1,7 @@
-<script setup>
-defineProps({
-  profile_url: String,
-  name: String,
-  title: String,
-  links: Array,
-  email_b64: String,
-  intro: String,
-});
+<script setup lang="ts">
+import type { Profile } from '@/types.ts';
+
+defineProps<Profile>();
 </script>
 
 <template>

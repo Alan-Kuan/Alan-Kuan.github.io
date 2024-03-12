@@ -6,5 +6,5 @@ insert_final_newline = false
 charset = utf-8
 indent_style = space
 
-[*.{js,mjs,json,astro,vue}]
+[*.{ts,json,astro,vue}]
 indent_size = 2

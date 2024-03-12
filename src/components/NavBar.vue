@@ -1,9 +1,10 @@
-<script setup>
-import logo_img from '../assets/logo.png';
+<script setup lang="ts">
+import logo_img from '@/assets/logo.png';
+import type { Link } from '@/types.ts';
 
-defineProps({
-  links: Array,
-});
+defineProps<{
+  links: Link[],
+}>();
 </script>
 
 <template>

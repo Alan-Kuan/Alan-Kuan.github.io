@@ -1,9 +1,10 @@
-<script setup>
-import ArticleCard from './ArticleCard.vue';
+<script setup lang="ts">
+import ArticleCard from '@/components/ArticleCard.vue';
+import type { Article } from '@/types.ts';
 
-defineProps({
-  articles: Array
-});
+defineProps<{
+  articles: Article[],
+}>();
 </script>
 
 <template>
