@@ -9,7 +9,14 @@ defineProps<{
 </script>
 
 <template>
-  <div class="px-8 pt-3 pb-8">
+  <div
+    class="
+      mx-8 mt-4 mb-8
+      px-8 pb-5
+      bg-#ffffff99
+      drop-shadow
+    "
+  >
     <div v-for="sub_pubs, cat in pubs">
       <h1 class="pt-5 text-2xl">
         {{ cat }}
