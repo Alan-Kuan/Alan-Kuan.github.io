@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import PubList from '@/components/publication/PubList.vue';
+import Footer from '@/components/Footer.vue';
+
+const title = 'Publications - Alan Kuan | 官澔恩';
+const desc = 'Publications Alan Kuan have gotten involved with';
+
+const pubs = {
+  Conference: [
+    {
+      title: 'Entropy-Based Two-Phase Optimization Algorithm for Solving Wordle-like Games',
+      authors: [ 'Yen-Chi Chen', 'Hao-En Kuan', 'Yen-Shun Lu', 'Tzu-Chun Chen', 'I-Chen Wu' ],
+      conference: 'International Conference on Technologies and Applications of Artificial Intelligence (TAAI)',
+      location: 'Tainan, Taiwan',
+      time: 'December 1-3, 2022',
+    },
+    {
+      title: 'Being Greedy to Solve Nerdle: with Approaches Utilizing Entropy',
+      authors: [ 'Hao-En Kuan', 'Tzu-Chun Chen', 'Yen-Shun Lu', 'Yen-Chi Chen', 'I-Chen Wu' ],
+      conference: 'Taiwan Computer Game Association (TCGA)',
+      location: 'Nantou, Taiwan',
+      time: 'May 13-14, 2022',
+    },
+  ],
+};
+const self = 'Hao-En Kuan';
+---
+
+<BaseLayout
+  {title}
+  {desc}
+>
+  <main>
+    <PubList
+      {pubs}
+      {self}
+    />
+    <Footer />
+  </main>
+</BaseLayout>

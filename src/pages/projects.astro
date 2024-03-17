@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import ArticleList from '@/components/ArticleList.vue';
+import Footer from '@/components/Footer.vue';
+
+const title = 'Projects - Alan Kuan | 官澔恩';
+const desc = 'Projects Alan Kuan have participated in';
+
+const articles = [
+  { title: 'Project 1', excerpt: 'Praesent porttitor lobortis laoreet. Integer in mauris eu ante interdum ultricies. Integer pharetra vehicula viverra. Cras vitae quam maximus massa convallis finibus. Nunc ac tincidunt tortor, eget congue metus. Cras tincidunt enim nisl, non cursus lorem vestibulum et.' },
+  { title: 'Project 2', excerpt: 'Proin vitae sem vitae tortor congue fringilla. Vivamus tellus massa, feugiat vitae orci a, pretium lobortis tortor. Suspendisse eu ultricies libero. Sed in pulvinar sem, quis tempor est.' },
+];
+---
+
+<BaseLayout
+  {title}
+  {desc}
+>
+  <main>
+    <ArticleList {articles} />
+    <Footer />
+  </main>
+</BaseLayout>

@@ -17,3 +17,14 @@ export interface Article {
   title: string,
   excerpt: string,
 };
+
+export interface ConfPub {
+  title: string,
+  authors: string[],
+  conference: string,
+  location: string,
+  time: string,
+};
+
+// NOTE: may add new publication type in the future
+export type Publication = ConfPub;
