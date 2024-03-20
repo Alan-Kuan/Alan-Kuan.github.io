@@ -10,7 +10,8 @@ defineProps<{
 <template>
   <nav
     class="
-      h-20
+      sticky top-0 z-1
+      w-full h-20
       px-5 py-2.5
       grid grid-cols-3
       bg-light-primary dark:bg-dark-primary
