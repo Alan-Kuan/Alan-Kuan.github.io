@@ -7,7 +7,7 @@ defineProps<Profile>();
 <template>
   <div class="
     flex flex-col items-center
-    w-1/3 pa-5
+    pa-5
     bg-light-bg-profile_card dark:bg-dark-bg-profile_card"
   >
     <img

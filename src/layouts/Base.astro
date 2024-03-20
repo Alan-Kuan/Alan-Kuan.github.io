@@ -58,15 +58,18 @@ const profile = {
       links={nav_links}
     />
     <div class="flex">
-      <ProfileCard
-        profile_url={profile.profile_url}
-        name={profile.name}
-        title={profile.title}
-        links={profile.links}
-        email_b64={profile.email_b64}
-        intro={profile.intro}
-      />
-      <div>
+      <div class="w-1/4">
+        <ProfileCard
+          class="fixed w-1/4"
+          profile_url={profile.profile_url}
+          name={profile.name}
+          title={profile.title}
+          links={profile.links}
+          email_b64={profile.email_b64}
+          intro={profile.intro}
+        />
+      </div>
+      <div class="w-3/4">
         <slot />
       </div>
     </div>
