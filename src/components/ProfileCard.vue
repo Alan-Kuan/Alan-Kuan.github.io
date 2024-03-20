@@ -47,7 +47,7 @@ defineProps<Profile>();
         <div class="i-mdi-email" />
       </a>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 overflow-y-scroll">
       {{ intro }}
     </div>
   </div>

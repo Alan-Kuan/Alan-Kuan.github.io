@@ -59,8 +59,9 @@ const profile = {
     />
     <div class="flex">
       <div class="w-1/4">
+        <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
         <ProfileCard
-          class="fixed w-1/4"
+          class="fixed top-20 bottom-0 w-1/4"
           profile_url={profile.profile_url}
           name={profile.name}
           title={profile.title}
