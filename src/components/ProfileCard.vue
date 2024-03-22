@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Image from '@/components/common/Image.vue';
 import type { Profile } from '@/types.ts';
 
 defineProps<Profile>();
@@ -10,10 +11,12 @@ defineProps<Profile>();
     pa-5
     bg-light-bg-profile_card dark:bg-dark-bg-profile_card"
   >
-    <img
-      class="w-50 rounded-md"
-      alt="my GitHub avatar"
+    <Image
+      w="50"
+      min_h="50"
+      alt="My GitHub Avatar"
       :src="profile_url"
+      rounded
     />
     <div class="mt-5 text-2xl">
       {{ name }}

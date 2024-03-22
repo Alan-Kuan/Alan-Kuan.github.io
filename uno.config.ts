@@ -8,12 +8,17 @@ const safe_icons = [
   'youtube',
 ].map(icon => `i-mdi-${icon}`);
 
+const safe_geometry = [
+  'min-h-50',
+  'w-50',
+];
+
 export default defineConfig({
   presets: [
     presetIcons(),
     presetUno(),
   ],
-  safelist: safe_icons,
+  safelist: safe_icons.concat(safe_geometry),
   theme: {
     colors: {
       light: {
