@@ -1,5 +1,5 @@
 ---
-import NavBar from '@/components/NavBar.vue';
+import NavBar from '@/components/nav/NavBar.astro';
 import ProfileCard from '@/components/ProfileCard.vue';
 
 interface Props {
@@ -8,12 +8,6 @@ interface Props {
 }
 
 const { title, desc } = Astro.props;
-
-const nav_links = [
-  { text: 'Articles', route: '/' },
-  { text: 'Projects', route: '/projects' },
-  { text: 'Publications', route: '/publications' },
-];
 
 const profile = {
   profile_url: 'https://github.com/Alan-Kuan.png',
@@ -54,9 +48,7 @@ const profile = {
     bg-light-bg-page dark:bg-dark-bg-page
     text-light-text dark:text-dark-text"
   >
-    <NavBar
-      links={nav_links}
-    />
+    <NavBar />
     <div class="flex">
       <div class="w-1/4">
         <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
