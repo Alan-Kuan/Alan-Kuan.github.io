@@ -9,7 +9,7 @@ defineProps<{
   <div
     class="
       my-5 px-8 py-5
-      rounded-xl
+      rounded-md
       bg-page-light dark:bg-page-dark
       drop-shadow hover:drop-shadow-lg
       cursor-pointer
