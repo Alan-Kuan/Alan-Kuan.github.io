@@ -13,7 +13,7 @@ defineProps<{
     class="
       mx-8 mt-4 mb-8
       px-8 pb-5
-      bg-#ffffff99
+      bg-page-light dark:bg-page-dark
       drop-shadow
     "
   >

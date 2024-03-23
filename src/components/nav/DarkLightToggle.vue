@@ -16,7 +16,7 @@ function onClick() {
 
 <template>
   <button
-    class="text-#ffeecd text-3xl"
+    class="text-3xl"
     @click="onClick"
   >
     <div

@@ -9,7 +9,7 @@ defineProps<Profile>();
   <div class="
     flex flex-col items-center
     pa-5
-    bg-light-bg-profile_card dark:bg-dark-bg-profile_card"
+    bg-profile_card-light dark:bg-profile_card-dark"
   >
     <Image
       w="50"
@@ -18,22 +18,25 @@ defineProps<Profile>();
       :src="profile_url"
       rounded
     />
+
     <div class="mt-5 text-2xl">
       {{ name }}
     </div>
     <div class="mt-3">
       {{ title }}
     </div>
+
+    <!-- Links -->
     <div
       class="
         w-50 mt-5
         flex justify-around
-        text-3xl text-light-secondary
+        text-3xl text-link-light dark:text-link-dark
       "
     >
       <a
         v-for="link in links"
-        class="hover:text-blue-400"
+        class="hover:opacity-70%"
         :href="link.url"
         :title="link.title"
         target="_blank"
@@ -41,7 +44,7 @@ defineProps<Profile>();
         <div :class="`i-mdi-${link.icon}`" />
       </a>
       <a
-        class="hover:text-blue-400"
+        class="hover:opacity-70%"
         href="#"
         title="My E-mail Address"
         :data-email="email_b64"
@@ -50,6 +53,7 @@ defineProps<Profile>();
         <div class="i-mdi-email" />
       </a>
     </div>
+
     <div class="mt-5 overflow-y-scroll">
       {{ intro }}
     </div>

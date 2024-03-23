@@ -10,7 +10,7 @@ defineProps<{
     class="
       my-5 px-8 py-5
       rounded-xl
-      bg-#ffffff99
+      bg-page-light dark:bg-page-dark
       drop-shadow hover:drop-shadow-lg
       cursor-pointer
     "

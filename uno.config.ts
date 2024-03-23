@@ -19,25 +19,36 @@ export default defineConfig({
   safelist: safe_icons.concat(safe_geometry),
   theme: {
     colors: {
-      light: {
-        bg: {
-          page: '#ffeecd',
-          profile_card: '#fee0a8',
+      nav: {
+        bar: {
+          light: '#74482d',
+          dark: '#2e2a27',
         },
-        primary: '#74482d',
-        secondary: '#2b8ebb',
-        accent: '#fda229',
-        text: '#3f454e',
+        indicator: {
+          light: '#85c0da',
+          dark: '#7795e0',
+        },
+        highlight: '#ffffff55',
       },
-      dark: {
-        bg: {
-          page: '#2f2a20',
-          profile_card: '',  // TODO: find a better color
-        },
-        primary: '#74482d',
-        secondary: '#2b8ebb',
-        accent: '#fda229',
-        text: '#c4c4c4',
+      profile_card: {
+        light: '#fee0a8',
+        dark: '#454038',
+      },
+      body: {
+        light: '#ffeecd',
+        dark: '#61594b',
+      },
+      page: {
+        light: '#f6f0e4',
+        dark: '#7d7468',
+      },
+      text: {
+        light: '#ffeecd',
+        dark: '#4e483f',
+      },
+      link: {
+        light: '#7d5e4a',
+        dark: '#ba9073',
       },
     },
   },

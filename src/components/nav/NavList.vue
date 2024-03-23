@@ -66,8 +66,8 @@ function onMouseLeaveLink() {
     <a
       class="
         mx-3 px-2 py-0.5
-        text-xl text-#ffeecd hover:bg-#9e775f
-        font-medium
+        hover:bg-nav-highlight
+        text-xl font-medium
         rounded
       "
       :href="link.route"
@@ -82,7 +82,8 @@ function onMouseLeaveLink() {
       class="
         absolute bottom--2
         h-1
-        bg-#85c0da rounded
+        bg-nav-indicator-light dark:bg-nav-indicator-dark
+        rounded
         transition-all duration-500
       "
       :style="indicator_style"
