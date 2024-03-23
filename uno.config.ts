@@ -1,6 +1,4 @@
-import { defineConfig } from 'unocss';
-import presetIcons from '@unocss/preset-icons';
-import presetUno from '@unocss/preset-uno';
+import { defineConfig, presetIcons, presetUno } from 'unocss';
 
 const safe_icons = [
   'linkedin',
