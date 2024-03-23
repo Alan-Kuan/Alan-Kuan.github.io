@@ -16,7 +16,12 @@ function onClick() {
 
 <template>
   <button
-    class="text-3xl"
+    class="
+      pa-2
+      rounded-full
+      hover:bg-nav-highlight
+      text-3xl
+    "
     @click="onClick"
   >
     <div
