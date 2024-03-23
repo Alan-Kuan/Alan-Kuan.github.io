@@ -81,3 +81,11 @@ const profile = {
 		font-family: monospace;
 	}
 </style>
+
+<script is:inline>
+const light_mode = localStorage.getItem('light_mode');
+
+if (light_mode === 'false') {
+  document.body.classList.add('dark');
+}
+</script>
