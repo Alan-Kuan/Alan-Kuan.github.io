@@ -44,26 +44,30 @@ const profile = {
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<title>{title}</title>
 	</head>
-	<body class="
-    bg-light-bg-page dark:bg-dark-bg-page
-    text-light-text dark:text-dark-text"
-  >
-    <NavBar />
-    <div class="flex">
-      <div class="w-1/4">
-        <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
-        <ProfileCard
-          class="fixed top-20 bottom-0 w-1/4"
-          profile_url={profile.profile_url}
-          name={profile.name}
-          title={profile.title}
-          links={profile.links}
-          email_b64={profile.email_b64}
-          intro={profile.intro}
-        />
-      </div>
-      <div class="w-3/4 h-[calc(100vh-5rem)] overflow-y-scroll">
-        <slot />
+	<body>
+    <div
+      class="
+        bg-light-bg-page dark:bg-dark-bg-page
+        text-light-text dark:text-dark-text
+      "
+    >
+      <NavBar />
+      <div class="flex">
+        <div class="w-1/4">
+          <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
+          <ProfileCard
+            class="fixed top-20 bottom-0 w-1/4"
+            profile_url={profile.profile_url}
+            name={profile.name}
+            title={profile.title}
+            links={profile.links}
+            email_b64={profile.email_b64}
+            intro={profile.intro}
+          />
+        </div>
+        <div class="w-3/4 h-[calc(100vh-5rem)] overflow-y-scroll">
+          <slot />
+        </div>
       </div>
     </div>
 	</body>
