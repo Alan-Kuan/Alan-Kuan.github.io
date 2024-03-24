@@ -43,31 +43,36 @@ const profile = {
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<title>{title}</title>
+    <script is:inline>
+      const light_mode = localStorage.getItem('light_mode');
+
+      if (light_mode === 'false') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
 	</head>
-	<body>
-    <div
-      class="
-        bg-body-light dark:bg-body-dark
-        text-text-dark dark:text-text-light
-      "
-    >
-      <NavBar />
-      <div class="flex">
-        <div class="w-1/4">
-          <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
-          <ProfileCard
-            class="fixed top-20 bottom-0 w-1/4"
-            profile_url={profile.profile_url}
-            name={profile.name}
-            title={profile.title}
-            links={profile.links}
-            email_b64={profile.email_b64}
-            intro={profile.intro}
-          />
-        </div>
-        <div class="w-3/4 h-[calc(100vh-5rem)] overflow-y-scroll">
-          <slot />
-        </div>
+	<body
+    class="
+      bg-body-light dark:bg-body-dark
+      text-text-dark dark:text-text-light
+    "
+  >
+    <NavBar />
+    <div class="flex">
+      <div class="w-1/4">
+        <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
+        <ProfileCard
+          class="fixed top-20 bottom-0 w-1/4"
+          profile_url={profile.profile_url}
+          name={profile.name}
+          title={profile.title}
+          links={profile.links}
+          email_b64={profile.email_b64}
+          intro={profile.intro}
+        />
+      </div>
+      <div class="w-3/4 h-[calc(100vh-5rem)] overflow-y-scroll">
+        <slot />
       </div>
     </div>
 	</body>
@@ -81,11 +86,3 @@ const profile = {
 		font-family: monospace;
 	}
 </style>
-
-<script is:inline>
-const light_mode = localStorage.getItem('light_mode');
-
-if (light_mode === 'false') {
-  document.body.classList.add('dark');
-}
-</script>

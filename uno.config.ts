@@ -1,22 +1,26 @@
 import { defineConfig, presetIcons, presetUno } from 'unocss';
 
-const safe_icons = [
-  'linkedin',
-  'github',
-  'youtube',
-].map(icon => `i-mdi-${icon}`);
+const safe_list = [
+  // safe icons
+  'i-mdi-linkedin',
+  'i-mdi-github',
+  'i-mdi-youtube',
 
-const safe_geometry = [
+  // safe geometries
   'min-h-50',
   'w-50',
+
+  // safe colors
+  'dark:bg-body-dark',
+  'dark:text-text-light',
 ];
 
 export default defineConfig({
   presets: [
     presetIcons(),
-    presetUno(),
+    presetUno({ attributifyPseudo: true }),
   ],
-  safelist: safe_icons.concat(safe_geometry),
+  safelist: safe_list,
   theme: {
     colors: {
       nav: {

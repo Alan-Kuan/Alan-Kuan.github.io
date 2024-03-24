@@ -5,9 +5,9 @@ const light_mode = ref(true);
 
 function onClick() {
   if (light_mode.value) {
-    document.body.classList.add('dark');
+    document.documentElement.classList.add('dark');
   } else {
-    document.body.classList.remove('dark');
+    document.documentElement.classList.remove('dark');
   }
   light_mode.value = !light_mode.value;
   localStorage.setItem('light_mode', light_mode.value);
