@@ -11,10 +11,6 @@ const safe_list = [
   'i-mdi-github',
   'i-mdi-youtube',
 
-  // safe geometries
-  'min-h-50',
-  'w-50',
-
   // safe colors
   'dark:bg-body-dark',
   'dark:text-text-light',

@@ -5,7 +5,6 @@ export interface Link {
 };
 
 export interface Profile {
-  profile_url: string,
   name: string,
   title: string,
   links: Link[],
