@@ -9,9 +9,13 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "engine": {
+    "node": "^20.11.0"
+  },
   "dependencies": {
     "@astrojs/vue": "^4.0.8",
     "astro": "^4.4.4",
+    "sharp": "^0.33.3",
     "vue": "^3.4.20"
   },
   "devDependencies": {
