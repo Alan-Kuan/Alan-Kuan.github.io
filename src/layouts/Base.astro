@@ -52,26 +52,24 @@ const profile = {
     </script>
 	</head>
 	<body
-    class="
-      bg-body-light dark:bg-body-dark
-      text-text-dark dark:text-text-light
-    "
+    bg="body-light dark:body-dark"
+    text="text-dark dark:text-light"
   >
     <NavBar />
-    <div class="flex">
-      <div class="w-1/4">
-        <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
+    <div flex>
+      <div w-25%>
         <ProfileCard
-          class="fixed top-20 bottom-0 w-1/4"
           profile_url={profile.profile_url}
           name={profile.name}
           title={profile.title}
           links={profile.links}
           email_b64={profile.email_b64}
           intro={profile.intro}
+          class="fixed top-20 bottom-0 w-25%"
         />
+        <!-- add `top-20` and `bottom-0` to make `overflow-y-scroll` effective -->
       </div>
-      <div class="w-3/4 h-[calc(100vh-5rem)] overflow-y-scroll">
+      <div w-75% h-[calc(100vh-5rem)] overflow-y-scroll>
         <slot />
       </div>
     </div>

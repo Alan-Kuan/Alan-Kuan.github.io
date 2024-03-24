@@ -6,10 +6,10 @@ defineProps<Profile>();
 </script>
 
 <template>
-  <div class="
-    flex flex-col items-center
+  <div
+    flex="~ col" items-center
     pa-5
-    bg-profile_card-light dark:bg-profile_card-dark"
+    bg="profile_card-light dark:profile_card-dark"
   >
     <Image
       w="50"
@@ -19,42 +19,40 @@ defineProps<Profile>();
       rounded
     />
 
-    <div class="mt-5 text-2xl">
+    <div mt-5 text-2xl>
       {{ name }}
     </div>
-    <div class="mt-3">
+    <div mt-3>
       {{ title }}
     </div>
 
     <!-- Links -->
     <div
-      class="
-        w-50 mt-5
-        flex justify-around
-        text-3xl text-link-light dark:text-link-dark
-      "
+      w-50 mt-5
+      flex justify-around
+      text="3xl link-light dark:link-dark"
     >
       <a
         v-for="link in links"
-        class="hover:opacity-70%"
         :href="link.url"
         :title="link.title"
         target="_blank"
+        hover:opacity-70%
       >
         <div :class="`i-mdi-${link.icon}`" />
       </a>
       <a
-        class="hover:opacity-70%"
         href="#"
         title="My E-mail Address"
         :data-email="email_b64"
         onfocus="this.href = 'mailto:' + atob(this.dataset.email) || ''"
+        hover:opacity-70%
       >
-        <div class="i-mdi-email" />
+        <div i-mdi-email></div>
       </a>
     </div>
 
-    <div class="mt-5 overflow-y-scroll">
+    <div mt-5 overflow-y-scroll>
       {{ intro }}
     </div>
   </div>

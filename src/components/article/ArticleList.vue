@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="px-8 py-3">
+  <div px-8 py-3>
     <ArticleCard
       v-for="article in articles"
       :title="article.title"

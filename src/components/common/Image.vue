@@ -11,31 +11,27 @@ defineProps<{
 </script>
 
 <template>
-  <div :class="`
+  <div
     relative
-    min-w-${min_w} min-h-${min_h}
-  `">
+    :min-w="min_w" :min-h="min_h"
+  >
     <img
-      :class="`
-        absolute z-1
-        w-${w} h-${h}
-        ${ rounded ? 'rounded-xl' : '' }
-      `"
       :src="src"
       :alt="alt"
+      absolute z-1
+      :w="w" :h="h"
+      :rounded="rounded ? 'xl' : false"
     />
     <!-- skeleton -->
     <div
-      :class="`
-        w-${w} h-${h}
-        min-w-${min_w} min-h-${min_h}
-        flex justify-center items-center
-        bg-gray-200
-        ${ rounded ? 'rounded-xl' : '' }
-        animate-pulse
-      `"
+      flex justify-center items-center
+      :w="w" :h="h"
+      :min-w="min_w" :min-h="min_h"
+      :rounded="rounded ? 'xl' : false"
+      bg-gray-200
+      animate-pulse
     >
-      <div class="i-mdi-image text-6xl text-gray-400"></div>
+      <div i-mdi-image text="6xl gray-400"></div>
     </div>
   </div>
 </template>

@@ -13,7 +13,7 @@ defineProps<ConfPub | { self: string }>();
       <span>, </span>
     </span>
 
-    <span class="font-italic">{{ title }}, </span>
+    <span font-italic>{{ title }}, </span>
 
     <span>{{ conference }}, </span>
     <span>{{ location }}, </span>

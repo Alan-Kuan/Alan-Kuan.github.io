@@ -1,4 +1,9 @@
-import { defineConfig, presetIcons, presetUno } from 'unocss';
+import {
+  defineConfig,
+  presetIcons,
+  presetUno,
+  presetAttributify,
+} from 'unocss';
 
 const safe_list = [
   // safe icons
@@ -19,6 +24,7 @@ export default defineConfig({
   presets: [
     presetIcons(),
     presetUno({ attributifyPseudo: true }),
+    presetAttributify(),
   ],
   safelist: safe_list,
   theme: {

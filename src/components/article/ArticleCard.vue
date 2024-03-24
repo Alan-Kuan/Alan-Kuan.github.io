@@ -7,15 +7,14 @@ defineProps<{
 
 <template>
   <div
-    class="
-      my-5 px-8 py-5
-      rounded-md
-      bg-page-light dark:bg-page-dark
-      drop-shadow hover:drop-shadow-lg
-      cursor-pointer
-    "
+    my-5
+    px-8 py-5
+    rounded-md
+    bg="page-light dark:page-dark"
+    drop-shadow="~ hover:lg"
+    cursor-pointer
   >
-    <div class="text-xl font-bold">{{ title }}</div>
-    <p class="pt-2">{{ excerpt }}</p>
+    <div text-xl font-bold>{{ title }}</div>
+    <p pt-2>{{ excerpt }}</p>
   </div>
 </template>

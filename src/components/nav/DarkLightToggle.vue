@@ -23,22 +23,20 @@ onMounted(() => {
 
 <template>
   <button
-    class="
-      pa-2
-      rounded-full
-      hover:bg-nav-highlight
-      text-3xl
-    "
     @click="onClick"
+    pa-2
+    bg="hover:nav-highlight"
+    rounded-full
+    text-3xl
   >
     <div
       v-if="light_mode"
-      class="i-mdi-white-balance-sunny"
+      i-mdi-white-balance-sunny
     >
     </div>
     <div
       v-else
-      class="i-mdi-weather-night"
+      i-mdi-weather-night
     >
     </div>
   </button>
