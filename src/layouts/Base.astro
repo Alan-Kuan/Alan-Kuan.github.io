@@ -84,13 +84,15 @@ const avatar_urls = [
                   alt="My Avatar"
                   decoding="async"
                   id={idx === 0 ? 'avatar' : 'avatar-dark'}
-                  class={`
-                    absolute z-1
-                    w-50
-                    rounded-xl
-                    text-center text-text-dark font-semibold
-                    leading-16
-                  ` + (idx === 0 ? 'dark:hidden' : 'hidden dark:block')}
+                  class:list={[
+                    { 'dark:hidden': idx === 0 },
+                    { 'hidden dark:block': idx === 1 },
+                    'absolute', 'z-1',
+                    'w-50',
+                    'rounded-xl',
+                    'text-center', 'text-text-dark', 'font-semibold',
+                    'leading-16',
+                  ]}
                 />
               )
             }
