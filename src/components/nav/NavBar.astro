@@ -21,11 +21,13 @@ const links = [
 >
   <div>
     <a href="/" inline-block>
-      <Image
-        src={logo_img}
-        alt="logo"
-        class="w-15 logo"
-      />
+      <div dark:saturate-50>
+        <Image
+          src={logo_img}
+          alt="logo"
+          class="logo w-15"
+        />
+      </div>
     </a>
   </div>
   <div flex justify-center items-center>
@@ -37,8 +39,16 @@ const links = [
 </nav>
 
 <style>
+.logo {
+  filter:
+    drop-shadow(0 1px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 -1px rgba(255, 255, 255, 0.5))
+    drop-shadow(1px 0 rgba(255, 255, 255, 0.5))
+    drop-shadow(-1px 0 rgba(255, 255, 255, 0.5));
+}
 .logo:hover {
-  filter: drop-shadow(2px 0 2px rgba(255, 255, 255, 0.5))
+  filter:
+    drop-shadow(2px 0 2px rgba(255, 255, 255, 0.5))
     drop-shadow(-2px 0 2px rgba(255, 255, 255, 0.5))
     drop-shadow(0 2px 2px rgba(255, 255, 255, 0.5))
     drop-shadow(0 -2px 2px rgba(255, 255, 255, 0.5));
