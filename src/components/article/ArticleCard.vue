@@ -14,7 +14,7 @@ defineProps<{
     drop-shadow="~ hover:lg"
     cursor-pointer
   >
-    <div text-xl font-bold>{{ title }}</div>
+    <div text-xl font-medium>{{ title }}</div>
     <p pt-2>{{ excerpt }}</p>
   </div>
 </template>

@@ -69,7 +69,7 @@ function onMouseLeaveLink() {
       @mouseleave="onMouseLeaveLink"
       mx-3 px-2 py-0.5
       bg="hover:nav-highlight"
-      text-xl font-medium
+      text-xl
       rounded
     >
       {{ link.text }}

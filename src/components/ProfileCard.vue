@@ -12,7 +12,7 @@ defineProps<Profile>();
   >
     <slot name="img"></slot>
 
-    <div mt-5 text-2xl>
+    <div mt-5 text-2xl font-light>
       {{ name }}
     </div>
     <div mt-3>

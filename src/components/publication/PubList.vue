@@ -16,7 +16,7 @@ defineProps<{
     drop-shadow
   >
     <div v-for="sub_pubs, cat in pubs">
-      <h1 pt-5 text-2xl>
+      <h1 pt-5 text-2xl font-medium>
         {{ cat }}
       </h1>
       <ul pt-3 pl-8 list-disc>
