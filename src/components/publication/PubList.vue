@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <div
-    mx-8 mt-4 mb-8
+    ma-8
     px-8 pb-5
     bg="page-light dark:page-dark"
     drop-shadow
