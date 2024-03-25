@@ -35,10 +35,10 @@ const profile = {
   intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in tristique libero. Morbi fermentum venenatis lectus sit amet mattis. Etiam non velit ac sapien finibus lobortis id et ex. Etiam venenatis vulputate neque, sed finibus nunc aliquet consectetur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec egestas quis nisi quis tempor. Pellentesque eu lacinia justo.',
 };
 
-const avatar_urls = {
-  light: 'https://i.imgur.com/gKDCCEu.jpg',
-  dark: 'https://i.imgur.com/CkzXSKi.jpg',
-};
+const avatar_urls = [
+  'https://i.imgur.com/gKDCCEu.jpg',  // light
+  'https://i.imgur.com/CkzXSKi.jpg',  // dark
+];
 ---
 
 <!doctype html>
@@ -74,37 +74,26 @@ const avatar_urls = {
           class="fixed top-20 bottom-0 w-25%"
         >
           <div slot="img">
-            { /* Remote image requires width/height so I chose 200 as default.
-                 Later, the width is determined by the 'w-50' class. */ }
-            <Image
-              src={avatar_urls.light}
-              width="200" height="200"
-              alt="My GitHub Avatar"
-              decoding="async"
-              id="avatar"
-              class={`
-                dark:hidden
-                absolute z-2
-                w-50
-                rounded-xl
-                text-center text-text-dark font-semibold
-                leading-16
-              `}
-            />
-            <Image
-              src={avatar_urls.dark}
-              width="200" height="200"
-              alt="My GitHub Avatar"
-              decoding="async"
-              id="avatar-dark"
-              class={`
-                absolute z-1
-                w-50
-                rounded-xl
-                text-center text-text-dark font-semibold
-                leading-16
-              `}
-            />
+            {
+              /* Remote image requires width/height so I chose 200 as default.
+                 Later, the width is determined by the 'w-50' class. */
+              avatar_urls.map((url, idx) =>
+                <Image
+                  src={url}
+                  width="200" height="200"
+                  alt="My Avatar"
+                  decoding="async"
+                  id={idx === 0 ? 'avatar' : 'avatar-dark'}
+                  class={`
+                    absolute z-1
+                    w-50
+                    rounded-xl
+                    text-center text-text-dark font-semibold
+                    leading-16
+                  ` + (idx === 0 ? 'dark:hidden' : 'hidden dark:block')}
+                />
+              )
+            }
             <ImageSkeleton id="skel-avatar" class="w-50 min-h-50 rounded-xl" />
           </div>
         </ProfileCard>
