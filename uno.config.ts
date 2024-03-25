@@ -1,8 +1,9 @@
 import {
   defineConfig,
-  presetIcons,
   presetUno,
   presetAttributify,
+  presetIcons,
+  presetWebFonts,
 } from 'unocss';
 
 const safe_list = [
@@ -18,9 +19,17 @@ const safe_list = [
 
 export default defineConfig({
   presets: [
-    presetIcons(),
     presetUno({ attributifyPseudo: true }),
     presetAttributify(),
+    presetIcons(),
+    presetWebFonts({
+      provider: 'bunny',
+      fonts: {
+        sans: 'Noto Sans TC:300,400,500,700',
+        serif: 'Noto Serif TC',
+        mono: 'Source Code Pro',
+      },
+    }),
   ],
   safelist: safe_list,
   theme: {
