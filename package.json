@@ -1,7 +1,8 @@
 {
-  "name": "me",
+  "name": "Alan-Kuan.github.io",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
