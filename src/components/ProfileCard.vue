@@ -30,7 +30,7 @@ defineProps<Profile>();
         :href="link.url"
         :title="link.title"
         target="_blank"
-        hover:opacity-70%
+        hover:brightness-120%
       >
         <div :class="`i-mdi-${link.icon}`" />
       </a>
@@ -39,7 +39,7 @@ defineProps<Profile>();
         title="My E-mail Address"
         :data-email="email_b64"
         onfocus="this.href = 'mailto:' + atob(this.dataset.email) || ''"
-        hover:opacity-70%
+        hover:brightness-120%
       >
         <div i-mdi-email></div>
       </a>
