@@ -23,7 +23,7 @@ defineProps<Profile>();
     <div
       w-50 mt-5
       flex justify-around
-      text="3xl link-light dark:link-dark"
+      text="3xl profile_card-link-light dark:profile_card-link-dark"
     >
       <a
         v-for="link in links"
