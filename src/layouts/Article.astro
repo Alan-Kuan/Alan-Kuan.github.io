@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/Base.astro';
 import Footer from '@/components/Footer.vue';
+import ArticleAttr from '@/components/article/ArticleAttr.vue';
 
 const { title, desc, date, tags } = Astro.props;
 ---
@@ -10,45 +11,13 @@ const { title, desc, date, tags } = Astro.props;
   desc={desc}
 >
   <main ma-8 px-8 py-5>
-    <h1 text-3xl font-medium>
-      {title}
-    </h1>
-
-    <div mt-2 flex>
-      <div flex items-center>
-        <div
-          i-mdi-calendar
-          text="lg link-dark dark:text-light"
-        ></div>
-        <div pl-2>{date}</div>
-      </div>
-
-      <div ml-5 flex items-center>
-        <div
-          i-mdi-tag
-          text="lg link-dark dark:text-light"
-        ></div>
-        {
-          tags.map(tag =>
-            // TODO: tag link
-            <a
-              href="#"
-              un-text="link-light dark:text-light"
-              hover:underline
-            >
-              <span pl-2>{tag}</span>
-            </a>
-          )
-        }
-      </div>
+    <h1 text-3xl font-medium>{title}</h1>
+    <div mt-2>
+      <ArticleAttr {date} {tags} />
     </div>
-
-    <hr mt-5 border="gray dark:text-light" />
-
     <div mt-5 mb-5>
       <slot />
     </div>
-
   </main>
   <Footer />
 </BaseLayout>

@@ -14,6 +14,9 @@ export interface Profile {
 
 export interface Article {
   title: string,
+  slug: string,
+  date: string,
+  tags: string[],
   excerpt: string,
 };
 

@@ -36,6 +36,12 @@ const colors = {
       dark: '#ba9073',
     },
   },
+  article_card: {
+    link: {
+      light: '#60a5fa',
+      dark: '#b4d5fd',
+    },
+  },
   body: {
     light: '#ffeecd',
     dark: '#61594b',

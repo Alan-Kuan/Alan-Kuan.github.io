@@ -10,9 +10,9 @@ defineProps<{
 <template>
   <div px-8 py-3>
     <ArticleCard
+      my-5
       v-for="article in articles"
-      :title="article.title"
-      :excerpt="article.excerpt"
+      v-bind="article"
     />
   </div>
 </template>
