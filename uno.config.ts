@@ -37,6 +37,10 @@ const colors = {
     },
   },
   article_card: {
+    img_bg: {
+      light: '#cccccc',
+      dark: '#999999',
+    },
     link: {
       light: '#60a5fa',
       dark: '#b4d5fd',

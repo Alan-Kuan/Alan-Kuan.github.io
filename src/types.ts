@@ -17,7 +17,8 @@ export interface Article {
   slug: string,
   date: string,
   tags: string[],
-  excerpt: string,
+  first_img?: string,
+  first_paragraph?: string,
 };
 
 export interface ConfPub {

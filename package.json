@@ -16,6 +16,8 @@
   "dependencies": {
     "@astrojs/vue": "^4.0.8",
     "astro": "^4.4.4",
+    "markdown-it": "^14.1.0",
+    "node-html-parser": "^6.1.13",
     "sass": "^1.75.0",
     "sharp": "^0.33.3",
     "vue": "^3.4.20"

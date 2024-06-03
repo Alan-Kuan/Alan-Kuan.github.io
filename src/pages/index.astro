@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import MarkdownIt from 'markdown-it';
+import { parse as parseHtml } from 'node-html-parser';
+
 import BaseLayout from '@/layouts/Base.astro';
 import ArticleList from '@/components/article/ArticleList.vue';
 import Footer from '@/components/Footer.vue';
@@ -8,6 +11,15 @@ const title = 'Alan Kuan | 官澔恩';
 const desc = 'A place telling things about Alan Kuan';
 
 const articles = await getCollection('articles');
+const parser = MarkdownIt();
+
+function extractExcerpt(body: string) {
+  const html = parser.render(body);
+  const root = parseHtml(html);
+  const first_img = root.getElementsByTagName('img')[0]?.toString();
+  const first_paragraph = root.getElementsByTagName('p')[0]?.toString();
+  return { first_img, first_paragraph };
+}
 ---
 
 <BaseLayout
@@ -21,8 +33,8 @@ const articles = await getCollection('articles');
         slug: article.slug,
         date: article.data.date,
         tags: article.data.tags,
-        excerpt: 'TODO: this should be excerpt',
-      }
+        ...extractExcerpt(article.body),
+      };
     })} />
     <Footer />
   </main>
