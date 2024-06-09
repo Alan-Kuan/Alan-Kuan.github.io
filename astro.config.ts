@@ -12,4 +12,7 @@ export default defineConfig({
     }),
   ],
   site: 'https://Alan-Kuan.github.io',
+  redirects: {
+    '/tags/[tag]': '/tags/[tag]/1',
+  },
 });

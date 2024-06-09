@@ -20,10 +20,9 @@ defineProps<{
         i-mdi-tag
         text="lg link-dark dark:text-light"
       ></div>
-      <!-- TODO: tag link -->
       <a
         v-for="tag in tags"
-        href="#"
+        :href="`/tags/${tag}`"
         un-text="link-light dark:text-light"
         hover:underline
       >
