@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+
+import IndexLayout from '@/layouts/Index.astro';
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await getCollection('articles');
+  const unique_tags = [...new Set(posts.map(({ data }) => data.tags).flat())];
+
+  return unique_tags.map(tag => {
+    const filtered_posts = posts.filter(({ data }) => {
+      return data.tags.includes(tag) && !data.draft;
+    });
+    return paginate(filtered_posts, { pageSize: 8, params: { tag } });
+  }).flat();
+}
+
+const { tag } = Astro.params;
+const { page } = Astro.props;
+
+const title = 'Alan Kuan | 官澔恩';
+const desc = `Content tagged with "${tag}"`;
+---
+
+<IndexLayout {title} {desc} {page} />

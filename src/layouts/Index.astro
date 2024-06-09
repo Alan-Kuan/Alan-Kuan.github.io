@@ -1,0 +1,80 @@
+---
+import MarkdownIt from 'markdown-it';
+import { parse as parseHtml } from 'node-html-parser';
+
+import BaseLayout from '@/layouts/Base.astro';
+import ArticleList from '@/components/article/ArticleList.vue';
+import Footer from '@/components/Footer.vue';
+
+const parser = MarkdownIt();
+function extractExcerpt(body: string) {
+  const html = parser.render(body);
+  const root = parseHtml(html);
+  const first_img = root.getElementsByTagName('img')[0]?.toString();
+  const first_paragraph = root.getElementsByTagName('p')[0]?.toString();
+  return { first_img, first_paragraph };
+}
+
+const {
+  title,
+  desc,
+  page,
+} = Astro.props;
+---
+
+<BaseLayout {title} {desc}>
+  <main>
+    <ArticleList articles={page.data.map(article => {
+      return {
+        title: article.data.title,
+        slug: article.slug,
+        date: article.data.date,
+        tags: article.data.tags,
+        ...extractExcerpt(article.body),
+      };
+    })} />
+    <div
+      mb-5
+      flex justify-center items-center
+    >
+      <a
+        mr-1
+        class={page.url.prev ? '' : 'invisible'}
+        href={page.url.prev}
+      >
+        <div i-mdi-triangle rotate-270></div>
+      </a>
+      {
+        Array.from({ length: 5 }, (_, k) => k + page.currentPage - 2).map(num =>
+          num <= 0 || num > page.lastPage ?
+            <span mx-1 w-9 text-lg></span> :
+          num == page.currentPage ?
+            <span
+              mx-1 w-9 h-9
+              rounded-full border-2 border-red
+              text="lg center"
+            >
+              {num}
+            </span> :
+            <a
+              mx-1 w-9 h-9
+              rounded-full border-2 border-transparent hover:border-orange
+              transition-colors transition-2000
+              text="lg center"
+              href={`/articles/${num}`}
+            >
+              {num}
+            </a>
+        )
+      }
+      <a
+        ml-1
+        class={page.url.next ? '' : 'invisible'}
+        href={page.url.next}
+      >
+        <div i-mdi-triangle rotate-90></div>
+      </a>
+    </div>
+    <Footer />
+  </main>
+</BaseLayout>
