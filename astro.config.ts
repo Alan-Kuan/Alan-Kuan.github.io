@@ -13,6 +13,8 @@ export default defineConfig({
   ],
   site: 'https://Alan-Kuan.github.io',
   redirects: {
+    '/articles': '/articles/1',
+    '/projects': '/projects/1',
     '/tags/[tag]': '/tags/[tag]/1',
   },
 });

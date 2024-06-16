@@ -4,14 +4,14 @@ import { getCollection } from 'astro:content';
 import IndexLayout from '@/layouts/Index.astro';
 
 export async function getStaticPaths({ paginate }) {
-  const pages = await getCollection('articles', ({ data }) => {
+  const pages = await getCollection('projects', ({ data }) => {
     return !data.draft;
   });
   return paginate(pages, { pageSize: 8 });
 }
 
-const title = 'Alan Kuan | 官澔恩';
-const desc = 'A place telling things about Alan Kuan';
+const title = 'Projects - Alan Kuan | 官澔恩';
+const desc = 'Projects Alan Kuan have participated in';
 
 const { page } = Astro.props;
 ---
@@ -20,5 +20,5 @@ const { page } = Astro.props;
   {title}
   {desc}
   {page}
-  category="articles"
+  category="projects"
 />
