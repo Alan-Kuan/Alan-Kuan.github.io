@@ -24,16 +24,14 @@ const {
   prefix,
 } = Astro.props;
 
-const posts = page.data.map(({ collection, data, slug, body }) => {
-  return {
-    collection: collection,
-    title: data.title,
-    slug: slug,
-    date: data.date,
-    tags: data.tags,
-    ...extractExcerpt(body),
-  };
-});
+const posts = page.data.map(({ collection, data, slug, body }) => ({
+  collection: collection,
+  title: data.title,
+  slug: slug,
+  date: data.date,
+  tags: data.tags,
+  ...extractExcerpt(body),
+}));
 ---
 
 <BaseLayout {title} {desc}>

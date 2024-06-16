@@ -27,15 +27,15 @@ function extractExcerpt(body: string) {
   {desc}
 >
   <main>
-    <ArticleList articles={articles.map(article => {
-      return {
+    <ArticleList
+      articles={articles.map(article => ({
         title: article.data.title,
         slug: article.slug,
         date: article.data.date,
         tags: article.data.tags,
         ...extractExcerpt(article.body),
-      };
-    })} />
+      }))}
+    />
     <Footer />
   </main>
 </BaseLayout>
