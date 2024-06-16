@@ -1,8 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+
 import NavBar from '@/components/nav/NavBar.astro';
 import ProfileCard from '@/components/ProfileCard.vue';
 import ImageSkeleton from '@/components/skeleton/Image.vue';
-import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -64,7 +65,7 @@ const avatar_urls = [
     <NavBar />
     <div flex>
       <div w-25%>
-        { /* add `top-20` and `bottom-0` to make `overflow-y-scroll` effective */ }
+        {/* add `top-20` and `bottom-0` to make `overflow-y-scroll` effective */}
         <ProfileCard
           name={profile.name}
           title={profile.title}
@@ -100,7 +101,7 @@ const avatar_urls = [
           </div>
         </ProfileCard>
       </div>
-      <div w-75% h-[calc(100vh-5rem)] overflow-y-scroll>
+      <div w-75% class="h-[calc(100vh-5rem)]" overflow-y-scroll>
         <slot />
       </div>
     </div>
