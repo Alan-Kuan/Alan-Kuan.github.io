@@ -21,7 +21,7 @@ onMounted(() => {
   route.value = window.location.pathname;
 
   for (let i = 0; i < props.links.length; i++) {
-    if (props.links[i].route === route.value) {
+    if (route.value.startsWith(props.links[i].route)) {
       curr_idx = i;
       break;
     }
@@ -76,7 +76,7 @@ function onMouseLeaveLink() {
     </a>
     <!-- current route indicator -->
     <div
-      v-if="link.route === route"
+      v-if="route.startsWith(link.route)"
       :style="indicator_style"
       absolute bottom--2
       h-1
