@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+
+import IndexLayout from '@/layouts/Index.astro';
+import { post_collection_names } from '@/content/config.ts';
+
+export async function getStaticPaths({ paginate }) {
+  const all_posts = await Promise.all(
+    post_collection_names.map(async (collection) => {
+      const posts = await getCollection(collection, ({ data }) => !data.draft);
+      return paginate(posts, { pageSize: 8, params: { collection } });
+    })
+  );
+  return all_posts.flat();
+}
+
+const { collection } = Astro.params;
+const { page } = Astro.props;
+
+const title = 'Alan Kuan | 官澔恩';
+const desc = 'A place telling things about Alan Kuan';
+---
+
+<IndexLayout
+  {title}
+  {desc}
+  {page}
+  prefix={`/${collection}`}
+/>

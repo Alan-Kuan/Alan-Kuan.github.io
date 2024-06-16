@@ -3,8 +3,10 @@ import MarkdownIt from 'markdown-it';
 import { parse as parseHtml } from 'node-html-parser';
 
 import BaseLayout from '@/layouts/Base.astro';
-import ArticleList from '@/components/article/ArticleList.vue';
+import PostCard from '@/components/post/PostCard.vue';
 import Footer from '@/components/Footer.vue';
+
+import type { Post } from '@/types.ts';
 
 const parser = MarkdownIt();
 function extractExcerpt(body: string) {
@@ -19,21 +21,29 @@ const {
   title,
   desc,
   page,
-  category,
+  prefix,
 } = Astro.props;
+
+const posts = page.data.map(({ collection, data, slug, body }) => {
+  return {
+    collection: collection,
+    title: data.title,
+    slug: slug,
+    date: data.date,
+    tags: data.tags,
+    ...extractExcerpt(body),
+  };
+});
 ---
 
 <BaseLayout {title} {desc}>
   <main>
-    <ArticleList articles={page.data.map(article => {
-      return {
-        title: article.data.title,
-        slug: article.slug,
-        date: article.data.date,
-        tags: article.data.tags,
-        ...extractExcerpt(article.body),
-      };
-    })} />
+    {/* Post List */}
+    <div px-8 py-3>
+      { posts.map(post => <PostCard class="my-5" {...post} />) }
+    </div>
+
+    {/* Pagination */}
     <div
       mb-5
       flex justify-center items-center
@@ -62,7 +72,7 @@ const {
               rounded-full border-2 border-transparent hover:border-orange
               transition-colors transition-2000
               text="lg center"
-              href={`/articles/${num}`}
+              href={`${prefix}/${num}`}
             >
               {num}
             </a>

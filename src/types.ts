@@ -12,11 +12,12 @@ export interface Profile {
   intro: string,
 };
 
-export interface Article {
+export interface Post {
+  collection: string,
   title: string,
   slug: string,
-  date: string,
   tags: string[],
+  date?: string,
   first_img?: string,
   first_paragraph?: string,
 };

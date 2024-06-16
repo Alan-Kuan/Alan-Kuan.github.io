@@ -1,13 +1,18 @@
 <script setup lang="ts">
 defineProps<{
-  date: string,
+  date?: string,
   tags: string[],
 }>();
 </script>
 
 <template>
   <div flex>
-    <div flex items-center>
+    <!-- Date -->
+    <div
+      v-if="date"
+      flex items-center
+      mr-5
+    >
       <div
         i-mdi-calendar
         text="lg link-dark dark:text-light"
@@ -15,7 +20,11 @@ defineProps<{
       <div pl-2>{{ date }}</div>
     </div>
 
-    <div ml-5 flex items-center>
+    <!-- Tags -->
+    <div
+      v-if="tags.length > 0"
+      flex items-center
+    >
       <div
         i-mdi-tag
         text="lg link-dark dark:text-light"

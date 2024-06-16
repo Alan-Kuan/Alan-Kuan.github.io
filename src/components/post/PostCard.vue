@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ArticleAttr from '@/components/article/ArticleAttr.vue';
-import type { Article } from '@/types.ts';
+import PostAttr from '@/components/post/PostAttr.vue';
+import type { Post } from '@/types.ts';
 
-defineProps<Article>();
+defineProps<Post>();
 </script>
 
 <template>
@@ -33,11 +33,11 @@ defineProps<Article>();
             dark:hover:article_card-link-dark
           "
         >
-          <a :href="`/articles/${slug}`">
+          <a :href="`/${collection}/${slug}`">
             {{ title }}
           </a>
         </div>
-        <ArticleAttr mt-1 :date="date" :tags="tags" />
+        <PostAttr mt-1 :date="date" :tags="tags" />
         <div mt-2 v-if="first_paragraph" v-html="first_paragraph" />
       </div>
     </div>
