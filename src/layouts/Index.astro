@@ -60,15 +60,15 @@ const posts = page.data.map(({ collection, data, slug, body }) => ({
           num == page.currentPage ?
             <span
               mx-1 w-9 h-9
-              rounded-full border-2 border-red
+              rounded-full border="2 pagination-indicator-light dark:pagination-indicator-dark"
               text="lg center"
             >
               {num}
             </span> :
             <a
               mx-1 w-9 h-9
-              rounded-full border-2 border-transparent hover:border-orange
-              transition-colors transition-2000
+              rounded-full border="2 transparent hover:pagination-indicator-hovered-light dark:hover:pagination-indicator-hovered-dark"
+              transition="colors 2000"
               text="lg center"
               href={`${prefix}/${num}`}
             >

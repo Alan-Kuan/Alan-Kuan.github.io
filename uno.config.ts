@@ -46,6 +46,16 @@ const colors = {
       dark: '#b4d5fd',
     },
   },
+  pagination: {
+    indicator: {
+      light: '#f87171',
+      dark: '#f87171',
+      hovered: {
+        light: 'orange',
+        dark: '#c68f77',
+      },
+    },
+  },
   body: {
     light: '#ffeecd',
     dark: '#61594b',
