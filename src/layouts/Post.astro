@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '@/layouts/Base.astro';
+import WithProfileLayout from '@/layouts/WithProfile.astro';
 import Footer from '@/components/Footer.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
 
 const { title, desc, date, tags } = Astro.props;
 ---
 
-<BaseLayout
+<WithProfileLayout
   title={`${title} | Alan Kuan`}
   desc={desc}
 >
@@ -20,4 +20,4 @@ const { title, desc, date, tags } = Astro.props;
     </div>
   </main>
   <Footer />
-</BaseLayout>
+</WithProfileLayout>

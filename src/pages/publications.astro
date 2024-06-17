@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '@/layouts/Base.astro';
+import WithProfileLayout from '@/layouts/WithProfile.astro';
 import PubList from '@/components/publication/PubList.vue';
 import Footer from '@/components/Footer.vue';
 
@@ -27,7 +27,7 @@ const pubs = {
 const self = 'Hao-En Kuan';
 ---
 
-<BaseLayout
+<WithProfileLayout
   {title}
   {desc}
 >
@@ -38,4 +38,4 @@ const self = 'Hao-En Kuan';
     />
     <Footer />
   </main>
-</BaseLayout>
+</WithProfileLayout>

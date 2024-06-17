@@ -2,7 +2,7 @@
 import MarkdownIt from 'markdown-it';
 import { parse as parseHtml } from 'node-html-parser';
 
-import BaseLayout from '@/layouts/Base.astro';
+import WithProfileLayout from '@/layouts/WithProfile.astro';
 import PostCard from '@/components/post/PostCard.vue';
 import Footer from '@/components/Footer.vue';
 
@@ -34,7 +34,7 @@ const posts = page.data.map(({ collection, data, slug, body }) => ({
 }));
 ---
 
-<BaseLayout {title} {desc}>
+<WithProfileLayout {title} {desc}>
   <main>
     {/* Post List */}
     <div px-8 py-3>
@@ -86,4 +86,4 @@ const posts = page.data.map(({ collection, data, slug, body }) => ({
     </div>
     <Footer />
   </main>
-</BaseLayout>
+</WithProfileLayout>
