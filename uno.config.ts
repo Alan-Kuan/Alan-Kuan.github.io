@@ -252,8 +252,14 @@ export default defineConfig({
     presetWebFonts({
       provider: 'bunny',
       fonts: {
-        sans: 'Noto Sans TC:300,400,500,700',
-        serif: 'Noto Serif TC',
+        sans: [
+          'Noto Sans:300,400,500,700',
+          'Noto Sans TC:300,400,500,700',
+        ],
+        serif: [
+          'Noto Serif',
+          'Noto Serif TC',
+        ],
         mono: 'Source Code Pro',
       },
     }),
