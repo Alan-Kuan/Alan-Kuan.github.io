@@ -12,14 +12,18 @@ export interface Profile {
   intro: string,
 };
 
-export interface Post {
+export interface Post extends PostData {
   collection: string,
-  title: string,
   slug: string,
-  tags: string[],
-  date?: string,
-  first_img?: string,
   first_paragraph?: string,
+};
+
+export interface PostData {
+  title: string,
+  desc: string,
+  date?: string,
+  tags: string[],
+  banner_url?: string,
 };
 
 export interface ConfPub {

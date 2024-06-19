@@ -15,14 +15,22 @@ defineProps<Post>();
   >
     <div flex>
       <div
-        class="first_img_container"
+        class="banner_container"
         flex justify-center items-center
         min-w-48 max-w-48 min-h-36
         bg="article_card-img_bg-light dark:article_card-img_bg-dark"
         overflow-hidden
       >
-        <div v-if="first_img" v-html="first_img" />
-        <div v-else i-mdi-book-open-variant-outline text-5xl></div>
+        <img
+          v-if="banner_url"
+          w-full
+          :src="banner_url"
+        />
+        <div
+          v-else
+          i-mdi-book-open-variant-outline
+          text-5xl
+        />
       </div>
       <div px-5 py-5>
         <div
@@ -45,7 +53,7 @@ defineProps<Post>();
 </template>
 
 <style scoped>
-.first_img_container >>> img {
+.banner_container >>> img {
   max-width: 100%;
   max-height: 100%;
 }

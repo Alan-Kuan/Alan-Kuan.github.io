@@ -3,18 +3,30 @@ import WithProfileLayout from '@/layouts/WithProfile.astro';
 import Footer from '@/components/Footer.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
 
-const { title, desc, date, tags } = Astro.props;
+import type { PostData as Props } from '@/types.ts';
+
+const {
+  title,
+  desc,
+  date,
+  tags,
+  banner_url,
+} = Astro.props;
 ---
 
 <WithProfileLayout
   title={`${title} | Alan Kuan`}
   desc={desc}
 >
-  <main ma-8 px-8 py-5>
-    <h1 text-3xl font-medium>{title}</h1>
+  <main ma-8 px-8 pb-5>
+    {/* Banner */}
+    { banner_url && <img src={banner_url} alt="Banner" /> }
+    {/* Title & Attributes */}
+    <h1 mt-2 text-3xl font-medium>{title}</h1>
     <div mt-2>
       <PostAttr {date} {tags} />
     </div>
+    {/* Content */}
     <div mt-5 mb-5>
       <slot />
     </div>

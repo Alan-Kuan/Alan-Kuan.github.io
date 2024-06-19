@@ -7,6 +7,7 @@ const articles = defineCollection({
     desc: z.string(),
     date: z.string(),
     tags: z.array(z.string()),
+    banner_url: z.string().optional(),
   }),
 });
 
@@ -16,6 +17,7 @@ const projects = defineCollection({
     title: z.string(),
     desc: z.string(),
     tags: z.array(z.string()),
+    banner_url: z.string().optional(),
   }),
 });
 
