@@ -9,10 +9,11 @@ export async function getStaticPaths() {
     post_collection_names.map(async (collection) => {
       const posts = await getCollection(collection, ({ data }) => !data.draft);
 
-      return posts.map(post => ({
-        params: { collection, slug: post.slug },
-        props: { post },
-      }));
+      return posts ?
+        posts.map(post => ({
+          params: { collection, slug: post.slug },
+          props: { post },
+        })) : [];
     })
   );
 
