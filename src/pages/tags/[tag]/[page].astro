@@ -8,7 +8,8 @@ export async function getStaticPaths({ paginate }) {
   const all_posts = await Promise.all(
     post_collection_names.map(async (collection) => await getCollection(collection) ?? [])
   );
-  const posts = all_posts.flat();
+  const posts = all_posts.flat()
+    .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
   const unique_tags = [...new Set(posts.map(({ data }) => data.tags).flat())];
 
   return unique_tags.map(tag => {
