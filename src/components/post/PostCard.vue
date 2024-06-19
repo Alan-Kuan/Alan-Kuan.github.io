@@ -53,7 +53,7 @@ defineProps<Post>();
 </template>
 
 <style scoped>
-.banner_container >>> img {
+.banner_container :deep(img) {
   max-width: 100%;
   max-height: 100%;
 }
