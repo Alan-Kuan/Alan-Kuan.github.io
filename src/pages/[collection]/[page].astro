@@ -7,7 +7,7 @@ import { post_collection_names } from '@/content/config.ts';
 export async function getStaticPaths({ paginate }) {
   const all_posts = await Promise.all(
     post_collection_names.map(async (collection) => {
-      const posts = await getCollection(collection, ({ data }) => !data.draft);
+      const posts = await getCollection(collection);
       return posts ? paginate(posts, { pageSize: 8, params: { collection } }) : [];
     })
   );
