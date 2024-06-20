@@ -27,6 +27,7 @@ const posts = page.data.map(({ collection, data, slug, body }) => ({
   slug: slug,
   first_paragraph: findFirstParagraph(body),
   title: data.title,
+  desc: data.desc,
   date: data.date,
   tags: data.tags,
   banner_url: data.banner_url,
