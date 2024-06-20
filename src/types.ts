@@ -1,7 +1,7 @@
 export interface Link {
   url: string,
   title: string,
-  icon: string,
+  icon?: string,
 };
 
 export interface Profile {
