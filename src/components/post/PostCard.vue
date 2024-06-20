@@ -1,8 +1,23 @@
 <script setup lang="ts">
+import { FastAverageColor } from 'fast-average-color';
+import { ref, onMounted } from 'vue';
+
 import PostAttr from '@/components/post/PostAttr.vue';
 import type { Post } from '@/types.ts';
 
-defineProps<Post>();
+const props = defineProps<Post>();
+
+const bg_color = ref('#cccccc');
+
+onMounted(async () => {
+  if (!props.banner_url) return;
+  const fac = new FastAverageColor();
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.src = props.banner_url;
+  const color = await fac.getColorAsync(img, { algorithm: 'dominant' });
+  bg_color.value = color.hex;
+});
 </script>
 
 <template>
@@ -16,9 +31,9 @@ defineProps<Post>();
     <div flex>
       <div
         class="banner_container"
+        :style="`background: ${bg_color}`"
         flex justify-center items-center
         min-w-48 max-w-48 min-h-36
-        bg="article_card-img_bg-light dark:article_card-img_bg-dark"
         overflow-hidden
       >
         <img

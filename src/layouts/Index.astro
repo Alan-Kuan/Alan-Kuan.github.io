@@ -37,7 +37,7 @@ const posts = page.data.map(({ collection, data, slug, body }) => ({
   <main>
     {/* Post List */}
     <div px-8 py-3>
-      { posts.map(post => <PostCard class="my-5" {...post} />) }
+      { posts.map(post => <PostCard class="my-5" {...post} client:load />) }
     </div>
 
     {/* Pagination */}
