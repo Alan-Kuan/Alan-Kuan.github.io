@@ -5,41 +5,14 @@ import BaseLayout from '@/layouts/Base.astro';
 import ProfileCard from '@/components/ProfileCard.vue';
 import ImageSkeleton from '@/components/skeleton/Image.vue';
 
+import { profile, avatar_urls, intro } from '@/content/profile.ts';
+
 interface Props {
   title: string;
   desc: string;
 }
 
 const { title, desc } = Astro.props;
-
-const profile = {
-  name: '官澔恩 / Alan Kuan',
-  title: 'Lorem ipsum dolor',
-  links: [
-    {
-      title: 'My Linkedin Profile',
-      icon: 'linkedin',
-      url: 'https://www.linkedin.com/in/alankuan945',
-    },
-    {
-      title: 'My GitHub Profile',
-      icon: 'github',
-      url: 'https://github.com/Alan-Kuan',
-    },
-    {
-      title: 'My YouTube Channel',
-      icon: 'youtube',
-      url: 'https://www.youtube.com/@alankuan',
-    },
-  ],
-  email_b64: 'a3Vhbmhhb2FuQGdtYWlsLmNvbQ==',
-  intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in tristique libero. Morbi fermentum venenatis lectus sit amet mattis. Etiam non velit ac sapien finibus lobortis id et ex. Etiam venenatis vulputate neque, sed finibus nunc aliquet consectetur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec egestas quis nisi quis tempor. Pellentesque eu lacinia justo.',
-};
-
-const avatar_urls = [
-  'https://i.postimg.cc/76ZBY2Fh/image.jpg',  // light
-  'https://i.postimg.cc/rmZfdpTJ/image.jpg',  // dark
-];
 ---
 
 <BaseLayout>
@@ -50,9 +23,9 @@ const avatar_urls = [
       <ProfileCard
         name={profile.name}
         title={profile.title}
+        org={profile.org}
         links={profile.links}
         email_b64={profile.email_b64}
-        intro={profile.intro}
         class="fixed top-20 bottom-0 w-25%"
       >
         <div slot="img">
@@ -80,6 +53,7 @@ const avatar_urls = [
           }
           <ImageSkeleton id="skel-avatar" class="w-50 min-h-50 rounded-xl" />
         </div>
+        <div slot="intro" set:html={intro} />
       </ProfileCard>
     </div>
     {/* Right Column */}

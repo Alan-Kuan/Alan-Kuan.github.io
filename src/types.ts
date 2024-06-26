@@ -7,9 +7,12 @@ export interface Link {
 export interface Profile {
   name: string,
   title: string,
+  org: {
+    text: string,
+    url: string,
+  },
   links: Link[],
   email_b64: string,
-  intro: string,
 };
 
 export interface Post extends PostData {

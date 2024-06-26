@@ -10,13 +10,16 @@ defineProps<Profile>();
     pa-5
     bg="profile_card-light dark:profile_card-dark"
   >
-    <slot name="img"></slot>
+    <slot name="img" />
 
     <div mt-5 text-2xl font-light>
       {{ name }}
     </div>
     <div mt-3>
-      {{ title }}
+      {{ title }} @
+      <a :href="org.url" target="_blank" underline>
+        {{ org.text }}
+      </a>
     </div>
 
     <!-- Links -->
@@ -45,8 +48,8 @@ defineProps<Profile>();
       </a>
     </div>
 
-    <div mt-5 overflow-y-scroll>
-      {{ intro }}
+    <div mt-5 indent-8 overflow-y-scroll>
+      <slot name="intro" />
     </div>
   </div>
 </template>
