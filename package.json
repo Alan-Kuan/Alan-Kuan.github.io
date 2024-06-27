@@ -15,8 +15,9 @@
   },
   "packageManager": "pnpm@9.1.4+sha256.30a1801ac4e723779efed13a21f4c39f9eb6c9fbb4ced101bce06b422593d7c9",
   "dependencies": {
+    "@astrojs/mdx": "^3.1.2",
     "@astrojs/vue": "^4.0.8",
-    "astro": "^4.4.4",
+    "astro": "^4.11.3",
     "fast-average-color": "^9.4.0",
     "markdown-it": "^14.1.0",
     "node-html-parser": "^6.1.13",
