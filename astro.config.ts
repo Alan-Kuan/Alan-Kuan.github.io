@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     UnoCSS({ injectReset: true }),
     vue(),
-    mdx(),
+    mdx({ shikiConfig: { theme: 'ayu-dark' } }),
   ],
   site: 'https://Alan-Kuan.github.io',
   redirects: {
