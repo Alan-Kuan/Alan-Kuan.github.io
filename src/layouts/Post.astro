@@ -18,9 +18,18 @@ const {
   title={`${title} | Alan Kuan`}
   desc={desc}
 >
+  {
+    /* Banner */
+    banner_url &&
+    <div max-h-100 overflow-hidden>
+      <img
+        w-full
+        src={banner_url}
+        alt="Banner"
+      />
+    </div>
+  }
   <main ma-8 px-8 pb-5>
-    {/* Banner */}
-    { banner_url && <img src={banner_url} alt="Banner" /> }
     {/* Title & Attributes */}
     <h1 mt-2 text-3xl font-medium>{title}</h1>
     <div mt-2>
