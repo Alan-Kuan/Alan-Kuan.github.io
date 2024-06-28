@@ -31,7 +31,7 @@ defineProps<{
       ></div>
       <a
         v-for="tag in tags"
-        :href="`/tags/${tag}`"
+        :href="`/tags/${tag}/1`"
         un-text="link-light dark:text-light"
         hover:underline
       >

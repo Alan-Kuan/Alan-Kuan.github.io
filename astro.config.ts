@@ -15,6 +15,5 @@ export default defineConfig({
     '/': '/articles/1',
     '/articles': '/articles/1',
     '/projects': '/projects/1',
-    '/tags/[tag]': '/tags/[tag]/1'
-  }
+  },
 });
