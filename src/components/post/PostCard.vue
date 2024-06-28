@@ -47,21 +47,28 @@ onMounted(async () => {
           text-5xl
         />
       </div>
-      <div px-5 py-5>
+      <div pa-5>
         <div
           font-medium
           text="
-            xl
-            hover:article_card-link-light
-            dark:hover:article_card-link-dark
+          xl
+          hover:article_card-link-light
+          dark:hover:article_card-link-dark
           "
         >
           <a :href="`/${collection}/${slug}`">
             {{ title }}
           </a>
         </div>
-        <PostAttr mt-1 :date="date" :tags="tags" />
-        <div mt-2 v-if="first_paragraph" v-html="first_paragraph" />
+        <PostAttr mt-1 :date :tags />
+        <div
+          v-if="excerpt"
+          h-18
+          mt-2
+          overflow-hidden
+        >
+          {{ excerpt }}
+        </div>
       </div>
     </div>
   </div>

@@ -9,10 +9,12 @@ import Footer from '@/components/Footer.vue';
 import type { Post } from '@/types.ts';
 
 const parser = MarkdownIt();
-function findFirstParagraph(body: string) {
+function getExcerpt(body: string) {
   const html = parser.render(body);
   const root = parseHtml(html);
-  return root.getElementsByTagName('p')[0]?.toString();
+  const text = root.getElementsByTagName('p')[0]?.text;
+  if (!text || text.length <= 400) return text;
+  return text.substring(0, 400) + ' ...';
 }
 
 const {
@@ -25,7 +27,7 @@ const {
 const posts = page.data.map(({ collection, data, slug, body }) => ({
   collection: collection,
   slug: slug,
-  first_paragraph: findFirstParagraph(body),
+  excerpt: getExcerpt(body),
   title: data.title,
   desc: data.desc,
   date: data.date,

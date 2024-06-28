@@ -18,7 +18,7 @@ export interface Profile {
 export interface Post extends PostData {
   collection: string,
   slug: string,
-  first_paragraph?: string,
+  excerpt?: string,
 };
 
 export interface PostData {

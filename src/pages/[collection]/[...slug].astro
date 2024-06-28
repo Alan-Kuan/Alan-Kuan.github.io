@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 import PostLayout from '@/layouts/Post.astro';
 import Paragraph from '@/components/element/Paragraph.vue';
 import Link from '@/components/element/Link.vue';
+import Image from '@/components/element/Image.vue';
+
 import { post_collection_names } from '@/content/config.ts';
 
 export async function getStaticPaths() {
@@ -32,6 +34,7 @@ const { Content, components } = await post.render();
         ...components,
         a: Link,
         p: Paragraph,
+        Image,
       }}
     />
   </article>
