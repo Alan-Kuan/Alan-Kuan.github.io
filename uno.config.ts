@@ -4,6 +4,7 @@ import {
   presetAttributify,
   presetIcons,
   presetWebFonts,
+  transformerAttributifyJsx,
 } from 'unocss';
 
 const safe_list = [
@@ -123,27 +124,6 @@ const preflight = `
       margin: 1rem 0;
       font-size: 1rem;
       line-height: 1.5rem;
-    }
-    p {
-      margin: 1rem 0;
-      text-align: justify;
-    }
-    img {
-      margin: 1rem auto;
-      border-radius: 0.375rem;
-    }
-
-    a {
-      color: ${colors.link.light};
-      &:hover {
-        filter: brightness(120%);
-      }
-      & img {
-        display: inline-block;
-      }
-    }
-    .dark & a {
-      color: ${colors.link.dark};
     }
 
     ol {
@@ -269,6 +249,12 @@ export default defineConfig({
       getCSS: () => preflight,
     },
   ],
+  transformers: [
+    transformerAttributifyJsx(),
+  ],
   safelist: safe_list,
+  shortcuts: {
+    'columns': 'flex flex-wrap justify-between',
+  },
   theme: { colors },
 });

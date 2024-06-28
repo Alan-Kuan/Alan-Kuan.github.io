@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 
 import PostLayout from '@/layouts/Post.astro';
+import Paragraph from '@/components/element/Paragraph.vue';
+import Link from '@/components/element/Link.vue';
 import { post_collection_names } from '@/content/config.ts';
 
 export async function getStaticPaths() {
@@ -20,11 +22,17 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, components } = await post.render();
 ---
 
 <PostLayout {...post.data}>
   <article class="content">
-    <Content />
+    <Content
+      components={{
+        ...components,
+        a: Link,
+        p: Paragraph,
+      }}
+    />
   </article>
 </PostLayout>
