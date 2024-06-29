@@ -35,39 +35,22 @@ I took his advice and made my projects available on GitHub.
 The following are the projects I finished.
 I am happy to share my experiences at Microsoft.
 
-<div columns>
-  <a w="lg:49.5% xl:33%" my="0.5%" href="https://github.com/Alan-Kuan/AOAI-for-Word" target="_blank">
-    <img
-      src="https://github-readme-stats-alan-kuan.vercel.app/api/pin/?username=Alan-Kuan&repo=AOAI-for-Word"
-      alt="AOAI-for-Word"
-    />
-  </a>
 
-  <a w="lg:49.5% xl:33%" my="0.5%" href="https://github.com/Alan-Kuan/AOAI-for-Word-backend" target="_blank">
-    <img
-      src="https://github-readme-stats-alan-kuan.vercel.app/api/pin/?username=Alan-Kuan&repo=AOAI-for-Word-backend"
-      alt="AOAI-for-Word-backend"
-    />
-  </a>
+export const repos = [
+  'AOAI-for-Word',
+  'AOAI-for-Word-backend',
+  'fhir-frontend',
+  'fhir-backend-aks',
+  'ft-prepare',
+];
 
-  <a w="lg:49.5% xl:33%" my="0.5%" href="https://github.com/Alan-Kuan/fhir-frontend" target="_blank">
-    <img
-      src="https://github-readme-stats-alan-kuan.vercel.app/api/pin/?username=Alan-Kuan&repo=fhir-frontend"
-      alt="fhir-frontend"
-    />
-  </a>
-
-  <a w="lg:49.5% xl:33%" my="0.5%" href="https://github.com/Alan-Kuan/fhir-backend-aks" target="_blank">
-    <img
-      src="https://github-readme-stats-alan-kuan.vercel.app/api/pin/?username=Alan-Kuan&repo=fhir-backend-aks"
-      alt="fhir-backend-aks"
-    />
-  </a>
-
-  <a w="lg:49.5% xl:33%" my="0.5%" href="https://github.com/Alan-Kuan/ft-prepare" target="_blank">
-    <img
-      src="https://github-readme-stats-alan-kuan.vercel.app/api/pin/?username=Alan-Kuan&repo=ft-prepare"
-      alt="ft-prepare"
-    />
-  </a>
+<div grid="~ cols-1 lg:cols-2 xl:cols-3" gap="2">
+  {
+    repos.map(repo => (
+      <GitHubCard
+        user="Alan-Kuan"
+        repo={repo}
+      />
+    ))
+  }
 </div>

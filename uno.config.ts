@@ -253,8 +253,5 @@ export default defineConfig({
     transformerAttributifyJsx(),
   ],
   safelist: safe_list,
-  shortcuts: {
-    'columns': 'flex flex-wrap justify-between',
-  },
   theme: { colors },
 });
