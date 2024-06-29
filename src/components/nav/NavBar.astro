@@ -4,6 +4,9 @@ import logo_img from '@/assets/logo.png';
 import NavList from '@/components/nav/NavList.vue';
 import DarkLightToggle from '@/components/nav/DarkLightToggle.vue';
 import { links } from '@/content/nav_links';
+
+const route_prefix = Astro.url.pathname.split('/').splice(0, 2).join('/');
+const curr_idx = links.findIndex(link => link.route.startsWith(route_prefix));
 ---
 
 <nav
@@ -26,7 +29,7 @@ import { links } from '@/content/nav_links';
     </a>
   </div>
   <div flex justify-center items-center>
-    <NavList links={links} client:load />
+    <NavList {curr_idx} {links} client:load />
   </div>
   <div flex justify-end items-center pr-15>
     <DarkLightToggle client:load />

@@ -252,6 +252,9 @@ export default defineConfig({
   transformers: [
     transformerAttributifyJsx(),
   ],
+  rules: [
+    ['transition-shape', { 'transition-property': 'width,transform' }],
+  ],
   safelist: safe_list,
   theme: { colors },
 });
