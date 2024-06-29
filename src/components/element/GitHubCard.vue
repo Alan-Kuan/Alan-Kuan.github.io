@@ -17,7 +17,7 @@ const img_url = `https://github-readme-stats-alan-kuan.vercel.app/api/pin/?usern
       height="112px"
       :src="img_url"
       :alt="repo"
-      my-none
+      mb-none
       rounded-none
     />
     <Image
@@ -25,7 +25,7 @@ const img_url = `https://github-readme-stats-alan-kuan.vercel.app/api/pin/?usern
       height="112px"
       :src="`${img_url}&theme=noctis_minimus`"
       :alt="repo"
-      my-none
+      mb-none
       rounded-none
     />
   </a>

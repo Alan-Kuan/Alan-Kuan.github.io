@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Image from '@/components/element/Image.vue';
+
 import type { Profile } from '@/types.ts';
 
 defineProps<Profile>();
@@ -10,7 +12,21 @@ defineProps<Profile>();
     pa-5
     bg="profile_card-light dark:profile_card-dark"
   >
-    <slot name="img" />
+    <Image
+      v-for="url, key in avatar_urls"
+      :class="{
+        'dark:hidden': key === 'light',
+        'hidden dark:block': key === 'dark',
+        'absolute': true, 'z-1': true,
+        'w-50': true,
+        'rounded-xl': true,
+        'text-center': true, 'text-text-dark': true, 'font-semibold': true,
+        'leading-16': true,
+      }"
+      height="200px"
+      :src="url"
+      alt="My Avatar"
+    />
 
     <div mt-5 text-2xl font-light>
       {{ name }}

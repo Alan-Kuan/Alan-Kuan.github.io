@@ -1,4 +1,8 @@
 export const profile = {
+  avatar_urls: {
+    light: 'https://i.postimg.cc/76ZBY2Fh/image.jpg',
+    dark: 'https://i.postimg.cc/rmZfdpTJ/image.jpg',
+  },
   name: '官澔恩 / Alan Kuan',
   title: 'MSCS Student',
   org: {
@@ -27,11 +31,6 @@ export const profile = {
     addr_b64: 'a3Vhbmhhb2FuQGdtYWlsLmNvbQ==',
   }
 };
-
-export const avatar_urls = [
-  'https://i.postimg.cc/76ZBY2Fh/image.jpg',  // light
-  'https://i.postimg.cc/rmZfdpTJ/image.jpg',  // dark
-];
 
 export const intro = `
 <p>

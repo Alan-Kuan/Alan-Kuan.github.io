@@ -5,7 +5,7 @@ import BaseLayout from '@/layouts/Base.astro';
 import ProfileCard from '@/components/ProfileCard.vue';
 import ImageSkeleton from '@/components/skeleton/Image.vue';
 
-import { profile, avatar_urls, intro } from '@/content/profile.ts';
+import { profile, intro } from '@/content/profile.ts';
 
 interface Props {
   title: string;
@@ -24,31 +24,6 @@ const { title, desc } = Astro.props;
         class="fixed top-20 bottom-0 w-25%"
         {...profile}
       >
-        <div slot="img">
-          {
-            /* Remote image requires width/height so I chose 200 as default.
-               Later, the width is determined by the 'w-50' class. */
-            avatar_urls.map((url, idx) =>
-              <Image
-                src={url}
-                width="200" height="200"
-                alt="My Avatar"
-                decoding="async"
-                id={idx === 0 ? 'avatar' : 'avatar-dark'}
-                class:list={[
-                  { 'dark:hidden': idx === 0 },
-                  { 'hidden dark:block': idx === 1 },
-                  'absolute', 'z-1',
-                  'w-50',
-                  'rounded-xl',
-                  'text-center', 'text-text-dark', 'font-semibold',
-                  'leading-16',
-                ]}
-              />
-            )
-          }
-          <ImageSkeleton id="skel-avatar" class="w-50 min-h-50 rounded-xl" />
-        </div>
         <div slot="intro" set:html={intro} />
       </ProfileCard>
     </div>
