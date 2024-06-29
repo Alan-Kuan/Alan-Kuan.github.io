@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Image from '@/components/element/Image.vue';
+
 const props = defineProps<{
   user: string,
   repo: string,
@@ -10,8 +12,22 @@ const img_url = `https://github-readme-stats-alan-kuan.vercel.app/api/pin/?usern
 
 <template>
   <a :href="repo_url" target="_blank">
-    <img class="light-ver" :src="img_url" :alt="repo" />
-    <img class="dark-ver" :src="`${img_url}&theme=noctis_minimus`" :alt="repo" />
+    <Image
+      class="light-ver"
+      height="112px"
+      :src="img_url"
+      :alt="repo"
+      my-none
+      rounded-none
+    />
+    <Image
+      class="dark-ver"
+      height="112px"
+      :src="`${img_url}&theme=noctis_minimus`"
+      :alt="repo"
+      my-none
+      rounded-none
+    />
   </a>
 </template>
 
