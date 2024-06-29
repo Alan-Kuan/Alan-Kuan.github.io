@@ -7,22 +7,25 @@ export const profile = {
   },
   links: [
     {
-      title: 'My Linkedin Profile',
+      title: 'See my Linkedin profile',
       icon: 'linkedin',
       url: 'https://www.linkedin.com/in/alankuan945',
     },
     {
-      title: 'My GitHub Profile',
+      title: 'See my GitHub profile',
       icon: 'github',
       url: 'https://github.com/Alan-Kuan',
     },
     {
-      title: 'My YouTube Channel',
+      title: 'Watch my YouTube channel',
       icon: 'youtube',
       url: 'https://www.youtube.com/@alankuan',
     },
   ],
-  email_b64: 'a3Vhbmhhb2FuQGdtYWlsLmNvbQ==',
+  email: {
+    title: 'Send me a mail',
+    addr_b64: 'a3Vhbmhhb2FuQGdtYWlsLmNvbQ==',
+  }
 };
 
 export const avatar_urls = [

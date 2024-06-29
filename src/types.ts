@@ -12,7 +12,10 @@ export interface Profile {
     url: string,
   },
   links: Link[],
-  email_b64: string,
+  email: {
+    addr_b64: string,
+    title: string,
+  },
 };
 
 export interface Post extends PostData {
