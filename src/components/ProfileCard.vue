@@ -48,7 +48,7 @@ defineProps<Profile>();
       </a>
     </div>
 
-    <div mt-5 indent-8 overflow-y-scroll>
+    <div mt-5 indent-8 overflow-y-auto>
       <slot name="intro" />
     </div>
   </div>
