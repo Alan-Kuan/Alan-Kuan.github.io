@@ -1,5 +1,6 @@
 <script setup lang="ts">
 defineProps<{
+  height: string,
   src: string,
   alt: string,
   caption?: string,
@@ -7,12 +8,27 @@ defineProps<{
 </script>
 
 <template>
-  <div my-4>
+  <div relative my-2>
     <img
+      :style="{ height }"
       rounded-md
       :src :alt
       decoding="async" loading="lazy"
+      onload="this.nextElementSibling.remove(); this.style = '';"
     />
+    <!-- skeleton -->
+    <div
+      :style="{ height }"
+      w-full
+      absolute top-1 z--1
+      flex justify-center items-center
+      bg-gray-200
+      rounded-md
+      animate-pulse
+    >
+      <div i-mdi-image text="6xl gray-400"></div>
+    </div>
+    <!-- caption -->
     <div v-if="caption" mt-2 text="center sm">
       {{ caption }}
     </div>
