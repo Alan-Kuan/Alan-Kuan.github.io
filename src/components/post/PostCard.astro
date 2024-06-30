@@ -16,6 +16,7 @@ const {
 } = Astro.props;
 
 const bg_color = banner_url ? (await getAverageColor(banner_url, { algorithm: 'dominant' })).hex : '#cccccc';
+const thumbnail_icon = collection === 'projects' ? 'i-mdi-bulletin-board' : 'i-mdi-book-open-variant-outline';
 ---
 
 <div
@@ -40,10 +41,7 @@ const bg_color = banner_url ? (await getAverageColor(banner_url, { algorithm: 'd
           w-full
           src={banner_url}
         /> ||
-        <div
-          i-mdi-book-open-variant-outline
-          text-5xl
-        />
+        <div class={thumbnail_icon} text-5xl />
       }
     </div>
     <div pa-5>
