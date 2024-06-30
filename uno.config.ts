@@ -257,6 +257,9 @@ export default defineConfig({
   ],
   shortcuts: {
     'content-margin': 'mb-4 xl:mb-6',
+    'columns-2': 'grid grid-cols-1 xl:grid-cols-2',
+    'columns-3': 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3',
+    'img-gap': 'gap-x-4 gap-y-2',
   },
   safelist: safe_list,
   theme: { colors },
