@@ -255,6 +255,9 @@ export default defineConfig({
   rules: [
     ['transition-shape', { 'transition-property': 'width,transform' }],
   ],
+  shortcuts: {
+    'content-margin': 'mb-4 xl:mb-6',
+  },
   safelist: safe_list,
   theme: { colors },
 });

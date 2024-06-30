@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div relative mb-4>
+  <div relative content-margin>
     <img
       :style="{ height, padding: '0.5rem' }"
       rounded-md
