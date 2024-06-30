@@ -22,6 +22,8 @@ const img_style = props.width && props.height ? `'width: ${props.width}; height:
   props.width ? `'width: ${props.width}'` :
   props.height ? `'height: ${props.height}'` :
   'null';
+const blur_removal = 'this.removeAttribute("blur-2")';
+const ske_removal = `this.parentElement.nextElementSibling.remove(); this.parentElement.style = ${img_style}`
 </script>
 
 <template>
@@ -33,11 +35,12 @@ const img_style = props.width && props.height ? `'width: ${props.width}; height:
     <div :style="{ width: ske_width, height: ske_height }">
       <img
         :class="`rounded-${rounded}`"
-        w-full
+        w-full blur-2
         line-height-12 text-center
         :src :alt
         decoding="async" loading="lazy"
-        :onload="`this.parentElement.nextElementSibling.remove(); this.parentElement.style = ${img_style};`"
+        :onload="`${ske_removal}; ${blur_removal}`"
+        :onerror="blur_removal"
       />
     </div>
     <!-- skeleton -->
