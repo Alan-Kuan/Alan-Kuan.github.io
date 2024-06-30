@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 import type { Link } from '@/types.ts';
 
@@ -11,10 +11,8 @@ const props = defineProps<{
 const link_refs = ref([]);
 var link_widths = [];
 
-const indicator_style = reactive({
-  width: null,
-  transform: null,
-});
+const width = ref(null);
+const transform = ref(null);
 
 onMounted(() => {
   link_refs.value.forEach((link_ele, i) => {
@@ -31,13 +29,13 @@ function onMouseOverLink(target_idx: number) {
     offset += dir * (0.5 * (link_widths[i] + link_widths[i + dir]) + 24);
   }
 
-  indicator_style.width = `${link_widths[target_idx]}px`;
-  indicator_style.transform = `translateX(${offset}px)`;
+  width.value = `${link_widths[target_idx]}px`;
+  transform.value = `translateX(${offset}px)`;
 }
 
 function onMouseLeaveLink() {
-  indicator_style.width = null;
-  indicator_style.transform = null;
+  width.value = null;
+  transform.value = null;
 }
 </script>
 
@@ -62,7 +60,7 @@ function onMouseLeaveLink() {
     <!-- current route indicator -->
     <div
       v-if="idx === curr_idx"
-      :style="indicator_style"
+      :style="{ width, transform }"
       absolute bottom--2
       class="w-[calc(100%-1.5rem)]" h-1
       bg="nav-indicator-light dark:nav-indicator-dark"
