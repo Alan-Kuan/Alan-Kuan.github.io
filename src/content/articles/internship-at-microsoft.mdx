@@ -1,12 +1,16 @@
 ---
 title: 'My Internship at Microsoft Taiwan'
 desc: 'My 1-year internship at Microsoft Taiwan, where I developed a Word Office Add-in using Azure OpenAI services and deployed a Microsoft FHIR server with a web frontend.'
-date: '2023.07.11'
+date: '2024.06.30'
 tags: ['internship', 'microsoft']
 banner_url: 'https://i.postimg.cc/mZQwfVzj/My-Internship-at-Microsoft.jpg'
 ---
-As part of my 1-year internship at Microsoft Taiwan since July 2022,
-I was responsible for developing some proof-of-concept projects for demo purposes.
+During my 1-year internship at Microsoft Taiwan since July in 2022,
+I joined the group, Microsoft Technology Center (MTC).
+I was responsible for developing some proof-of-concept projects for demo purposes,
+assisting full-time employees when there were guests visiting the office,
+and serving as a teaching assistant in workshops.
+
 For example, I developed a Word [Office Add-in](https://learn.microsoft.com/en-us/office/dev/add-ins/) that uses [Azure OpenAI services](https://azure.microsoft.com/en-us/products/ai-services/openai-service/) to help users edit their writings with GPT models.
 This add-in allows them to translate sentences, summarize meeting transcripts, or do whatever they can ask the model to do.
 Besides, I deployed a [Microsoft's FHIR server](https://github.com/microsoft/fhir-server) to our on-premisies infrastructure with [Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/what-is-aks) and built a simple web frontend for it.
@@ -31,8 +35,6 @@ By deploying it on-premisies, we can ensure compliance with regulations in Taiwa
 Just before the end of my internship, my mentor encouraged me to share my work with the public.
 I took his advice and made my projects available on GitHub.
 The following are the projects I finished.
-I am happy to share my experiences at Microsoft.
-
 
 export const repos = [
   'AOAI-for-Word',
@@ -42,7 +44,7 @@ export const repos = [
   'ft-prepare',
 ];
 
-<div grid="~ cols-1 lg:cols-2 xl:cols-3" gap="2">
+<div grid="~ cols-1 lg:cols-2 xl:cols-3" gap="2" mb-4>
   {
     repos.map(repo => (
       <GitHubCard
@@ -52,3 +54,49 @@ export const repos = [
     ))
   }
 </div>
+
+Besides building demos, I sometimes assisted the tour when guests visiting our office.
+I was mainly responsible for showing internal demos that utilize Azure services or introducing Microsoft's products,
+such as Teams, HoloLens or Surface.
+In addition, I sometimes attended events or went to other companies with full-time employees in my group to present HoloLens or introduce Azure services.
+The following pictures show 2 of the events I have participated in.
+
+<div grid="~ cols-1 xl:cols-2" gap="x-4 y-2">
+  <Image
+    height="400px"
+    src="https://i.postimg.cc/FsmQDysY/hololens-demo.jpg"
+    alt="hololens-demo"
+    caption="I was demonstrating a scenario of using HoloLens 2 to learn how to operate some machine."
+  />
+  <Image
+    height="400px"
+    src="https://i.postimg.cc/gc3WVSd9/workshop.jpg"
+    alt="workshop"
+    caption="I gave a short talk about Microsoft's Bicep in a workshop."
+  />
+</div>
+
+Apart from work, I had many opportunities to different activities,
+like matching with mentors, intern events, department gathering, just to name a few.
+One of the biggest events for interns was "leadership camp,"
+held by voluntary interns and held in our winter vacation.
+Interns were divided into teams and participated in activities encouraging team spirit like brain storming a project.
+This event let me know interns in other department better and make some friends.
+
+<div grid="~ cols-1 xl:cols-2" gap="x-4 y-2">
+  <Image
+    height="400px"
+    src="https://i.postimg.cc/zff1hJtf/ms-leadership-camp.jpg"
+    alt="ms-leadership-camp"
+    caption="My team members during MS Leadership Camp"
+  />
+  <Image
+    height="200px"
+    src="https://i.postimg.cc/DwZCd8TR/my-colleagues-and-me.jpg"
+    alt="my-colleagues-and-me"
+    caption="My colleagues in MTC and me"
+  />
+</div>
+
+I learned a lot and enjoyed my time at Microsoft.
+I am happy to share my experiences there with you.
