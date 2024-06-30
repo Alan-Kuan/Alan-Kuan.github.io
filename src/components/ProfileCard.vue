@@ -21,7 +21,7 @@ defineProps<Profile>();
       :src="url"
       alt="My Avatar"
       width="12.5rem"
-      ske_height="200px"
+      ske_width="12.5rem" ske_height="12.5rem"
       :margin="false"
       rounded="xl"
     />
