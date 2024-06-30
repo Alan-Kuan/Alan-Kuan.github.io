@@ -59,7 +59,7 @@ const bg_color = banner_url ? (await getAverageColor(banner_url, { algorithm: 'd
           {title}
         </a>
       </div>
-      <PostAttr mt-1 {date} {tags} />
+      <PostAttr class="mt-2" {date} {tags} />
       {
         excerpt &&
         <div h-18 mt-2 overflow-hidden>

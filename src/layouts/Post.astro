@@ -35,9 +35,11 @@ const {
   }
   <main ma-8 px-8 pb-5>
     {/* Title & Attributes */}
-    <h1 mt-2 text-3xl font-medium>{title}</h1>
-    <div mt-2>
-      <PostAttr {date} {tags} />
+    <div pb-4 border="b text-dark dark:text-light">
+      <h1 mt-2 text-3xl font-medium>{title}</h1>
+      <div mt-2>
+        <PostAttr {date} {tags} />
+      </div>
     </div>
     {/* Content */}
     <div mt-5 mb-5>
