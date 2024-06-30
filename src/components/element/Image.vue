@@ -31,8 +31,9 @@ const img_style = props.width && props.height ? `'width: ${props.width}; height:
     :class="{ 'content-margin': margin }"
   >
     <img
-      :style="{ width: ske_width, height: ske_height, padding: '0.5rem' }"
+      :style="{ width: ske_width, height: ske_height }"
       :class="`rounded-${rounded}`"
+      line-height-12 text-center
       :src :alt
       decoding="async" loading="lazy"
       :onload="`this.nextElementSibling.remove(); this.style = ${img_style};`"
