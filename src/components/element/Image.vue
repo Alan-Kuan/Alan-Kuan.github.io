@@ -1,38 +1,49 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
   defineProps<{
     width?: string,
     height?: string,
+    ske_width?: string,
+    ske_height?: string,
     src: string,
     alt: string,
     caption?: string,
+    margin?: boolean,
+    rounded?: string,
   }>(), {
-    width: '100%',
-    height: '100%',
+    ske_width: '100%',
+    ske_height: '100%',
+    margin: true,
+    rounded: 'md',
   }
 );
+
+const img_style = props.width && props.height ? `'width: ${props.width}; height: ${props.height}'` :
+  props.width ? `'width: ${props.width}'` :
+  props.height ? `'height: ${props.height}'` :
+  'null';
 </script>
 
 <template>
   <div
     relative
-    content-margin
     flex flex-col items-center
+    :class="{ 'content-margin': margin }"
   >
     <img
-      :style="{ width, height, padding: '0.5rem' }"
-      rounded-md
+      :style="{ width: ske_width, height: ske_height, padding: '0.5rem' }"
+      :class="`rounded-${rounded}`"
       :src :alt
       decoding="async" loading="lazy"
-      onload="this.nextElementSibling.remove(); this.removeAttribute('style');"
+      :onload="`this.nextElementSibling.remove(); this.style = ${img_style};`"
     />
     <!-- skeleton -->
     <div
-      :style="{ width, height }"
+      :style="{ width: ske_width, height: ske_height }"
+      :class="`rounded-${rounded}`"
       absolute top-1 z--1
       flex justify-center items-center
       bg-gray-200
-      rounded-md
       animate-pulse
     >
       <div i-mdi-image text="6xl gray-400"></div>

@@ -17,15 +17,13 @@ defineProps<Profile>();
       :class="{
         'dark:hidden': key === 'light',
         'hidden! dark:flex!': key === 'dark',
-        'absolute': true, 'z-1': true,
-        'w-50': true,
-        'rounded-xl': true,
-        'text-center': true, 'text-text-dark': true, 'font-semibold': true,
-        'leading-16': true,
       }"
-      height="200px"
       :src="url"
       alt="My Avatar"
+      width="12.5rem"
+      ske_height="200px"
+      :margin="false"
+      rounded="xl"
     />
 
     <div mt-5 text-2xl font-light>

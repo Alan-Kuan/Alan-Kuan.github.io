@@ -13,6 +13,9 @@ const safe_list = [
   'i-mdi-github',
   'i-mdi-youtube',
 
+  // for avatar image
+  'rounded-xl',
+
   // safe colors
   'dark:bg-body-dark',
   'dark:text-text-light',

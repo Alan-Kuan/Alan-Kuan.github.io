@@ -14,21 +14,21 @@ const img_url = `https://github-readme-stats-alan-kuan.vercel.app/api/pin/?usern
   <a :href="repo_url" target="_blank">
     <!-- light -->
     <Image
-      height="112px"
       :src="img_url"
       :alt="repo"
+      ske_height="112px"
+      :margin="false"
+      rounded="none"
       dark:hidden
-      mb-none
-      rounded-none
     />
     <!-- dark -->
     <Image
-      height="112px"
       :src="`${img_url}&theme=noctis_minimus`"
       :alt="repo"
+      ske_height="112px"
+      :margin="false"
+      rounded="none"
       hidden! dark:flex!
-      mb-none
-      rounded-none
     />
   </a>
 </template>
