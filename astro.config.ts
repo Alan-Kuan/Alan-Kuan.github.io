@@ -5,6 +5,9 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    shikiConfig: { theme: 'ayu-dark' },
+  },
   integrations: [
     UnoCSS({ injectReset: true }),
     vue(),
