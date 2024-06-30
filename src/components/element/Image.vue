@@ -8,9 +8,9 @@ defineProps<{
 </script>
 
 <template>
-  <div relative my-2>
+  <div relative mb-4>
     <img
-      :style="{ height }"
+      :style="{ height, padding: '0.5rem' }"
       rounded-md
       :src :alt
       decoding="async" loading="lazy"
