@@ -30,19 +30,21 @@ const img_style = props.width && props.height ? `'width: ${props.width}; height:
     flex flex-col items-center
     :class="{ 'content-margin': margin }"
   >
-    <img
-      :style="{ width: ske_width, height: ske_height }"
-      :class="`rounded-${rounded}`"
-      line-height-12 text-center
-      :src :alt
-      decoding="async" loading="lazy"
-      :onload="`this.nextElementSibling.remove(); this.style = ${img_style};`"
-    />
+    <div :style="{ width: ske_width, height: ske_height }">
+      <img
+        :class="`rounded-${rounded}`"
+        w-full
+        line-height-12 text-center
+        :src :alt
+        decoding="async" loading="lazy"
+        :onload="`this.parentElement.nextElementSibling.remove(); this.parentElement.style = ${img_style};`"
+      />
+    </div>
     <!-- skeleton -->
     <div
       :style="{ width: ske_width, height: ske_height }"
       :class="`rounded-${rounded}`"
-      absolute top-1 z--1
+      absolute top-0 z--1
       flex justify-center items-center
       bg-gray-200
       animate-pulse
