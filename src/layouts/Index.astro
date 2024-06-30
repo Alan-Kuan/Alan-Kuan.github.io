@@ -3,7 +3,7 @@ import MarkdownIt from 'markdown-it';
 import { parse as parseHtml } from 'node-html-parser';
 
 import WithProfileLayout from '@/layouts/WithProfile.astro';
-import PostCard from '@/components/post/PostCard.vue';
+import PostCard from '@/components/post/PostCard.astro';
 import Footer from '@/components/Footer.vue';
 
 import type { Post } from '@/types.ts';
@@ -40,7 +40,7 @@ const posts = page.data.map(({ collection, data, slug, body }) => ({
   <main>
     {/* Post List */}
     <div px-8 py-3>
-      { posts.map(post => <PostCard class="my-5" {...post} client:load />) }
+      { posts.map(post => <PostCard {...post} />) }
     </div>
 
     {/* Pagination */}

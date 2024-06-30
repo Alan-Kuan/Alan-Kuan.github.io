@@ -1,0 +1,71 @@
+---
+import { getAverageColor } from 'fast-average-color-node';
+
+import PostAttr from '@/components/post/PostAttr.vue';
+import type { Post as Props } from '@/types.ts';
+
+const {
+  title,
+  desc,
+  banner_url,
+  date,
+  tags,
+  collection,
+  slug,
+  excerpt,
+} = Astro.props;
+
+const bg_color = banner_url ? (await getAverageColor(banner_url, { algorithm: 'dominant' })).hex : '#cccccc';
+---
+
+<div
+  max-h-100
+  my-5
+  overflow-hidden
+  rounded-md
+  bg="page-light dark:page-dark"
+  drop-shadow
+>
+  <div flex>
+    <div
+      style={`background: ${bg_color}`}
+      flex justify-center items-center
+      min-w-48 max-w-48 min-h-36
+      overflow-hidden
+    >
+      {
+        banner_url &&
+        <img
+          max-w-full max-h-full
+          w-full
+          src={banner_url}
+        /> ||
+        <div
+          i-mdi-book-open-variant-outline
+          text-5xl
+        />
+      }
+    </div>
+    <div pa-5>
+      <div
+        font-medium
+        text="
+          xl
+          hover:article_card-link-light
+          dark:hover:article_card-link-dark
+        "
+      >
+        <a href={`/${collection}/${slug}`}>
+          {title}
+        </a>
+      </div>
+      <PostAttr mt-1 {date} {tags} />
+      {
+        excerpt &&
+        <div h-18 mt-2 overflow-hidden>
+          {excerpt}
+        </div>
+      }
+    </div>
+  </div>
+</div>
