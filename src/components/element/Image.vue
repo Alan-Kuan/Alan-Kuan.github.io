@@ -1,25 +1,34 @@
 <script setup lang="ts">
-defineProps<{
-  height: string,
-  src: string,
-  alt: string,
-  caption?: string,
-}>();
+withDefaults(
+  defineProps<{
+    width?: string,
+    height?: string,
+    src: string,
+    alt: string,
+    caption?: string,
+  }>(), {
+    width: '100%',
+    height: '100%',
+  }
+);
 </script>
 
 <template>
-  <div relative content-margin>
+  <div
+    relative
+    content-margin
+    flex flex-col items-center
+  >
     <img
-      :style="{ height, padding: '0.5rem' }"
+      :style="{ width, height, padding: '0.5rem' }"
       rounded-md
       :src :alt
       decoding="async" loading="lazy"
-      onload="this.nextElementSibling.remove(); this.style = '';"
+      onload="this.nextElementSibling.remove(); this.removeAttribute('style');"
     />
     <!-- skeleton -->
     <div
-      :style="{ height }"
-      w-full
+      :style="{ width, height }"
       absolute top-1 z--1
       flex justify-center items-center
       bg-gray-200
