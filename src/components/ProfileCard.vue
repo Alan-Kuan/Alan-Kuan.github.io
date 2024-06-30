@@ -16,7 +16,7 @@ defineProps<Profile>();
       v-for="url, key in avatar_urls"
       :class="{
         'dark:hidden': key === 'light',
-        'hidden dark:block': key === 'dark',
+        'hidden! dark:flex!': key === 'dark',
         'absolute': true, 'z-1': true,
         'w-50': true,
         'rounded-xl': true,
