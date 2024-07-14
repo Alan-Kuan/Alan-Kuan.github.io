@@ -16,19 +16,19 @@ const { title, desc } = Astro.props;
 ---
 
 <BaseLayout>
-  <div flex>
+  <div flex="~ col md:row">
     {/* Left Column */}
-    <div w-25%>
+    <div w="full md:30% lg:25%">
       {/* add `top-20` and `bottom-0` to make `overflow-y-scroll` effective */}
       <ProfileCard
-        class="fixed top-20 bottom-0 w-25%"
+        class="md:fixed md:top-20 md:bottom-0 md:w-30% lg:w-25%"
         {...profile}
       >
         <div slot="intro" set:html={intro} />
       </ProfileCard>
     </div>
     {/* Right Column */}
-    <div w-75% class="h-[calc(100vh-5rem)]" overflow-y-auto>
+    <div w="full md:70% lg:75%" class="md:h-[calc(100vh-5rem)]" overflow-y-auto>
       <slot />
     </div>
   </div>
