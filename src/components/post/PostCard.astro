@@ -17,22 +17,24 @@ const {
 
 const bg_color = banner_url ? (await getAverageColor(banner_url, { algorithm: 'dominant' })).hex : '#cccccc';
 const thumbnail_icon = collection === 'projects' ? 'i-mdi-bulletin-board' : 'i-mdi-book-open-variant-outline';
+const post_link = `/${collection}/${slug}`;
 ---
 
 <div
-  max-h-100
+  max-h="200 md:100"
   my-5
   overflow-hidden
   rounded-md
   bg="page-light dark:page-dark"
   drop-shadow
 >
-  <div flex>
-    <div
+  <div flex="~ col md:row">
+    <a
       style={`background: ${bg_color}`}
       flex justify-center items-center
-      min-w-48 max-w-48 min-h-36
+      min-w="md:48" max-w="md:48" min-h="48 md:36"
       overflow-hidden
+      href={post_link}
     >
       {
         banner_url &&
@@ -43,7 +45,7 @@ const thumbnail_icon = collection === 'projects' ? 'i-mdi-bulletin-board' : 'i-m
         /> ||
         <div class={thumbnail_icon} text-5xl />
       }
-    </div>
+    </a>
     <div pa-5>
       <div
         font-medium
@@ -53,9 +55,7 @@ const thumbnail_icon = collection === 'projects' ? 'i-mdi-bulletin-board' : 'i-m
           dark:hover:article_card-link-dark
         "
       >
-        <a href={`/${collection}/${slug}`}>
-          {title}
-        </a>
+        <a href={post_link}>{title}</a>
       </div>
       <PostAttr class="mt-1" {date} {tags} />
       {
