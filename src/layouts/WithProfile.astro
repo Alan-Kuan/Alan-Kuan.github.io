@@ -10,15 +10,26 @@ import { profile, intro } from '@/content/profile.ts';
 interface Props {
   title: string;
   desc: string;
+  hide_pc_on_sm: bool;  // hide profile card on small screen
 }
 
-const { title, desc } = Astro.props;
+const {
+  title,
+  desc,
+  hide_pc_on_sm = false,
+} = Astro.props;
 ---
 
 <BaseLayout>
   <div flex="~ col md:row">
     {/* Left Column */}
-    <div w="full md:30% lg:25%">
+    <div
+      class:list={[
+        { 'hidden': hide_pc_on_sm },
+        { 'md:block': hide_pc_on_sm },
+      ]}
+      w="full md:30% lg:25%"
+    >
       {/* add `top-20` and `bottom-0` to make `overflow-y-scroll` effective */}
       <ProfileCard
         class="md:fixed md:top-20 md:bottom-0 md:w-30% lg:w-25%"
