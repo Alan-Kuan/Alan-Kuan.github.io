@@ -31,6 +31,7 @@ const post_link = `/${collection}/${slug}`;
   <div flex="~ col md:row">
     <a
       style={`background: ${bg_color}`}
+      group
       flex justify-center items-center
       min-w="md:48" max-w="md:48" min-h="48 md:36"
       overflow-hidden
@@ -41,9 +42,16 @@ const post_link = `/${collection}/${slug}`;
         <img
           max-w-full max-h-full
           w-full
+          transition-transform duration-300
+          group-hover:scale-110
           src={banner_url}
         /> ||
-        <div class={thumbnail_icon} text-5xl />
+        <div
+          class={thumbnail_icon}
+          text-5xl
+          transition-size duration-300
+          group-hover:text-6xl
+        />
       }
     </a>
     <div pa-5>
