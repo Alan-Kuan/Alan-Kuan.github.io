@@ -30,7 +30,7 @@ const ske_removal = `this.parentElement.nextElementSibling.remove(); this.parent
   <div
     relative
     flex flex-col items-center
-    :class="{ 'content-margin': margin }"
+    :class="{ 'margin-content': margin }"
   >
     <div :style="{ width: ske_width, height: ske_height }">
       <img
