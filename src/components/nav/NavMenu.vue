@@ -28,6 +28,7 @@ function onClick() {
 <template>
   <!-- Title -->
   <div
+    v-if="curr_idx > -1"
     md:hidden
     absolute top-6.5 left-0 right-0 mx-auto
     text="center lg"
