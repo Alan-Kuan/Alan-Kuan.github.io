@@ -1,0 +1,51 @@
+---
+import { Image, inferRemoteSize } from 'astro:assets';
+
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  class?: string,
+  src: string | ImageMetadata;
+  alt: string;
+  title?: string;
+}
+
+const {
+  class: className,
+  src,
+  alt,
+  title,
+} = Astro.props;
+
+const { width, height } = await inferRemoteSize(src);
+
+const blur_removal = 'this.classList.remove("blur-2")';
+const ske_removal = 'this.nextElementSibling.remove()';
+---
+
+<div
+  class:list={[
+    'relative',
+    'flex', 'flex-col', 'items-center',
+    'overflow-hidden',
+    className,
+  ]}
+>
+  <Image
+    class="z-1 w-full line-height-12 text-center blur-2"
+    {width} {height}
+    {src}
+    {alt}
+    onload={`${blur_removal}; ${ske_removal}`}
+    onerror={blur_removal}
+  />
+  <!-- skeleton -->
+  <object
+    {width} {height}
+    w-full
+    absolute top-0
+    bg-gray-200
+  />
+  <!-- caption -->
+  { title && <figcaption mt-2 px-2>{title}</figcaption> }
+</div>

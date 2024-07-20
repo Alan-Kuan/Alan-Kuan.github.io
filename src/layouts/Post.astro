@@ -1,6 +1,6 @@
 ---
 import WithProfileLayout from '@/layouts/WithProfile.astro';
-import Image from '@/components/element/Image.vue';
+import Image from '@/components/Image.astro';
 import Footer from '@/components/Footer.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
 
@@ -25,12 +25,8 @@ const {
     banner_url &&
     <div max-h-100 overflow-hidden>
       <Image
-        width="100%"
-        ske_height="400px"
         src={banner_url}
         alt="Banner"
-        margin={false}
-        rounded="none"
       />
     </div>
   }

@@ -1,0 +1,20 @@
+---
+import Image from '@/components/Image.astro';
+
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: string | ImageMetadata;
+  alt: string;
+  title?: string;
+}
+
+const { src, alt, title } = Astro.props;
+---
+
+<Image
+  class="w-70% mx-auto margin-content rounded-md"
+  {src}
+  {alt}
+  {title}
+/>

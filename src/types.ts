@@ -5,10 +5,6 @@ export interface Link {
 }
 
 export interface Profile {
-  avatar_urls: {
-    light: string,
-    dark: string,
-  },
   name: string;
   title: string;
   org: {

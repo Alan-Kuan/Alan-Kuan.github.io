@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '@/layouts/Base.astro';
+import Image from '@/components/Image.astro';
 import ProfileCard from '@/components/ProfileCard.vue';
 
-import { profile, intro } from '@/content/profile.ts';
+import { avatar_urls, profile, intro } from '@/content/profile.ts';
 
 interface Props {
   title: string;
@@ -32,6 +33,22 @@ const {
         class="md:fixed md:top-20 md:bottom-0 md:w-30% lg:w-25%"
         {...profile}
       >
+        <div slot="avatar">
+          {
+            Object.entries(avatar_urls).map(([mode, url]) =>
+              <Image
+                class:list={[
+                  { 'dark:hidden': mode === 'light' },
+                  { 'hidden! dark:flex!': mode === 'dark' },
+                  'w-50', 'h-50',
+                  'rounded-xl',
+                ]}
+                src={url}
+                alt={`My avatar in ${mode} mode`}
+              />
+            )
+          }
+        </div>
         <div slot="intro" set:html={intro} />
       </ProfileCard>
     </div>
