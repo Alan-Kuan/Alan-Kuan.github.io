@@ -13,7 +13,7 @@ defineProps<Profile>();
     <!-- Avatar -->
     <slot name="avatar" />
 
-    <div ml="4 md:0" flex="~ col" justify-center>
+    <div ml="lt-md:1" flex="~ col" justify-center>
       <!-- Name -->
       <div mt-5 text="xl md:2xl center" font-medium>
         {{ name }}
@@ -54,7 +54,7 @@ defineProps<Profile>();
 
     <!-- Intro -->
     <div
-      hidden md:block
+      lt-md:hidden
       mt-5
       indent-8
       overflow-y-auto
