@@ -21,6 +21,11 @@ const { width, height } = await inferRemoteSize(src);
 
 const blur_removal = 'this.classList.remove("blur-2")';
 const ske_removal = 'this.nextElementSibling.remove()';
+const animate_removal = 'this.nextElementSibling.removeAttribute("animate-pulse")';
+const show_icon = 'this.nextElementSibling.children[0].removeAttribute("hidden")';
+
+const onload = `${blur_removal}; ${ske_removal}`;
+const onerror = `${blur_removal}; ${animate_removal}; ${show_icon}`;
 ---
 
 <div
@@ -32,20 +37,22 @@ const ske_removal = 'this.nextElementSibling.remove()';
   ]}
 >
   <Image
-    class="z-1 w-full line-height-12 text-center blur-2"
+    class="z-1 w-full line-height-12 text-center text-text-dark blur-2"
     {width} {height}
-    {src}
-    {alt}
-    onload={`${blur_removal}; ${ske_removal}`}
-    onerror={blur_removal}
+    {src} {alt}
+    {onload} {onerror}
   />
   <!-- skeleton -->
   <object
     {width} {height}
     w-full
     absolute top-0
-    bg-gray-200
-  />
+    flex justify-center items-center
+    bg-gray-300
+    animate-pulse
+  >
+    <div hidden i-mdi-image-remove text-8xl text-text-dark />
+  </object>
   <!-- caption -->
   { title && <figcaption mt-2 px-2 lt-md:text-sm>{title}</figcaption> }
 </div>
