@@ -25,7 +25,7 @@ onMounted(() => {
   <button
     @click="onClick"
     pa-2
-    bg="hover:nav-highlight"
+    bg="@hover:nav-highlight"
     rounded-full
     text-3xl
   >
