@@ -21,13 +21,13 @@ export async function getStaticPaths({ paginate }) {
 const { tag } = Astro.params;
 const { page } = Astro.props;
 
-const title = 'Alan Kuan | 官澔恩';
-const desc = `Posts tagged with "${tag}"`;
+const props = {
+  title: 'Alan Kuan | 官澔恩',
+  desc: `Posts tagged with "${tag}"`,
+  category: `Tag: ${tag}`,
+  page,
+  prefix: `/tags/${tag}`,
+}
 ---
 
-<IndexLayout
-  {title}
-  {desc}
-  {page}
-  prefix={`/tags/${tag}`}
-/>
+<IndexLayout {...props} />

@@ -20,6 +20,7 @@ function getExcerpt(body: string) {
 const {
   title,
   desc,
+  category,
   page,
   prefix,
 } = Astro.props;
@@ -37,9 +38,12 @@ const posts = page.data.map(({ collection, data, slug, body }) => ({
 ---
 
 <WithProfileLayout {title} {desc}>
-  <main>
+  <main px-8>
+    {/* Category */}
+    { category && <h1 my-10 text-2xl>{category}</h1> }
+
     {/* Post List */}
-    <div px-8 py-3>
+    <div pb-3>
       { posts.map(post => <PostCard {...post} />) }
     </div>
 
