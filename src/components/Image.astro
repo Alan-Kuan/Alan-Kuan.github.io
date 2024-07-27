@@ -8,13 +8,15 @@ interface Props {
   src: string | ImageMetadata;
   alt: string;
   title?: string;
+  img_class?: string;
 }
 
 const {
-  class: className,
+  class: container_class,
   src,
   alt,
   title,
+  img_class,
 } = Astro.props;
 
 const { width, height } = await inferRemoteSize(src);
@@ -33,11 +35,18 @@ const onerror = `${blur_removal}; ${animate_removal}; ${show_icon}`;
     'relative',
     'flex', 'flex-col', 'items-center',
     'overflow-hidden',
-    className,
+    container_class,
   ]}
 >
   <Image
-    class="z-1 w-full line-height-12 text-center text-text-dark blur-2"
+    class:list={[
+      'z-1',
+      'w-full',
+      'line-height-12',
+      'text-center', 'text-text-dark',
+      'blur-2',
+      img_class,
+    ]}
     {width} {height}
     {src} {alt}
     {onload} {onerror}
