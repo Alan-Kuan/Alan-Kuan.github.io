@@ -1,0 +1,93 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import Image from '@/components/Image.astro';
+import Footer from '@/components/Footer.vue';
+
+import { avatar_urls, profile, intro } from '@/content/profile.ts';
+
+const title = 'Alan Kuan | 官澔恩';
+const desc = 'My personal website';
+const addr_b64 = profile.email.addr_b64;
+---
+
+<BaseLayout {title} {desc}>
+  <main>
+    <div w="90% md:75% lg:50%" mx-auto my-12>
+      <div flex items-center>
+        <div>
+          {
+            Object.entries(avatar_urls).map(([mode, url]) =>
+              <Image
+                class:list={[
+                  { 'dark:hidden': mode === 'light' },
+                  { 'hidden! dark:flex!': mode === 'dark' },
+                  'w-40', 'h-40',
+                  'sm:w-50', 'sm:h-50',
+                ]}
+                src={url}
+                alt={`My avatar in ${mode} mode`}
+                img_class="rounded-xl"
+              />
+            )
+          }
+        </div>
+        <div ml="4 sm:8">
+          <!-- Name -->
+          <div text="xl md:2xl" font-medium>
+            {profile.name}
+          </div>
+          <!-- Title -->
+          <div mt-2>
+            {profile.title} @
+            <a href={profile.org.url} target="_blank" underline>
+              {profile.org.text}
+            </a>
+          </div>
+          <!-- Links -->
+          <div
+            lt-sm-w-40 lt-sm-flex lt-sm-justify-between
+            mt-3
+            text="profile_card-link-light dark:profile_card-link-dark"
+          >
+            {
+              profile.links.map(link =>
+                <a
+                  flex items-center
+                  href={link.url}
+                  title={link.title}
+                  target="_blank"
+                  hover:brightness-120%
+                >
+                  <div class={`i-mdi-${link.icon}`} text-3xl />
+                  <div ml-2 lt-sm:hidden>
+                    {link.url.split('/').slice(3).join('/')}
+                  </div>
+                </a>
+              )
+            }
+            <a
+              flex items-center
+              href="/#"
+              title={profile.email.title}
+              data-email={profile.email.addr_b64}
+              onfocus="this.href = 'mailto:' + atob(this.dataset.email) || ''"
+              hover:brightness-120%
+            >
+              <div i-mdi-email text-3xl />
+              <div ml-2 lt-sm:hidden id="email-addr-field" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        mt-8
+        set:html={intro}
+      />
+    </div>
+    <Footer />
+  </main>
+</BaseLayout>
+
+<script define:vars={{ addr_b64 }}>
+document.getElementById('email-addr-field').textContent = atob(addr_b64);
+</script>
