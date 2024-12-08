@@ -9,7 +9,8 @@ defineProps<{
 
 <template>
   <Image
-    w-300 h-100
+    w="95% xl:300"
+    h="lg:100"
     mx-auto
     rounded-3
     object-cover
