@@ -1,6 +1,4 @@
 ---
-import { getAverageColor } from 'fast-average-color-node';
-
 import PostAttr from '@/components/post/PostAttr.vue';
 import type { Post as Props } from '@/types.ts';
 
@@ -15,7 +13,6 @@ const {
   excerpt,
 } = Astro.props;
 
-const bg_color = banner_url ? (await getAverageColor(banner_url, { algorithm: 'dominant' })).hex : '#cccccc';
 const thumbnail_icon = collection === 'projects' ? 'i-mdi-bulletin-board' : 'i-mdi-book-open-variant-outline';
 const post_link = `/${collection}/${slug}`;
 ---
@@ -30,11 +27,11 @@ const post_link = `/${collection}/${slug}`;
 >
   <div flex="~ col md:row">
     <a
-      style={`background: ${bg_color}`}
       group
       flex justify-center items-center
       min-w="md:48" max-w="md:48" min-h="48 md:36"
       overflow-hidden
+      style="background: #cccccc"
       href={post_link}
     >
       {
