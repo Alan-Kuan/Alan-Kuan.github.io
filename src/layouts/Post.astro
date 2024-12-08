@@ -1,6 +1,6 @@
 ---
-import WithProfileLayout from '@/layouts/WithProfile.astro';
-import Image from '@/components/Image.astro';
+import BaseLayout from '@/layouts/Base.astro';
+import Banner from '@/components/Banner.vue';
 import Footer from '@/components/Footer.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
 
@@ -12,25 +12,26 @@ const {
   date,
   tags,
   banner_url,
+  banner_pos,
 } = Astro.props;
 ---
 
-<WithProfileLayout
+<BaseLayout
   title={`${title} | Alan Kuan`}
-  desc={desc}
-  hide_pc_on_sm={true}
+  {desc}
 >
   {
-    /* Banner */
     banner_url &&
-    <div max-h-100 overflow-hidden>
-      <Image
-        src={banner_url}
-        alt="Banner"
-      />
-    </div>
+    <Banner
+      class="mt-4"
+      url={banner_url}
+      pos={banner_pos}
+    />
   }
-  <main px="6 md:10" py="4">
+  <main
+    w-50%
+    mx-auto px="6 md:10" py="4"
+  >
     {/* Title & Attributes */}
     <div pb-4 border="b text-dark dark:text-light">
       <h1 mt-2 text-3xl font-medium>{title}</h1>
@@ -39,7 +40,7 @@ const {
       </div>
     </div>
     {/* Content */}
-    <div mt-5 mb-5>
+    <div mt-5 pb-4 border="b text-dark dark:text-light">
       <slot />
     </div>
   </main>
