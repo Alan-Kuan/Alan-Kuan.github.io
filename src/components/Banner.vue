@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Image from '@/components/Image.vue';
+
 defineProps<{
   url: string,
   pos?: string,
@@ -6,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <img
+  <Image
     w-300 h-100
     mx-auto
     rounded-3

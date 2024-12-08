@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/Base.astro';
-import Image from '@/components/Image.astro';
+import Image from '@/components/Image.vue';
 import Footer from '@/components/Footer.vue';
 
 import { avatar_urls, profile, intro } from '@/content/profile.ts';
@@ -23,10 +23,10 @@ const addr_b64 = profile.email.addr_b64;
                   { 'hidden! dark:flex!': mode === 'dark' },
                   'w-40', 'h-40',
                   'sm:w-50', 'sm:h-50',
+                  'rounded-xl',
                 ]}
                 src={url}
                 alt={`My avatar in ${mode} mode`}
-                img_class="rounded-xl"
               />
             )
           }

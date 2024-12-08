@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/Base.astro';
-import Image from '@/components/Image.astro';
+import Image from '@/components/Image.vue';
 import ProfileCard from '@/components/ProfileCard.vue';
 
 import { avatar_urls, profile, intro } from '@/content/profile.ts';
@@ -42,10 +42,10 @@ const {
                   { 'hidden! dark:flex!': mode === 'dark' },
                   'w-35', 'h-35',
                   'md:w-50', 'md:h-50',
+                  'rounded-xl'
                 ]}
                 src={url}
                 alt={`My avatar in ${mode} mode`}
-                img_class="rounded-xl"
               />
             )
           }
