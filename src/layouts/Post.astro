@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.vue';
 import Footer from '@/components/Footer.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
+import ScrollToTop from '@/components/ScrollToTop.vue';
 
 import type { PostData as Props } from '@/types.ts';
 
@@ -43,6 +44,10 @@ const {
     <div mt-5 pb-4 border="b text-dark dark:text-light">
       <slot />
     </div>
+    <ScrollToTop
+      class="fixed bottom-10 right-10"
+      client:load
+    />
   </main>
   <Footer />
 </WithProfileLayout>
