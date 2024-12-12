@@ -24,7 +24,7 @@ function onClick() {
   <Transition>
     <button
       v-show="show"
-      pa-4
+      pa="3 md:4"
       bg="profile_card-link-light dark:profile_card-link-dark"
       text="text-light dark:text-dark"
       rounded-50%
