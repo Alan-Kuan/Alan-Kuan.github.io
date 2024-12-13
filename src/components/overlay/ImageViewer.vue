@@ -64,7 +64,7 @@ onUnmounted(() => {
     />
     <!-- description -->
     <div
-      v-if="title"
+      v-if="state.title"
       absolute bottom-0
       flex justify-center items-center
       w-full h-20
