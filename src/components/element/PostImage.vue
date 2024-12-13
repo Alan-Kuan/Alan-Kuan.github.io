@@ -14,7 +14,13 @@ defineProps<{
     flex flex-col items-center
     md:w-90% lg:w-75% mx-auto margin-content
   >
-    <Image rounded-md :src :alt :title />
+    <!-- NOTE: post-img is utilized by ImageViewer -->
+    <Image
+      rounded-md
+      cursor-pointer
+      class="post-img"
+      :src :alt :title
+    />
     <figcaption
       v-if="title"
       mt-2 px-2
