@@ -67,7 +67,8 @@ onUnmounted(() => {
       v-if="state.title"
       absolute bottom-0
       flex justify-center items-center
-      w-full h-20
+      w-full min-h-20
+      pa-3
       bg="black opacity-50"
       text-white
       @click.stop
