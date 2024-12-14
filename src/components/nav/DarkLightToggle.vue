@@ -4,12 +4,12 @@ import { ref, onMounted } from 'vue';
 const light_mode = ref(true);
 
 function onClick() {
-  if (light_mode.value) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
   light_mode.value = !light_mode.value;
+  if (light_mode.value) {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
+  }
   localStorage.setItem('light_mode', light_mode.value);
 }
 
@@ -17,6 +17,11 @@ onMounted(() => {
   const light_mode_saved = localStorage.getItem('light_mode');
   if (light_mode_saved !== undefined) {
     light_mode.value = light_mode_saved === 'true';
+  }
+  if (light_mode.value) {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
   }
 });
 </script>
