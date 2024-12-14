@@ -15,11 +15,11 @@ defineProps<Profile>();
 
     <div ml="lt-md:1" flex="~ col" justify-center>
       <!-- Name -->
-      <div mt-5 text="xl md:2xl center" font-medium>
+      <div md:mt-5 text="xl md:2xl center" font-medium>
         {{ name }}
       </div>
       <!-- Title -->
-      <div mt-3 text-center>
+      <div mt-2 text-center>
         {{ title }} @
         <a :href="org.url" target="_blank" underline>
           {{ org.text }}
@@ -27,7 +27,7 @@ defineProps<Profile>();
       </div>
       <!-- Links -->
       <div
-        w-50 mt-5
+        w-50 mt-3
         flex justify-around
         text="3xl profile_card-link-light dark:profile_card-link-dark"
       >
