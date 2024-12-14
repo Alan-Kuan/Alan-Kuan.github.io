@@ -14,6 +14,9 @@ importers:
       '@astrojs/vue':
         specifier: ^4.5.0
         version: 4.5.0(astro@4.12.2(sass@1.75.0)(typescript@5.4.2))(rollup@4.18.1)(vite@5.3.4(sass@1.75.0))(vue@3.4.20(typescript@5.4.2))
+      '@iconify-json/tabler':
+        specifier: ^1.2.11
+        version: 1.2.11
       astro:
         specifier: ^4.12.2
         version: 4.12.2(sass@1.75.0)(typescript@5.4.2)
@@ -557,6 +560,9 @@ packages:
 
   '@iconify-json/mdi@1.1.64':
     resolution: {integrity: sha512-zGeo5TjhNFAY6FmSDBLAzDO811t77r6v/mDi7CAL9w5eXqKez6bIjk8R9AL/RHIeq44ALP4Ozr4lMqFTkHr7ug==}
+
+  '@iconify-json/tabler@1.2.11':
+    resolution: {integrity: sha512-sOZRVC+QaGmagdogWlz/cTmgXyo5OfRMaac28fAv0+CgESO/eQRBbnjgP4boKG+eKWxjQvRACDOI1HZ1J6Jh7Q==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3237,6 +3243,10 @@ snapshots:
     optional: true
 
   '@iconify-json/mdi@1.1.64':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/tabler@1.2.11':
     dependencies:
       '@iconify/types': 2.0.0
 
