@@ -19,7 +19,7 @@ defineProps<{
         rounded
         border="~ link-light dark:text-light"
         bg="hover:link-light dark:hover:text-light"
-        un-text="link-light dark:text-light hover:white dark:hover:text-dark"
+        un-text="link-light dark:text-light hover:white dark:hover:text-dark sm"
       >
         <span>#{{ tag }}</span>
       </a>
