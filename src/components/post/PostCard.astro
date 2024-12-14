@@ -31,23 +31,23 @@ const post_link = `/${collection}/${slug}`;
       flex justify-center items-center
       min-w="md:72" max-w="md:72" min-h="32 md:48"
       overflow-hidden
-      style="background: #cccccc"
+      bg="gray-300 dark:profile_card-dark"
       href={post_link}
     >
       {
         banner_url &&
         <img
-          max-w-full max-h-full
-          w-full
+          w-full h-full
+          object-cover
           transition-transform duration-300
           group-hover:scale-110
           src={banner_url}
         /> ||
         <div
           class={thumbnail_icon}
-          text-5xl
+          text-7xl
           transition-font-size duration-300
-          group-hover:text-6xl
+          group-hover:text-8xl
         />
       }
     </a>
