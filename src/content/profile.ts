@@ -22,6 +22,11 @@ export const profile = {
       url: 'https://github.com/Alan-Kuan',
     },
     {
+      title: 'See my Mastodon profile',
+      icon: 'mastodon',
+      url: 'https://mastodon.social/@alankuan',
+    },
+    {
       title: 'Watch my YouTube channel',
       icon: 'youtube',
       url: 'https://www.youtube.com/@alankuan',
