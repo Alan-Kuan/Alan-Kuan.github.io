@@ -17,7 +17,11 @@ const { title, desc } = Astro.props;
 		<meta name="description" content={desc} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    {/* Mastodon */}
     <link rel="me" href="https://mastodon.social/@alankuan" />
+    <meta name="fediverse:creator" content="@alankuan@mastodon.social">
+
 		<title>{title}</title>
     <script is:inline>
       const light_mode = localStorage.getItem('light_mode');
