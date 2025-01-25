@@ -1,6 +1,6 @@
 ---
 import NavBar from '@/components/nav/NavBar.astro';
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 
 interface Props {
   title: string;
@@ -30,7 +30,7 @@ const { title, desc } = Astro.props;
         document.documentElement.classList.add('dark');
       }
     </script>
-    <ViewTransitions />
+    <ClientRouter />
 	</head>
 	<body
     bg="body-light dark:body-dark"
