@@ -7,11 +7,11 @@ import Link from '@/components/element/Link.vue';
 import PostImage from '@/components/element/PostImage.vue';
 import GitHubCard from '@/components/element/GitHubCard.vue';
 
-import { post_collection_names } from '@/content/config.ts';
+import { collections } from '@/content.config.ts';
 
 export async function getStaticPaths() {
   const all_posts = await Promise.all(
-    post_collection_names.map(async (collection) => {
+    Object.keys(collections).map(async (collection) => {
       const posts = await getCollection(collection);
       return posts ?
         posts.map(post => ({

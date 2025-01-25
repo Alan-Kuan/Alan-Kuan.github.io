@@ -27,8 +27,3 @@ export const collections = {
   articles,
   projects,
 };
-
-export const post_collection_names = [
-  'articles',
-  'projects',
-];

@@ -2,11 +2,11 @@
 import { getCollection } from 'astro:content';
 
 import IndexLayout from '@/layouts/Index.astro';
-import { post_collection_names } from '@/content/config.ts';
+import { collections } from '@/content.config.ts';
 
 export async function getStaticPaths({ paginate }) {
   const all_posts = await Promise.all(
-    post_collection_names.map(async (collection) => await getCollection(collection) ?? [])
+    Object.keys(collections).map(async (collection) => await getCollection(collection) ?? [])
   );
   const posts = all_posts.flat()
     .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
