@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 import PostLayout from '@/layouts/Post.astro';
 import Paragraph from '@/components/element/Paragraph.vue';
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
       const posts = await getCollection(collection);
       return posts ?
         posts.map(post => ({
-          params: { collection, slug: post.slug },
+          params: { collection, slug: post.id },
           props: { post },
         })) : [];
     })
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content, components } = await post.render();
+const { Content, components } = await render(post);
 ---
 
 <PostLayout {...post.data}>
