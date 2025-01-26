@@ -25,10 +25,10 @@ const {
   prefix,
 } = Astro.props;
 
-const posts = page.data.map(({ collection, data, slug, body }) => ({
+const posts = page.data.map(({ collection, id, body, data }) => ({
   collection: collection,
-  slug: slug,
-  excerpt: getExcerpt(body),
+  id: id,
+  excerpt: body ? getExcerpt(body) : '',
   title: data.title,
   desc: data.desc,
   date: data.date,

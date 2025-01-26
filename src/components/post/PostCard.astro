@@ -3,18 +3,18 @@ import PostAttr from '@/components/post/PostAttr.vue';
 import type { Post as Props } from '@/types.ts';
 
 const {
+  collection,
+  id,
+  excerpt,
   title,
   desc,
-  banner_url,
   date,
   tags,
-  collection,
-  slug,
-  excerpt,
+  banner_url,
 } = Astro.props;
 
 const thumbnail_icon = collection === 'projects' ? 'i-mdi-bulletin-board' : 'i-mdi-book-open-variant-outline';
-const post_link = `/${collection}/${slug}`;
+const post_link = `/${collection}/${id}`;
 ---
 
 <div

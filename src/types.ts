@@ -20,7 +20,7 @@ export interface Profile {
 
 export interface Post extends PostData {
   collection: string;
-  slug: string;
+  id: string;
   excerpt?: string;
 }
 
