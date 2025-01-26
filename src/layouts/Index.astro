@@ -6,8 +6,6 @@ import WithProfileLayout from '@/layouts/WithProfile.astro';
 import PostCard from '@/components/post/PostCard.astro';
 import Footer from '@/components/Footer.vue';
 
-import type { Post } from '@/types.ts';
-
 const parser = MarkdownIt();
 function getExcerpt(body: string) {
   const html = parser.render(body);

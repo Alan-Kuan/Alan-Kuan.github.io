@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ConfPub } from '@/types.ts';
+import type { Publication } from '@/types/content';
 
-defineProps<ConfPub | { me: string }>();
+defineProps<Publication | { me: string }>();
 </script>
 
 <template>

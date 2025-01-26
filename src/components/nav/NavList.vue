@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
-import type { Link } from '@/types.ts';
+import type { Link } from '@/types/profile';
 
 const props = defineProps<{
   curr_idx: number,

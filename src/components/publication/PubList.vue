@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ConfPubItem from '@/components/publication/ConfPubItem.vue';
-import type { Publication } from '@/types.ts';
+
+import type { Publication } from '@/types/content';
 
 defineProps<{
   pubs: { [key: string]: Publication[] },
