@@ -23,12 +23,12 @@
     "node-html-parser": "^6.1.13",
     "sass": "^1.75.0",
     "sharp": "^0.33.3",
-    "vue": "^3.4.20"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.64",
-    "@unocss/reset": "^0.58.5",
+    "@unocss/reset": "^65.4.3",
     "typescript": "^5.4.2",
-    "unocss": "^0.58.5"
+    "unocss": "^65.4.3"
   }
 }
