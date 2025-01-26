@@ -24,18 +24,12 @@ const pubs = {
     },
   ],
 };
-const self = 'Hao-En Kuan';
+const me = 'Hao-En Kuan';
 ---
 
-<WithProfileLayout
-  {title}
-  {desc}
->
+<WithProfileLayout {title} {desc}>
   <main>
-    <PubList
-      {pubs}
-      {self}
-    />
+    <PubList {pubs} {me} />
     <Footer />
   </main>
 </WithProfileLayout>

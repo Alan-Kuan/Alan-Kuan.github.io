@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { ConfPub } from '@/types.ts';
 
-defineProps<ConfPub | { self: string }>();
+defineProps<ConfPub | { me: string }>();
 </script>
 
 <template>
   <li>
     <span v-for="author in authors">
-      <span :class="{ underline: author === self }">
+      <span :class="{ underline: author === me }">
         {{ author }}
       </span>
       <span>, </span>

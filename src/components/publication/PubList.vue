@@ -4,7 +4,7 @@ import type { Publication } from '@/types.ts';
 
 defineProps<{
   pubs: { [key: string]: Publication[] },
-  self: string,
+  me: string,
 }>();
 </script>
 
@@ -30,7 +30,7 @@ defineProps<{
             :conference="pub.conference"
             :location="pub.location"
             :time="pub.time"
-            :self="self"
+            :me="me"
           />
         </template>
       </ul>
