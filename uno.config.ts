@@ -94,6 +94,10 @@ const colors = {
 };
 
 const preflight = `
+  :root {
+    --footer-height: 3rem;
+  }
+
   article.content {
     h1 {
       margin: 1rem 0;
