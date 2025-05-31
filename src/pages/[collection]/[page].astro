@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
-import IndexLayout from '@/layouts/Index.astro';
+import ListLayout from '@/layouts/List.astro';
 import { collections } from '@/content.config.ts';
 
 export async function getStaticPaths({ paginate }) {
@@ -22,7 +22,7 @@ const title = 'Alan Kuan | 官澔恩';
 const desc = 'A place telling things about Alan Kuan';
 ---
 
-<IndexLayout
+<ListLayout
   {title}
   {desc}
   {page}
