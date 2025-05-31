@@ -1,4 +1,5 @@
 ---
+import Avatar from '@/components/Avatar.vue';
 import BaseLayout from '@/layouts/Base.astro';
 import Image from '@/components/Image.vue';
 import ProfileCard from '@/components/ProfileCard.vue';
@@ -26,22 +27,7 @@ const {
         {...profile}
       >
         <div slot="avatar">
-          {
-            Object.entries(avatar_urls).map(([mode, url]) =>
-              <Image
-                class:list={[
-                  { 'dark:hidden': mode === 'light' },
-                  { 'hidden! dark:flex!': mode === 'dark' },
-                  'lt-md:max-w-35', 'lt-md:max-h-35',
-                  'w-full', 'h-auto',
-                  'md:w-50', 'md:h-50',
-                  'rounded-xl'
-                ]}
-                src={url}
-                alt={`My avatar in ${mode} style`}
-              />
-            )
-          }
+          <Avatar {avatar_urls} />
         </div>
         <div slot="intro" set:html={intro} />
       </ProfileCard>

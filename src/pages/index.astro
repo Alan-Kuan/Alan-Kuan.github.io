@@ -1,6 +1,6 @@
 ---
+import Avatar from '@/components/Avatar.vue';
 import BaseLayout from '@/layouts/Base.astro';
-import Image from '@/components/Image.vue';
 import Footer from '@/components/Footer.vue';
 
 import { avatar_urls, profile, intro } from '@/content/profile.ts';
@@ -14,24 +14,8 @@ const addr_b64 = profile.email.addr_b64;
   <main>
     <div w="90% md:75% lg:50%" mx-auto my-12>
       <div flex items-center>
-        <div>
-          {
-            Object.entries(avatar_urls).map(([mode, url]) =>
-              <Image
-                class:list={[
-                  { 'dark:hidden': mode === 'light' },
-                  { 'hidden! dark:flex!': mode === 'dark' },
-                  'lt-md:max-w-40', 'lt-md:max-h-40',
-                  'w-full', 'h-auto',
-                  'sm:w-50', 'sm:h-50',
-                  'rounded-xl',
-                ]}
-                src={url}
-                alt={`My avatar in ${mode} style`}
-              />
-            )
-          }
-        </div>
+        <Avatar {avatar_urls} />
+
         <div min-w-60% ml="4 sm:8">
           <!-- Name -->
           <div text="xl md:2xl" font-medium>
