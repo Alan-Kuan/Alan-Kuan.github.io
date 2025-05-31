@@ -16,6 +16,13 @@ const safe_list = [
 
   // for avatar image
   'rounded-xl',
+
+  // for post outline
+  '[pl~="2"]',
+  '[pl~="4"]',
+  '[pl~="6"]',
+  '[pl~="8"]',
+  '[pl~="10"]',
 ];
 const colors = {
   nav: {
@@ -100,34 +107,33 @@ const preflight = `
 
   article.content {
     h1 {
-      margin: 1rem 0;
       font-size: 1.8rem;
       line-height: 2rem;
     }
     h2 {
-      margin: 1rem 0;
       font-size: 1.5rem;
       line-height: 2rem;
     }
     h3 {
-      margin: 1rem 0;
       font-size: 1.25rem;
       line-height: 1.75rem;
     }
     h4 {
-      margin: 1rem 0;
       font-size: 1.125rem;
       line-height: 1.75rem;
     }
     h5 {
-      margin: 1rem 0;
       font-size: 1rem;
       line-height: 1.5rem;
     }
     h6 {
-      margin: 1rem 0;
       font-size: 1rem;
       line-height: 1.5rem;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin: 1rem 0;
+      scroll-margin-top: 6rem;
+      word-break: break-all;
     }
 
     ol {

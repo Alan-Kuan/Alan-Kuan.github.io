@@ -3,10 +3,15 @@ import BaseLayout from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.vue';
 import Footer from '@/components/Footer.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
+import SidePanel from '@/components/post/SidePanel.vue';
+import Outline from '@/components/post/Outline.vue';
 import ScrollToTop from '@/components/ScrollToTop.vue';
 import ImageViewer from '@/components/overlay/ImageViewer.vue';
 
-import type { PostFrontmatter as Props } from '@/types/content';
+import type { MarkdownHeading } from 'astro';
+import type { PostFrontmatter } from '@/types/content';
+
+type Props = PostFrontmatter | { headings: MarkdownHeading[] };
 
 const {
   title,
@@ -15,14 +20,29 @@ const {
   tags,
   banner_url,
   banner_pos,
+  headings,
 } = Astro.props;
 ---
+
+{/*
+  Layouts:
+    1. <=md
+      - main width: 90% (center)
+      - side bar: hovering
+    2. >=lg
+      - main width: 70% (right)
+      - side bar: expanded
+    3. >=xl
+      - main width: 50% (center)
+      - side bar: expanded
+*/}
 
 <BaseLayout
   title={`${title} | Alan Kuan`}
   {desc}
 >
   {
+    /* Banner */
     banner_url &&
     <Banner
       class="mt-4"
@@ -30,26 +50,36 @@ const {
       pos={banner_pos}
     />
   }
-  <main
-    w="md:90% xl:75% 2xl:50%"
-    mx-auto px="6 md:10" py="4"
-  >
-    {/* Title & Attributes */}
-    <div pb-4 border="b text-dark dark:text-light">
-      <h1 mt-2 text-3xl font-medium>{title}</h1>
-      <div mt-2>
-        <PostAttr {date} {tags} />
+
+  <div flex lt-md:justify-center>
+    {/* set it 0 to make sure it doesn't take space on narrow screens */}
+    <div w="0 md:25%">
+      <SidePanel {headings} client:load />
+    </div>
+    <main
+      w="90% md:70% 2xl:50%"
+      mt="8"
+      px="md:12"
+    >
+      {/* Title & Attributes */}
+      <div pb-4 border="b text-dark dark:text-light">
+        <h1 text-3xl font-medium>{title}</h1>
+        <div mt-2>
+          <PostAttr {date} {tags} />
+        </div>
       </div>
-    </div>
-    {/* Content */}
-    <div mt-5 pb-4 border="b text-dark dark:text-light">
-      <slot />
-    </div>
-    <ScrollToTop
-      class="fixed bottom-3 right-3 md:bottom-10 md:right-10"
-      client:load
-    />
-  </main>
+      {/* Content */}
+      <div mt-5 pb-4 border="b text-dark dark:text-light">
+        <slot />
+      </div>
+
+      <Footer />
+    </main>
+  </div>
+
+  <ScrollToTop
+    class="fixed bottom-3 right-3 md:bottom-8 md:right-4"
+    client:load
+  />
   <ImageViewer client:load />
-  <Footer />
-</WithProfileLayout>
+</BaseLayout>
