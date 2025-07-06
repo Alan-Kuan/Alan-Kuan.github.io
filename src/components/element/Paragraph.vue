@@ -1,9 +1,5 @@
 <template>
-  <p
-    margin-content
-    line-height="normal md:loose"
-    text="md:lg"
-  >
+  <p margin-content>
     <slot />
   </p>
 </template>
