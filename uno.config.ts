@@ -201,6 +201,8 @@ const preflight = `
       padding: 0.1rem 0.5rem;
       border-radius: 0.25rem;
       background: ${colors.code.light};
+      white-space: pre-wrap;
+      word-break: break-all;
     }
     .dark & code:not(pre code) {
       background: ${colors.code.dark};
