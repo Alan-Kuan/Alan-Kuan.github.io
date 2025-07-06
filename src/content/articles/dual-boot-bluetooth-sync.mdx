@@ -1,0 +1,56 @@
+---
+title: '在雙系統同步已配對的藍牙裝置'
+desc: ''
+date: '2025.07.06'
+tags: ['trouble shooting', 'bluetooth', 'linux', 'windows']
+---
+# 前言
+我有一個同時安裝 Windows 和 Linux 系統的筆電，
+我習慣將它接上螢幕搭配藍牙鍵盤使用，偶爾也會連上藍牙耳機來聽音樂、看影片或是玩遊戲。
+但是我發現藍牙裝置在雙系統配對時會遇到一個問題，
+也就是「在 Windows 或是 Linux 配對過的藍牙裝置，當改使用另個系統時，即使先前已經在該系統配對過，仍然需要重新配對才能夠連線」。
+
+這個問題發生的原因在於藍牙裝置會在配對後生成共用的連線金鑰，
+而 Windows 和 Linux 彼此不共用配對產生的連線金鑰。
+加上藍牙裝置識別彼此身份的方式是依靠藍牙轉接器（Bluetooth adapter）的 MAC 位址，
+沒辦法為不同的系統記錄一把金鑰。
+因此每次切換系統時我的藍牙鍵盤或是藍牙耳機都會認為我的筆電的連線金鑰和上次配對產生的不匹配。
+
+因此解決這個問題的方法，就是讓配對產生的共用金鑰在 Windows 和 Linux 上一致，
+如此一來不管切換哪個系統都能夠匹配。
+
+# 解法
+1. 先在 Linux 配對藍牙裝置
+2. 改在 Windows 配對藍牙裝置
+3. 在 Windows 找到共用金鑰
+    1. 開啟「登錄編輯程式」
+        ![](https://i.postimg.cc/SNyY67Z9/registry.jpg)
+    2. 找到 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Keys` ，並先給予自己權限
+        ![](https://i.postimg.cc/sgxB8fCD/registry-permission-1.jpg)
+        ![](https://i.postimg.cc/5NnYnYGR/registry-permission-2.jpg)
+        ![](https://i.postimg.cc/tRdVnmzy/registry-permission-3.jpg)
+    3. 重新開啟登錄編輯程式後，就能夠看到各個已配對裝置的連線金鑰。
+        記下欲同步的裝置的金鑰，可以先截圖存起來
+        ![](https://i.postimg.cc/QCD0D4pm/registry-key-value.jpg)
+4. 回到 Linux 將共用金鑰的值換成 Windows 上找到的
+    1. 使用 root 來操作比較方便，因為 `/var/lib/bluetooth/` 預設不讓 root 以外的使用者 read
+        ```sh
+        sudo su
+        ```
+    2. 進入記錄藍牙配對資訊的目錄。
+        ```sh
+        cd /var/lib/bluetooth/[Bluetooth Adapter MAC Address]
+        ```
+        `[Bluetooth Adapter MAC Address]` 是筆電的藍牙轉接器的 MAC 位址，一般來說應該只會有一個可以選擇。
+    3. 在這個目錄找到欲配對的藍牙裝置的 MAC 位址，編輯裡面的 `info` 檔案
+    4. 將 `[LinkKey]` 區段的 `Key` 值換成先前記下的金鑰值，格式參照原先填在上面的值
+
+# 結語
+當照著以上的方法做過後，已配對的藍牙裝置就可以在兩個系統之間正常使用了。
+以下也附上一些參考資料，裡面有提供不需要透過登錄編輯程式的操作方法，
+但我個人已經習慣透過登錄編輯程式了，所以上面提供這個方法。
+
+# 參考資料
+- [Pairing Bluetooth Devices in Dual Boot with Linux Ubuntu and Windows 10/11](https://gist.github.com/madkoding/f3cfd3742546d5c99131fd19ca267fd4)
+- [Keeping Bluetooth devices paired between Linux and Windows](https://averylarsen.com/posts/keeping-bluetooth-devices-paired-between-linux-and-windows/)
+- [Dual Boot Bluetooth LE (low energy) device pairing #413831](https://unix.stackexchange.com/a/413831)
