@@ -197,12 +197,12 @@ const preflight = `
       }
     }
 
-    :not(pre) code {
+    code:not(pre code) {
       padding: 0.1rem 0.5rem;
       border-radius: 0.25rem;
       background: ${colors.code.light};
     }
-    .dark & :not(pre) code {
+    .dark & code:not(pre code) {
       background: ${colors.code.dark};
     }
     pre {
