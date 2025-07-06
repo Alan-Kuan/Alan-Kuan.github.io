@@ -141,10 +141,24 @@ const preflight = `
       padding-left: 1rem;
       list-style-type: number;
     }
+    ol ol {
+      padding-left: 2rem;
+      list-style-type: lower-alpha;
+    }
+    ol ol ol {
+      list-style-type: lower-roman;
+    }
     ul {
       margin: 1rem 0;
       padding-left: 1rem;
       list-style-type: disc;
+    }
+    ul ul {
+      padding-left: 2rem;
+      list-style-type: circle;
+    }
+    ul ul ul {
+      list-style-type: square;
     }
     li ol, li ul {
       margin: 0;
