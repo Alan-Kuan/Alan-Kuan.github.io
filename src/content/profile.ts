@@ -5,10 +5,10 @@ export const avatar_urls = {
 
 export const profile = {
   name: '官澔恩 / Alan Kuan',
-  title: 'MSCS Student',
+  title: 'System Software Engineer',
   org: {
-    text: 'NTU',
-    url: 'https://www.ntu.edu.tw',
+    text: 'NVIDIA',
+    url: 'https://www.nvidia.com',
   },
   links: [
     {
