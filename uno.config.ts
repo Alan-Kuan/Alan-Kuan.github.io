@@ -7,8 +7,8 @@ import {
   transformerAttributifyJsx,
 } from 'unocss';
 
-import { getCSS } from '@/preflight';
-import { colors } from '@/theme';
+import { getCSS } from '@/preflight.ts';
+import { colors } from '@/theme.ts';
 
 const safe_list = [
   // for profile card
