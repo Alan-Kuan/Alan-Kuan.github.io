@@ -11,8 +11,7 @@ defineProps<{
 <template>
   <div
     relative
-    flex flex-col items-center
-    md:w-90% lg:w-75% mx-auto margin-content
+    md:w-90% lg:w-75% margin-content
   >
     <!-- NOTE: post-img is utilized by ImageViewer -->
     <Image
