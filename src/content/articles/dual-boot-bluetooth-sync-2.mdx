@@ -1,0 +1,115 @@
+---
+title: '在雙系統同步已配對的藍牙裝置 (二)'
+desc: '在雙系統中共用藍牙 5.1 以上的裝置時，我踩到的一個坑，以及最後怎麼完成的方法'
+date: '2025.11.08'
+tags: ['trouble shooting', 'bluetooth', 'linux', 'windows']
+banner_url: 'https://i.postimg.cc/2S55tC9G/dual-boot-bluetooth-sync-2.jpg'
+banner_pos: '0 40%'
+---
+# 前言
+在上一篇文章「[在雙系統同步已配對的藍牙裝置](/articles/dual-boot-bluetooth-sync)」中，我分享了怎麼在 Windows 和 Linux 系統之間共享藍牙配對關係的方法。
+但其實這是針對 Bluetooth 5.1 以前的裝置的解法，Bluetooth 5.1 以後的裝置，驗證的機制變得比較複雜，也就多了一些欄位要複製。
+由於這個坑讓我卡了一個下午，我決定把它寫下來，除了可以供未來的我參考外，或許也可以幫到其他人。
+
+# 解法
+基本上流程和之前大同小異，就是先在 Linux 上配對，再到 Windows 上配對，最後再回到 Linux 把 Windows 的金鑰值複製過去。
+上次我是在 Windows 那邊從「登錄編輯程式」找到金鑰值的，這次我改成從 Linux 端直接使用指令工具來查找。
+兩個方法我覺得都算好操作，就看個人喜好了。
+
+## 1. 從 Windows 端讀取金鑰值
+1. 安裝 NTFS driver (`ntfs-3g`) 和讀取登錄檔的工具 (`chntpw`)
+    - 我查過各大 Linux distro 的套件庫都有這兩個套件
+2. 掛載 Windows 的磁區
+    ```sh
+    sudo mount /dev/your/windows/partition /mnt
+    ```
+3. 進入登錄檔的目錄
+    ```sh
+    cd /mnt/Windows/System32/config
+    ```
+4. 使用 `chntpw` 查閱登錄檔
+    ```sh
+    chntpw -e SYSTEM
+    ```
+5. 進到藍牙相關的目錄
+    ```sh
+    cd \ControlSet001\Services\BTHPORT\Parameters\Keys
+    ```
+6. 進到本機藍牙接收器的目錄，這邊應該只會有一個
+    ```sh
+    cd xxxxxxxxxxxx
+    ```
+7. 找到自己配對的藍牙裝置，不同裝置會有自己的目錄
+    - 要注意的是，有些藍牙裝置會在某次配對成功後將自己的 MAC 位址加一，所以會和 Windows 上的位址不一樣
+    - 照理說同個裝置的 MAC 位址在 Windows 上的會比 Linux 上的還大，因為是後配對的
+    ```sh
+    cd xxxxxxxxxxxx
+    ```
+8. 列出當前目錄的內容時，應該會看到如下的資訊：
+    ```
+    Node has 0 subkeys and 9 values
+      size     type              value name             [value if type DWORD]
+        16  3 REG_BINARY         <LTK>
+         4  4 REG_DWORD          <KeyLength>               16 [0x10]
+         8  b REG_QWORD          <ERand>
+         4  4 REG_DWORD          <EDIV>                     0 [0x0]
+        16  3 REG_BINARY         <IRK>
+         8  b REG_QWORD          <Address>
+         4  4 REG_DWORD          <AddressType>              1 [0x1]
+         4  4 REG_DWORD          <CEntralIRKStatus>         1 [0x1]
+         4  4 REG_DWORD          <AuthReq>                 45 [0x2d]
+    ```
+    我們會需要記下的是 `<LTK>`、`<IRK>`、`<ERand>` 和 `<EDIV>` 的值
+
+> [!HINT]
+> 在 `chntpw` 的 shell 裡面有這些指令可以用：
+> - `cd`：切換目錄
+> - `ls`：列出目錄內容
+> - `cat`：印出某個 key 的值
+> - `hex`：以 16 進位表示，印出某個 key 的值
+> - `q`：退出
+
+## 2. 複製金鑰值到 Linux
+接下來提供的解法只會提到 `<ERand>` 和 `<EDive>` 皆為 0 的情況。
+如果非 0 的話，要經過一些轉換，詳細請參考 [Archlinux Wiki] 上的說明。
+除此之外，上面也整理了一些常見的裝置應該要複製哪些值，個人很推薦自己上去看一遍。
+
+1. 以 root 的身份執行接下來的指令 (為了方便進入 `/var/lib/bluetooth`)
+    ```sh
+    sudo su
+    ````
+2. 進到本機藍牙接收器的目錄
+    ```sh
+    cd /var/lib/bluetooth/XX:XX:XX:XX:XX:XX
+    ```
+3. 找到要同步的裝置的目錄，如果和 Windows 上看到的 MAC 位址不同，記得要把目錄名稱改成和 Windows 上的 MAC 位址相同
+4. 進到該裝置的目錄後，修改 `info`
+    ```ini
+    ...
+    [IdentityResolvingKey]
+    Key=<IRK>
+    ...
+    [PeripheralLongTermKey]
+    Key=<LTK>
+    ...
+    [SlaveLongTermKey]
+    Key=<LTK>
+    ...
+    ```
+    `<IRK>` 和 `<LTK>` 的格式記得要仿照原本值的格式
+
+## 3. 重新啟動藍牙服務
+最後只要重啟藍牙服務就大功告成了，如果重啟沒有用的話，可以試試重新開機。
+```sh
+sudo systemctl restart bluetooth
+```
+
+# 結語
+我就是被 MAC 位址在兩個系統上不同搞到。
+我在比對 MAC 位址的時候，只有看前幾個字就判定是相同的，試了好久之後才發現最後面是長不一樣的。
+把 Linux 上的目錄名稱改成符合 Windows 上看到的 MAC 位址果然就通了。
+
+# 參考資料
+- [Bluetooth#Dual boot pairing -- Archlinux Wiki](https://wiki.archlinux.org/title/Bluetooth#Dual_boot_pairing)
+- [Dual Boot Bluetooth LE (low energy) device pairing #413831](https://unix.stackexchange.com/a/413831)
+- [[筆記] 雙系統的藍牙鍵鼠配對 (BLE)](https://stoneapp.tech/cavern/post.php?pid=983)
