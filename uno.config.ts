@@ -1,6 +1,6 @@
 import {
   defineConfig,
-  presetUno,
+  presetWind3,
   presetAttributify,
   presetIcons,
   presetWebFonts,
@@ -289,7 +289,7 @@ function getCSS({ theme }: any) {
 
 export default defineConfig({
   presets: [
-    presetUno({ attributifyPseudo: true }),
+    presetWind3({ attributifyPseudo: true }),
     presetAttributify(),
     presetIcons(),
     presetWebFonts({
@@ -309,7 +309,7 @@ export default defineConfig({
   ],
   preflights: [{ getCSS }],
   transformers: [
-    transformerAttributifyJsx(),
+    // transformerAttributifyJsx(),
   ],
   rules: [
     ['transition-shape', { 'transition-property': 'width,transform' }],
