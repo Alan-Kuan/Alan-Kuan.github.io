@@ -8,21 +8,27 @@ defineProps<{
 
 <template>
   <ul
-    pa="4"
-    bg="profile_card-light dark:profile_card-dark"
-    rounded-lg
-    list="disc inside"
+    class="
+      pa-4
+      bg-profile_card-light dark:bg-profile_card-dark
+      rounded-lg
+      list-disc list-inside
+    "
   >
     <li
       v-for="heading in headings"
-      :pl="(heading.depth - 1) * 2"
-      w-full
-      break-all
+      :class="[
+        `pl-${(heading.depth - 1) * 2}`,
+        'w-full',
+        'break-all',
+      ]"
     >
       <a
         :href="`#${heading.slug}`"
-        text="profile_card-link-light dark:profile_card-link-dark"
-        hover:brightness-120%
+        class="
+          text-profile_card-link-light dark:text-profile_card-link-dark
+          hover:brightness-120%
+        "
       >
         {{heading.text}}
       </a>

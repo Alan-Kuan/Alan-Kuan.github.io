@@ -1,10 +1,8 @@
 import {
   defineConfig,
   presetWind4,
-  presetAttributify,
   presetIcons,
   presetWebFonts,
-  transformerAttributifyJsx,
 } from 'unocss';
 
 const safe_list = [
@@ -289,11 +287,7 @@ function getCSS({ theme }: any) {
 
 export default defineConfig({
   presets: [
-    presetWind4({
-      attributifyPseudo: true,
-      reset: true,
-    }),
-    presetAttributify(),
+    presetWind4({ reset: true }),
     presetIcons(),
     presetWebFonts({
       provider: 'bunny',
@@ -311,9 +305,6 @@ export default defineConfig({
     }),
   ],
   preflights: [{ getCSS }],
-  transformers: [
-    // transformerAttributifyJsx(),
-  ],
   rules: [
     ['transition-shape', { 'transition-property': 'width,transform' }],
     ['transition-font-size', { 'transition-property': 'font-size' }],

@@ -42,6 +42,6 @@ export const intro = `
 <p>
   我喜歡動手嘗試感興趣的事物，從不放過邊學邊做的機會。我對於電腦科學有廣泛的興趣，其中，我尤其喜歡系統設計與開發，透過對於底層架構、系統軟體的理解，設計並實作出一套系統，我認為是具成就感的事。除此之外，我喜歡欣賞藝術創作，也喜歡畫畫和平面設計。也因此喜歡設計網站，對於前後端開發皆有經驗。
 </p>
-<p mt-2>
+<p class="mt-2">
   I enjoy hands-on experimentation with things that interest me and never miss an opportunity to learn by doing. I have a broad interest in computer science, especially in system design and development. I find it rewarding to design and implement a system through an understanding of the underlying architecture and system software. In addition, I appreciate artistic creations and enjoy drawing and graphic design. Therefore, I also enjoy designing websites and have experience in both frontend and backend development.
 </p>`;

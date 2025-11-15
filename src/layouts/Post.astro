@@ -45,31 +45,33 @@ const {
     /* Banner */
     banner_url &&
     <Banner
-      class="mt-4"
       url={banner_url}
       pos={banner_pos}
+      class="mt-4"
     />
   }
 
-  <div flex lt-md:justify-center>
+  <div class="flex lt-md:justify-center">
     {/* set it 0 to make sure it doesn't take space on narrow screens */}
-    <div w="0 md:25%">
+    <div class="w-0 md:w-25%">
       <SidePanel {headings} client:load />
     </div>
     <main
-      w="90% md:70% 2xl:50%"
-      mt="8"
-      px="md:12"
+      class="
+        w-90% md:w-70% 2xl:w-50%
+        mt-8
+        md:px-12
+      "
     >
       {/* Title & Attributes */}
-      <div pb-4 border="b text-dark dark:text-light">
-        <h1 text-3xl font-medium>{title}</h1>
-        <div mt-2>
+      <div class="pb-4 border-b border-text-dark dark:border-text-light">
+        <h1 class="text-3xl font-medium">{title}</h1>
+        <div class="mt-2">
           <PostAttr {date} {tags} />
         </div>
       </div>
       {/* Content */}
-      <div mt-5 pb-4 border="b text-dark dark:text-light" text="md:lg">
+      <div class="mt-5 pb-4 border-b border-text-dark dark:border-text-light md:text-lg">
         <slot />
       </div>
 

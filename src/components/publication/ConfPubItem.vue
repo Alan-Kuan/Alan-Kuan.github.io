@@ -13,7 +13,7 @@ defineProps<Publication | { me: string }>();
       <span>, </span>
     </span>
 
-    <span font-italic>{{ title }}, </span>
+    <span class="font-italic">{{ title }}, </span>
 
     <span>{{ conference }}, </span>
     <span>{{ location }}, </span>

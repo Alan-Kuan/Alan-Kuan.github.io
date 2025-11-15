@@ -16,31 +16,35 @@ const show = ref(false);
   <!-- Side Bar Toggle -->
   <button
     @click="show = !show"
-    fixed md:hidden top="24" z="10"
-    pa="2"
-    bg="profile_card-link-light dark:profile_card-link-dark"
-    text="text-light dark:text-dark"
-    rounded="50%"
-    shadow-sm
-    active:brightness-140
+    class="
+      fixed md:hidden top-24 z-10
+      pa-2
+      bg-profile_card-link-light dark:bg-profile_card-link-dark
+      text-text-light dark:text-text-dark
+      rounded-50%
+      shadow-sm
+      active:brightness-140
+    "
   >
-    <div i-mdi-format-list-bulleted />
+    <div class="i-mdi-format-list-bulleted" />
   </button>
   <!-- Side Bar -->
   <aside
-    fixed md:sticky top="28" z="10"
-    w="lt-md:90vw"
-    max-h="[calc(100vh-7rem-var(--footer-height))]"
-    mt="8"
-    px="md:4"
-    bg="body-light dark:body-dark"
-    overflow-auto
+    :class="[
+      'fixed', 'md:sticky', 'top-28', 'z-10',
+      'lt-md:w-90vw',
+      'max-h-[calc(100vh-7rem-var(--footer-height))]',
+      'mt-8',
+      'md:px-4',
+      'bg-body-light', 'dark:bg-body-dark',
+      'overflow-auto',
 
-    lt-md:shadow-lg
-    lt-md:rounded-lg
-    lt-md:transition-transform lt-md:duration-500
-    lt-md:translate-x="[-100vw]"
-    :class="{ 'show': show }"
+      'lt-md:shadow-lg',
+      'lt-md:rounded-lg',
+      'lt-md:transition-transform', 'lt-md:duration-500',
+      'lt-md:translate-x-[-100vw]',
+      { 'show': show },
+    ]"
   >
     <Outline
       v-if="headings.length > 0"

@@ -19,46 +19,54 @@ const post_link = `/${collection}/${id}`;
 ---
 
 <div
-  max-h="200 md:100"
-  my-5
-  overflow-hidden
-  rounded-md
-  bg="page-light dark:page-dark"
-  drop-shadow-sm
+  class="
+    max-h-200 md:max-h-100
+    my-5
+    overflow-hidden
+    rounded-md
+    bg-page-light dark:bg-page-dark
+    drop-shadow-sm
+  "
 >
-  <div flex="~ col md:row">
+  <div class="flex flex-col md:flex-row">
     <a
-      group
-      flex justify-center items-center
-      min-w="md:72" max-w="md:72" min-h="32 md:48"
-      overflow-hidden
-      bg="gray-300 dark:profile_card-dark"
       href={post_link}
+      class="
+        group
+        flex justify-center items-center
+        md:min-w-72 md:max-w-72 min-h-32 md:min-h-48
+        overflow-hidden
+        bg-gray-300 dark:bg-profile_card-dark
+      "
     >
-      {
-        banner_url &&
-        <img
+    {
+      banner_url &&
+      <img
+        src={banner_url}
+        class="
           w-full h-full
           object-cover
           transition-transform duration-300
           group-hover:scale-110
-          src={banner_url}
-        /> ||
-        <div
-          class={thumbnail_icon}
-          text-7xl
-          transition-font-size duration-300
-          group-hover:text-8xl
-        />
-      }
-    </a>
-    <div pa-5>
+        "
+      /> ||
       <div
-        font-medium
-        text="
-          xl
-          hover:article_card-link-light
-          dark:hover:article_card-link-dark
+        class:list={[
+          thumbnail_icon,
+          'text-7xl', 'group-hover:text-8xl',
+          'transition-font-size',
+          'duration-300',
+        ]}
+      />
+    }
+    </a>
+    <div class="pa-5">
+      <div
+        class="
+          font-medium
+          text-xl
+          hover:text-article_card-link-light
+          dark:hover:text-article_card-link-dark
         "
       >
         <a href={post_link}>{title}</a>
@@ -66,7 +74,7 @@ const post_link = `/${collection}/${id}`;
       <PostAttr class="mt-1" {date} {tags} />
       {
         excerpt &&
-        <div h-18 mt-2 overflow-hidden>
+        <div class="h-18 mt-2 overflow-hidden">
           {excerpt}
         </div>
       }

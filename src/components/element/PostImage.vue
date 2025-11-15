@@ -10,20 +10,27 @@ defineProps<{
 
 <template>
   <div
-    relative
-    md:w-90% lg:w-75% margin-content
+    class="
+      relative
+      md:w-90% lg:w-75%
+      margin-content
+    "
   >
     <!-- NOTE: post-img is utilized by ImageViewer -->
     <Image
-      rounded-md
-      cursor-pointer
-      class="post-img"
       :src :alt :title
+      class="
+        rounded-md
+        cursor-pointer
+        post-img
+      "
     />
     <figcaption
       v-if="title"
-      mt-2 px-2
-      lt-md:text-sm
+      class="
+        mt-2 px-2
+        lt-md:text-sm
+      "
     >
       {{title}}
     </figcaption>

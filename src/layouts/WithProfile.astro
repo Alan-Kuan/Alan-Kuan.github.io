@@ -18,13 +18,13 @@ const {
 ---
 
 <BaseLayout {title} {desc}>
-  <div flex="~ col md:row">
+  <div class="flex flex-col md:flex-row">
     {/* Left Column */}
-    <div w-full md:w-30% lg:w-25%>
+    <div class="w-full md:w-30% lg:w-25%">
       {/* add `top-20` and `bottom-0` to make `overflow-y-scroll` effective */}
       <ProfileCard
-        class="md:fixed md:top-20 md:bottom-0 md:w-30% lg:w-25%"
         {...profile}
+        class="md:fixed md:top-20 md:bottom-0 md:w-30% lg:w-25%"
       >
         <div slot="avatar">
           <Avatar {avatar_urls} />
@@ -33,7 +33,13 @@ const {
       </ProfileCard>
     </div>
     {/* Right Column */}
-    <div w="full md:70% lg:75%" class="md:h-[calc(100vh-5rem)]" overflow-y-auto>
+    <div
+      class="
+        w-full md:w-70% lg:w-75%
+        md:h-[calc(100vh-5rem)]
+        overflow-y-auto
+      "
+    >
       <slot />
     </div>
   </div>

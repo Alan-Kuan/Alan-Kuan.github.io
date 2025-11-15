@@ -1,5 +1,5 @@
 <template>
-  <p margin-content>
+  <p class="margin-content">
     <slot />
   </p>
 </template>

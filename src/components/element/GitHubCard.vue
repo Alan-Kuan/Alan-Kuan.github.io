@@ -14,15 +14,14 @@ const dark_img_url = `${img_url}&theme=noctis_minimus`;
 <template>
   <a :href="repo_url" target="_blank">
     <Image
-      dark:hidden
       :src="img_url"
       :alt="repo"
+      class="dark:hidden"
     />
     <Image
-      hidden!
-      dark:flex!
       :src="dark_img_url"
       :alt="repo"
+      class="hidden! dark:flex!"
     />
   </a>
 </template>

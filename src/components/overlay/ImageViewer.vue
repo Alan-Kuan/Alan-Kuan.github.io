@@ -49,29 +49,35 @@ onUnmounted(() => {
 <template>
   <div
     v-show="state.show"
-    fixed top-0 left-0 w-full h-full z-15
-    flex justify-center items-center
-    bg="black/30"
-    backdrop-blur-sm
     @click="handleClose()"
+    class="
+      fixed top-0 left-0 w-full h-full z-15
+      flex justify-center items-center
+      bg-black/30
+      backdrop-blur-sm
+    "
   >
     <!-- image -->
     <img
-      w="100% lg:auto"
-      h="lg:80%"
       :src="state.src"
       :alt="state.alt"
+      class="
+        w-100% lg:w-auto
+        lg:h-80%
+      "
     />
     <!-- description -->
     <div
       v-if="state.title"
-      absolute bottom-0
-      flex justify-center items-center
-      w-full min-h-20
-      pa-3
-      bg="black/50"
-      text-white
       @click.stop
+      class="
+        absolute bottom-0
+        flex justify-center items-center
+        w-full min-h-20
+        pa-3
+        bg-black/50
+        text-white
+      "
     >
       {{ state.title }}
     </div>

@@ -3,16 +3,13 @@ defineProps<{
   src: string,
   alt: string,
 }>();
-
-const onload = 'this.removeAttribute("blur-2")';
 </script>
 
 <template>
   <img
-    blur-2
-    :src
-    :alt
-    :onload
+    :src :alt
+    onload="this.classList.remove('blur-2')"
+    class="blur-2"
   />
 </template>
 

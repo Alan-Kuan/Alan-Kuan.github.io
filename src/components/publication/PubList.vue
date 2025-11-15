@@ -11,16 +11,18 @@ defineProps<{
 
 <template>
   <div
-    ma-8
-    px-8 py-5
-    bg="page-light dark:page-dark"
-    drop-shadow-sm
+    class="
+      ma-8
+      px-8 py-5
+      bg-page-light dark:bg-page-dark
+      drop-shadow-sm
+    "
   >
     <div v-for="sub_pubs, cat in pubs">
-      <h1 text-2xl font-medium>
+      <h1 class="text-2xl font-medium">
         {{ cat }}
       </h1>
-      <ul pt-3 pl-8 list-disc>
+      <ul class="pt-3 pl-8 list-disc">
         <template
           v-if="cat === 'Conference'"
           v-for="pub in sub_pubs"

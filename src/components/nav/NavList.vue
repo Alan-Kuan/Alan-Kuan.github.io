@@ -42,30 +42,36 @@ function onMouseLeaveLink() {
 <template>
   <div
     v-for="link, idx in links"
-    relative
-    flex="~ col" items-center
+    class="
+      relative
+      flex flex-col items-center
+    "
   >
     <a
       ref="link_refs"
       :href="link.route"
       @mouseover="onMouseOverLink(idx)"
       @mouseleave="onMouseLeaveLink"
-      mx-3 px-2 py-0.5
-      bg="hover:nav-highlight"
-      text-xl
-      rounded-sm
+      class="
+        mx-3 px-2 py-0.5
+        hover:bg-nav-highlight
+        text-xl
+        rounded-sm
+      "
     >
       {{ link.text }}
     </a>
     <!-- current route indicator -->
     <div
       v-if="idx === curr_idx"
+      class="
+        absolute bottom--2
+        w-[calc(100%-1.5rem)] h-1
+        bg-nav-indicator-light dark:bg-nav-indicator-dark
+        rounded-sm
+        transition-shape duration-500
+      "
       :style="{ width, transform }"
-      absolute bottom--2
-      class="w-[calc(100%-1.5rem)]" h-1
-      bg="nav-indicator-light dark:nav-indicator-dark"
-      rounded-sm
-      transition-shape duration-500
     />
   </div>
 </template>

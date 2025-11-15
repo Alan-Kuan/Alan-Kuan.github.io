@@ -24,16 +24,18 @@ function onClick() {
   <Transition>
     <button
       v-show="show"
-      pa="3 md:4"
-      bg="profile_card-link-light dark:profile_card-link-dark"
-      text="text-light dark:text-dark"
-      rounded-50%
-      shadow-sm
-      hover:brightness-120
-      active:brightness-140
       @click="onClick"
+      class="
+        pa-3 md:pa-4
+        bg-profile_card-link-light dark:bg-profile_card-link-dark
+        text-text-light dark:text-text-dark
+        rounded-50%
+        shadow-sm
+        hover:brightness-120
+        active:brightness-140
+      "
     >
-      <div i-mdi-arrow-up text-xl />
+      <div class="i-mdi-arrow-up text-xl" />
     </button>
   </Transition>
 </template>

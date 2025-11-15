@@ -13,16 +13,18 @@ const curr_idx = route_prefix === '/' ? -1 : links.findIndex(link => link.route.
 ---
 
 <nav
-  sticky top-0 z-10
-  flex justify-between items-center
-  w-full h-20
-  px-5 py-2.5
-  bg="nav-bar-light dark:nav-bar-dark"
-  text="text-light"
+  class="
+    sticky top-0 z-10
+    flex justify-between items-center
+    w-full h-20
+    px-5 py-2.5
+    bg-nav-bar-light dark:bg-nav-bar-dark
+    text-text-light
+  "
 >
   <div>
-    <a href="/" inline-block>
-      <div dark:saturate-50>
+    <a href="/" class="inline-block">
+      <div class="dark:saturate-50">
         <Image
           src={logo_img}
           alt="logo"
@@ -32,11 +34,11 @@ const curr_idx = route_prefix === '/' ? -1 : links.findIndex(link => link.route.
     </a>
   </div>
 
-  <div lt-md:hidden md:flex md:justify-center>
+  <div class="lt-md:hidden md:flex md:justify-center">
     <NavList {curr_idx} {links} client:load />
   </div>
 
-  <div md:pr-15>
+  <div class="md:pr-15">
     <NavMenu {curr_idx} {links} client:load />
     <DarkLightToggle client:load />
   </div>

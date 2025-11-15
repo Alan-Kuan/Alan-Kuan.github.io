@@ -12,61 +12,64 @@ const addr_b64 = profile.email.addr_b64;
 
 <BaseLayout {title} {desc}>
   <main>
-    <div w="90% md:75% lg:50%" mx-auto my-12>
-      <div flex items-center>
+    <div class="w-90% md:w-75% lg:w-50% mx-auto my-12">
+      <div class="flex items-center">
         <Avatar {avatar_urls} />
 
-        <div min-w-60% ml="4 sm:8">
+        <div class="min-w-60% ml-4 sm:ml-8">
           <!-- Name -->
-          <div text="xl md:2xl" font-medium>
+          <div class="text-xl md:text-2xl font-medium">
             {profile.name}
           </div>
           <!-- Title -->
-          <div mt-2>
+          <div class="mt-2">
             {profile.title} @
-            <a href={profile.org.url} target="_blank" underline>
+            <a href={profile.org.url} target="_blank" class="underline">
               {profile.org.text}
             </a>
           </div>
           <!-- Links -->
           <div
-            lt-sm-w-40 lt-sm-flex lt-sm-justify-between
-            mt-3
-            text="profile_card-link-light dark:link-dark"
+            class="
+              lt-sm-w-40 lt-sm-flex lt-sm-justify-between
+              mt-3
+              text-profile_card-link-light dark:text-link-dark
+            "
           >
             {
               profile.links.map(link =>
                 <a
-                  flex items-center
                   href={link.url}
                   title={link.title}
                   target="_blank"
-                  hover:brightness-120%
+                  class="
+                    flex items-center
+                    hover:brightness-120%
+                  "
                 >
-                  <div class={`i-mdi-${link.icon}`} text-3xl />
-                  <div ml-2 lt-sm:hidden>
+                  <div class:list={[`i-mdi-${link.icon}`, 'text-3xl']} />
+                  <div class="ml-2 lt-sm:hidden">
                     {link.url.split('/').slice(3).join('/')}
                   </div>
                 </a>
               )
             }
             <a
-              flex items-center
               href="/#"
               title={profile.email.title}
               data-email={profile.email.addr_b64}
               onfocus="this.href = 'mailto:' + atob(this.dataset.email) || ''"
-              hover:brightness-120%
+              class="flex items-center hover:brightness-120%"
             >
-              <div i-mdi-email text-3xl />
-              <div ml-2 lt-sm:hidden id="email-addr-field" />
+              <div class="i-mdi-email text-3xl" />
+              <div id="email-addr-field" class="ml-2 lt-sm:hidden" />
             </a>
           </div>
         </div>
       </div>
       <div
-        mt-8
         set:html={intro}
+        class="mt-8"
       />
     </div>
     <Footer />

@@ -11,6 +11,8 @@ defineProps<{
 <template>
   <Image
     v-for="(url, mode) in avatar_urls"
+    :src="url"
+    :alt="`My avatar in ${mode} style`"
     :class="[
       { 'dark:hidden': mode === 'light' },
       { 'hidden! dark:flex!': mode === 'dark' },
@@ -19,7 +21,5 @@ defineProps<{
       'sm:w-50', 'sm:h-50',
       'rounded-xl',
     ]"
-    :src="url"
-    :alt="`My avatar in ${mode} style`"
   />
 </template>

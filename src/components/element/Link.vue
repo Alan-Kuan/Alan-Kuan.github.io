@@ -8,10 +8,11 @@ const target = props.href.startsWith('/') ? '_self' : '_blank';
 
 <template>
   <a
-    text="link-light dark:link-dark"
-    hover:brightness-120
-    :href
-    :target
+    :href :target
+    class="
+      text-link-light dark:text-link-dark
+      hover:brightness-120
+    "
   >
     <slot />
   </a>

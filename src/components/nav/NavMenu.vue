@@ -29,50 +29,60 @@ function onClick() {
   <!-- Title -->
   <div
     v-if="curr_idx > -1"
-    md:hidden
-    absolute top-6.5 left-0 right-0 mx-auto
-    text="center lg"
-    transition-opacity duration-500
+    class="
+      md:hidden
+      absolute top-6.5 left-0 right-0 mx-auto
+      text-center text-lg
+      transition-opacity duration-500
+    "
     :style="{ opacity: 1 - opacity }"
   >
-    <div inline-block>
+    <div class="inline-block">
       {{ links[curr_idx].text }}
       <div
-        mt-1
-        w-full h-1
-        bg="nav-indicator-light dark:nav-indicator-dark"
-        rounded-sm
+        class="
+          mt-1
+          w-full h-1
+          bg-nav-indicator-light dark:bg-nav-indicator-dark
+          rounded-sm
+        "
       />
     </div>
   </div>
   <!-- Button -->
-  <button md:hidden pa-2 text-3xl @click="onClick">
-    <div i-mdi-hamburger-menu />
+  <button @click="onClick" class="md:hidden pa-2 text-3xl">
+    <div class="i-mdi-hamburger-menu" />
   </button>
   <!-- Menu -->
   <div
-    md:hidden
-    fixed z--1 w-full top-20 left-0
-    pb-2
-    bg="nav-bar-light dark:nav-bar-dark"
-    text="center lg"
-    transition-transform duration-1000
+    class="
+      md:hidden
+      fixed z--1 w-full top-20 left-0
+      pb-2
+      bg-nav-bar-light dark:bg-nav-bar-dark
+      text-center text-lg
+      transition-transform duration-1000
+    "
     :style="{ transform }"
   >
     <div
       v-for="link, idx in links"
-      pa-2
-      transition-opacity duration-500
+      class="
+        pa-2
+        transition-opacity duration-500
+      "
       :style="{ opacity }"
     >
-      <a inline-block :href="link.route">
+      <a :href="link.route" class="inline-block">
         {{ link.text }}
         <div
           v-if="idx === curr_idx"
-          mt-1
-          w-full h-1
-          bg="nav-indicator-light dark:nav-indicator-dark"
-          rounded-sm
+          class="
+            mt-1
+            w-full h-1
+            bg-nav-indicator-light dark:bg-nav-indicator-dark
+            rounded-sm
+          "
         />
       </a>
     </div>

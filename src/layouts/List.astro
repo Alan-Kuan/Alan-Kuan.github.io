@@ -36,53 +36,64 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
 ---
 
 <WithProfileLayout {title} {desc}>
-  <main px-8>
+  <main class="px-8">
     {/* Category */}
-    { category && <h1 my-10 text-2xl>{category}</h1> }
+    { category && <h1 class="my-10 text-2xl">{category}</h1> }
 
     {/* Post List */}
-    <div pb-3>
+    <div class="pb-3">
       { posts.map(post => <PostCard {...post} />) }
     </div>
 
     {/* Pagination */}
-    <div flex justify-center items-center>
+    <div class="flex justify-center items-center">
       <a
-        mr-1
-        class={page.url.prev ? '' : 'invisible'}
         href={page.url.prev}
+        class:list={[
+          'mr-1',
+          { 'invisible': !page.url.prev },
+        ]}
       >
-        <div i-mdi-triangle rotate-270></div>
+        <div class="i-mdi-triangle rotate-270"></div>
       </a>
       {
         Array.from({ length: 5 }, (_, k) => k + page.currentPage - 2).map(num =>
           num <= 0 || num > page.lastPage ?
-            <span mx-1 w-9 text-lg></span> :
+            <span class="mx-1 w-9 text-lg"></span> :
           num == page.currentPage ?
             <span
-              mx-1 w-9 h-9
-              rounded-full border="2 pagination-indicator-light dark:pagination-indicator-dark"
-              text="lg center"
+              class="
+                mx-1 w-9 h-9
+                rounded-full border-2 border-pagination-indicator-light dark:border-pagination-indicator-dark
+                text-lg text-center
+              "
             >
               {num}
             </span> :
             <a
-              mx-1 w-9 h-9
-              rounded-full border="2 transparent hover:pagination-indicator-hovered-light dark:hover:pagination-indicator-hovered-dark"
-              transition="colors 2000"
-              text="lg center"
               href={`${prefix}/${num}`}
+              class="
+                mx-1 w-9 h-9
+                rounded-full
+                border-2 border-transparent
+                hover:border-pagination-indicator-hovered-light
+                dark:hover:border-pagination-indicator-hovered-dark
+                transition-colors transition-2000
+                text-lg text-center
+              "
             >
               {num}
             </a>
         )
       }
       <a
-        ml-1
-        class={page.url.next ? '' : 'invisible'}
         href={page.url.next}
+        class:list={[
+          'ml-1',
+          { 'invisible': !page.url.next },
+        ]}
       >
-        <div i-mdi-triangle rotate-90></div>
+        <div class="i-mdi-triangle rotate-90"></div>
       </a>
     </div>
 

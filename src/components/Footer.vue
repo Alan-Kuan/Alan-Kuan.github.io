@@ -4,8 +4,10 @@ const this_year = new Date().getFullYear();
 
 <template>
   <footer
-    flex justify-center items-center
-    h="[var(--footer-height)]"
+    class="
+      flex justify-center items-center
+      h-[var(--footer-height)]
+    "
   >
     © Alan Kuan 2024 – {{this_year}}
   </footer>

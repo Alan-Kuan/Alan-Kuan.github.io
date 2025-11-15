@@ -6,37 +6,41 @@ defineProps<Profile>();
 
 <template>
   <div
-    flex="~ md:col" items-center justify="center md:start"
-    pa-5
-    bg="profile_card-light dark:profile_card-dark"
+    class="
+      flex md:flex-col items-center justify-center md:justify-start
+      pa-5
+      bg-profile_card-light dark:bg-profile_card-dark
+    "
   >
     <!-- Avatar -->
     <slot name="avatar" />
 
-    <div ml="lt-md:1" flex="~ col" justify-center>
+    <div class="lt-md:ml-1 flex flex-col justify-center">
       <!-- Name -->
-      <div md:mt-5 text="xl md:2xl center" font-medium>
+      <div class="md:mt-5 text-xl md:text-2xl text-center font-medium">
         {{ name }}
       </div>
       <!-- Title -->
-      <div mt-2 text-center>
+      <div class="mt-2 text-center">
         {{ title }} @
-        <a :href="org.url" target="_blank" underline>
+        <a :href="org.url" target="_blank" class="underline">
           {{ org.text }}
         </a>
       </div>
       <!-- Links -->
       <div
-        w-50 mt-3
-        flex justify-around
-        text="3xl profile_card-link-light dark:profile_card-link-dark"
+        class="
+          w-50 mt-3
+          flex justify-around
+          text-3xl text-profile_card-link-light dark:text-profile_card-link-dark
+        "
       >
         <a
           v-for="link in links"
           :href="link.url"
           :title="link.title"
           target="_blank"
-          hover:brightness-120%
+          class="hover:brightness-120%"
         >
           <div :class="`i-mdi-${link.icon}`" />
         </a>
@@ -45,19 +49,21 @@ defineProps<Profile>();
           :title="email.title"
           :data-email="email.addr_b64"
           onfocus="this.href = 'mailto:' + atob(this.dataset.email) || ''"
-          hover:brightness-120%
+          class="hover:brightness-120%"
         >
-          <div i-mdi-email></div>
+          <div class="i-mdi-email"></div>
         </a>
       </div>
     </div>
 
     <!-- Intro -->
     <div
-      lt-md:hidden
-      mt-5
-      indent-8
-      overflow-y-auto
+      class="
+        lt-md:hidden
+        mt-5
+        indent-8
+        overflow-y-auto
+      "
     >
       <slot name="intro" />
     </div>
