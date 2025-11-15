@@ -3,7 +3,7 @@ title: '在雙系統同步已配對的藍牙裝置'
 desc: '在雙系統中共用藍牙裝置時，需手動將 Windows 中的藍牙配對金鑰複製到 Linux，才能避免每次切換系統時都需重新配對。'
 date: '2025.07.06'
 tags: ['trouble shooting', 'bluetooth', 'linux', 'windows']
-banner_url: 'https://i.postimg.cc/28zPk4gS/dual-boot-bluetooth-sync.jpg'
+banner_url: 'https://res.cloudinary.com/dccr9uiry/image/upload/dual-boot-bluetooth-sync_ldshni.webp'
 banner_pos: '0 10%'
 ---
 # 前言
@@ -26,14 +26,14 @@ banner_pos: '0 10%'
 2. 改在 Windows 配對藍牙裝置
 3. 在 Windows 找到共用金鑰
     1. 開啟「登錄編輯程式」
-        ![](https://i.postimg.cc/SNyY67Z9/registry.jpg)
+        ![](https://res.cloudinary.com/dccr9uiry/image/upload/registry_tecnz8.webp)
     2. 找到 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters\Keys` ，並先給予自己權限
-        ![](https://i.postimg.cc/sgxB8fCD/registry-permission-1.jpg)
-        ![](https://i.postimg.cc/5NnYnYGR/registry-permission-2.jpg)
-        ![](https://i.postimg.cc/tRdVnmzy/registry-permission-3.jpg)
+        ![](https://res.cloudinary.com/dccr9uiry/image/upload/registry-permission-1_gkzll1.webp)
+        ![](https://res.cloudinary.com/dccr9uiry/image/upload/registry-permission-2_o7vppj.webp)
+        ![](https://res.cloudinary.com/dccr9uiry/image/upload/registry-permission-3_hzvpfp.webp)
     3. 重新開啟登錄編輯程式後，就能夠看到各個已配對裝置的連線金鑰。
         記下欲同步的裝置的金鑰，可以先截圖存起來
-        ![](https://i.postimg.cc/QCD0D4pm/registry-key-value.jpg)
+        ![](https://res.cloudinary.com/dccr9uiry/image/upload/registry-key-value_axsalz.webp)
 4. 回到 Linux 將共用金鑰的值換成 Windows 上找到的
     1. 使用 root 來操作比較方便，因為 `/var/lib/bluetooth/` 預設不讓 root 以外的使用者 read
         ```sh

@@ -1,6 +1,6 @@
 export const avatar_urls = {
-  light: 'https://i.postimg.cc/76ZBY2Fh/image.jpg',
-  dark: 'https://i.postimg.cc/rmZfdpTJ/image.jpg',
+  light: 'https://res.cloudinary.com/dccr9uiry/image/upload/day_cdocmg.webp',
+  dark: 'https://res.cloudinary.com/dccr9uiry/image/upload/night_sbvd9c.webp',
 };
 
 export const profile = {
