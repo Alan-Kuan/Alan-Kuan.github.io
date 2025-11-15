@@ -1,6 +1,6 @@
 import {
   defineConfig,
-  presetWind3,
+  presetWind4,
   presetAttributify,
   presetIcons,
   presetWebFonts,
@@ -289,7 +289,10 @@ function getCSS({ theme }: any) {
 
 export default defineConfig({
   presets: [
-    presetWind3({ attributifyPseudo: true }),
+    presetWind4({
+      attributifyPseudo: true,
+      reset: true,
+    }),
     presetAttributify(),
     presetIcons(),
     presetWebFonts({

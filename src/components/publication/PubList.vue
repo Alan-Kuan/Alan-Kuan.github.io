@@ -14,7 +14,7 @@ defineProps<{
     ma-8
     px-8 py-5
     bg="page-light dark:page-dark"
-    drop-shadow
+    drop-shadow-sm
   >
     <div v-for="sub_pubs, cat in pubs">
       <h1 text-2xl font-medium>

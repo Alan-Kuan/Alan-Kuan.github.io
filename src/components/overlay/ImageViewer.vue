@@ -51,8 +51,8 @@ onUnmounted(() => {
     v-show="state.show"
     fixed top-0 left-0 w-full h-full z-15
     flex justify-center items-center
-    bg="black opacity-30"
-    backdrop-blur
+    bg="black/30"
+    backdrop-blur-sm
     @click="handleClose()"
   >
     <!-- image -->
@@ -69,7 +69,7 @@ onUnmounted(() => {
       flex justify-center items-center
       w-full min-h-20
       pa-3
-      bg="black opacity-50"
+      bg="black/50"
       text-white
       @click.stop
     >

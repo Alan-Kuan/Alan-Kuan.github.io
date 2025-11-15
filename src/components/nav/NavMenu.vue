@@ -41,7 +41,7 @@ function onClick() {
         mt-1
         w-full h-1
         bg="nav-indicator-light dark:nav-indicator-dark"
-        rounded
+        rounded-sm
       />
     </div>
   </div>
@@ -72,7 +72,7 @@ function onClick() {
           mt-1
           w-full h-1
           bg="nav-indicator-light dark:nav-indicator-dark"
-          rounded
+          rounded-sm
         />
       </a>
     </div>

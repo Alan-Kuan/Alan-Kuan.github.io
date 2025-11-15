@@ -53,7 +53,7 @@ function onMouseLeaveLink() {
       mx-3 px-2 py-0.5
       bg="hover:nav-highlight"
       text-xl
-      rounded
+      rounded-sm
     >
       {{ link.text }}
     </a>
@@ -64,7 +64,7 @@ function onMouseLeaveLink() {
       absolute bottom--2
       class="w-[calc(100%-1.5rem)]" h-1
       bg="nav-indicator-light dark:nav-indicator-dark"
-      rounded
+      rounded-sm
       transition-shape duration-500
     />
   </div>

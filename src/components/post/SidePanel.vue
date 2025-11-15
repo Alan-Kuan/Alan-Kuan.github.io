@@ -21,7 +21,7 @@ const show = ref(false);
     bg="profile_card-link-light dark:profile_card-link-dark"
     text="text-light dark:text-dark"
     rounded="50%"
-    shadow
+    shadow-sm
     active:brightness-140
   >
     <div i-mdi-format-list-bulleted />

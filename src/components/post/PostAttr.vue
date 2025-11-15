@@ -16,7 +16,7 @@ defineProps<{
         v-for="tag in tags"
         :href="`/tags/${tag}/1`"
         pa-1 mt-2 mr-2
-        rounded
+        rounded-sm
         border="~ link-light dark:text-light"
         bg="hover:link-light dark:hover:text-light"
         un-text="link-light dark:text-light hover:white dark:hover:text-dark sm"

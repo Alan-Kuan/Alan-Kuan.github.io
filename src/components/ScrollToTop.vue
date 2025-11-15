@@ -28,7 +28,7 @@ function onClick() {
       bg="profile_card-link-light dark:profile_card-link-dark"
       text="text-light dark:text-dark"
       rounded-50%
-      shadow
+      shadow-sm
       hover:brightness-120
       active:brightness-140
       @click="onClick"

@@ -32,7 +32,7 @@ const curr_idx = route_prefix === '/' ? -1 : links.findIndex(link => link.route.
     </a>
   </div>
 
-  <div hidden md:flex md:justify-center>
+  <div lt-md:hidden md:flex md:justify-center>
     <NavList {curr_idx} {links} client:load />
   </div>
 
