@@ -4,42 +4,62 @@ import BaseLayout from '@/layouts/Base.astro';
 import Image from '@/components/Image.vue';
 import ProfileCard from '@/components/ProfileCard.vue';
 
-import { avatar_urls, profile, intro } from '@/content/profile.ts';
+import { profile, intro } from '@/content/profile.ts';
 
 interface Props {
   title: string;
   desc: string;
 }
 
-const {
-  title,
-  desc,
-} = Astro.props;
+const { title, desc } = Astro.props;
 ---
 
 <BaseLayout {title} {desc}>
-  <div class="flex flex-col md:flex-row">
+  <div
+    class="
+      lg:fixed
+      flex flex-col lg:flex-row
+      lg:h-[calc(100vh-5rem)]
+    "
+  >
     {/* Left Column */}
-    <div class="w-full md:w-30% lg:w-25%">
-      {/* add `top-20` and `bottom-0` to make `overflow-y-scroll` effective */}
-      <ProfileCard
-        {...profile}
-        class="md:fixed md:top-20 md:bottom-0 md:w-30% lg:w-25%"
-      >
-        <div slot="avatar">
-          <Avatar {avatar_urls} />
-        </div>
-        <div slot="intro" set:html={intro} />
-      </ProfileCard>
-    </div>
-    {/* Right Column */}
+    {/*
+      The `flex-shrink-0` is used to prevent left column from shrinking
+      as viewport width shrinks.
+      Besides, it applies to a flex container's child, so it is not
+      associated with the `flex` class in the same element
+      but its parent's `flex` class.
+    */}
     <div
       class="
-        w-full md:w-70% lg:w-75%
-        md:h-[calc(100vh-5rem)]
-        overflow-y-auto
+        flex flex-col flex-shrink-0
+        w-full lg:w-[min(max(22rem,30%),25rem)]
+        pa-4
+        bg-profile_card-light dark:bg-profile_card-dark
       "
     >
+      {/* Profile Card */}
+      <ProfileCard {...profile} client:idle />
+
+      {/* Self-Intro */}
+      {/*
+        Use `flex-1` to take the remaining space in the flex container.
+        If we don't do this, this div's height is determined by its content,
+        causing the content not scrollable.
+      */}
+      <div
+        set:html={intro}
+        class="
+          lt-lg:hidden
+          flex-1
+          mt-4 mx-4
+          overflow-y-auto
+        "
+      />
+    </div>
+
+    {/* Right Column */}
+    <div class="h-full flex-1 overflow-y-auto">
       <slot />
     </div>
   </div>

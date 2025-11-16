@@ -1,20 +1,28 @@
 <script setup lang="ts">
-defineProps<{
+import { onMounted, ref } from 'vue';
+
+const props = defineProps<{
   src: string,
   alt: string,
 }>();
+
+// Set `img_src` on mounted in case that the class list is
+// modified before Vue is mounted, which causes hydration
+// class mismatch error.
+const img_src = ref(null);
+onMounted(() => img_src.value = props.src);
 </script>
 
 <template>
   <img
-    :src :alt
+    :src="img_src" :alt
+    loading="lazy"
     onload="this.classList.remove('blur-2')"
-    class="blur-2"
+    onerror="this.classList.remove('text-transparent', 'blur-2')"
+    class="
+      blur-2
+      text-transparent
+      transition-filter duration-500
+    "
   />
 </template>
-
-<style scoped>
-img {
-  transition: filter 0.5s;
-}
-</style>

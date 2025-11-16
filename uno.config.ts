@@ -6,12 +6,6 @@ import {
 } from 'unocss';
 
 const safe_list = [
-  // for profile card
-  'i-mdi-linkedin',
-  'i-mdi-github',
-  'i-mdi-mastodon',
-  'i-mdi-youtube',
-
   // for avatar image
   'rounded-xl',
 

@@ -1,0 +1,32 @@
+---
+import Image from '@/components/Image.vue';
+
+interface Props {
+  src: string;
+  alt: string;
+  title?: string;
+}
+
+const { src, alt, title } = Astro.props;
+---
+
+<div
+  class="
+    relative
+    md:w-90% lg:w-75%
+    margin-content
+  "
+>
+  {/* NOTE: post-img is utilized by ImageViewer */}
+  <Image
+    {src} {alt}
+    class="rounded-md cursor-pointer post-img"
+    client:idle
+  />
+  {
+    title &&
+    <figcaption class="mt-2 px-2 lt-md:text-sm">
+      {title}
+    </figcaption>
+  }
+</div>

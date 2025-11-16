@@ -1,9 +1,9 @@
-export const avatar_urls = {
-  light: 'https://res.cloudinary.com/dccr9uiry/image/upload/day_cdocmg.webp',
-  dark: 'https://res.cloudinary.com/dccr9uiry/image/upload/night_sbvd9c.webp',
-};
-
+// @unocss-include
 export const profile = {
+  avatar_urls: {
+    light: 'https://res.cloudinary.com/dccr9uiry/image/upload/day_cdocmg.webp',
+    dark: 'https://res.cloudinary.com/dccr9uiry/image/upload/night_sbvd9c.webp',
+  },
   name: '官澔恩 / Alan Kuan',
   title: 'System Software Engineer',
   org: {
@@ -13,22 +13,22 @@ export const profile = {
   links: [
     {
       title: 'See my Linkedin profile',
-      icon: 'linkedin',
+      icon: 'i-mdi-linkedin',
       url: 'https://www.linkedin.com/in/alankuan945',
     },
     {
       title: 'See my GitHub profile',
-      icon: 'github',
+      icon: 'i-mdi-github',
       url: 'https://github.com/Alan-Kuan',
     },
     {
       title: 'See my Mastodon profile',
-      icon: 'mastodon',
+      icon: 'i-mdi-mastodon',
       url: 'https://mastodon.social/@alankuan',
     },
     {
       title: 'Watch my YouTube channel',
-      icon: 'youtube',
+      icon: 'i-mdi-youtube',
       url: 'https://www.youtube.com/@alankuan',
     },
   ],

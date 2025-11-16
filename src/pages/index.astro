@@ -1,81 +1,20 @@
 ---
-import Avatar from '@/components/Avatar.vue';
 import BaseLayout from '@/layouts/Base.astro';
 import Footer from '@/components/Footer.vue';
+import ProfileCard from '@/components/ProfileCard.vue';
 
-import { avatar_urls, profile, intro } from '@/content/profile.ts';
+import { profile, intro } from '@/content/profile.ts';
 
 const title = 'Alan Kuan | 官澔恩';
 const desc = 'My personal website';
-const addr_b64 = profile.email.addr_b64;
 ---
 
 <BaseLayout {title} {desc}>
   <main>
     <div class="w-90% md:w-75% lg:w-50% mx-auto my-12">
-      <div class="flex items-center">
-        <Avatar {avatar_urls} />
-
-        <div class="min-w-60% ml-4 sm:ml-8">
-          <!-- Name -->
-          <div class="text-xl md:text-2xl font-medium">
-            {profile.name}
-          </div>
-          <!-- Title -->
-          <div class="mt-2">
-            {profile.title} @
-            <a href={profile.org.url} target="_blank" class="underline">
-              {profile.org.text}
-            </a>
-          </div>
-          <!-- Links -->
-          <div
-            class="
-              lt-sm-w-40 lt-sm-flex lt-sm-justify-between
-              mt-3
-              text-profile_card-link-light dark:text-link-dark
-            "
-          >
-            {
-              profile.links.map(link =>
-                <a
-                  href={link.url}
-                  title={link.title}
-                  target="_blank"
-                  class="
-                    flex items-center
-                    hover:brightness-120%
-                  "
-                >
-                  <div class:list={[`i-mdi-${link.icon}`, 'text-3xl']} />
-                  <div class="ml-2 lt-sm:hidden">
-                    {link.url.split('/').slice(3).join('/')}
-                  </div>
-                </a>
-              )
-            }
-            <a
-              href="/#"
-              title={profile.email.title}
-              data-email={profile.email.addr_b64}
-              onfocus="this.href = 'mailto:' + atob(this.dataset.email) || ''"
-              class="flex items-center hover:brightness-120%"
-            >
-              <div class="i-mdi-email text-3xl" />
-              <div id="email-addr-field" class="ml-2 lt-sm:hidden" />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div
-        set:html={intro}
-        class="mt-8"
-      />
+      <ProfileCard {...profile} client:idle />
+      <div set:html={intro} class="mt-8" />
     </div>
     <Footer />
   </main>
 </BaseLayout>
-
-<script define:vars={{ addr_b64 }}>
-document.getElementById('email-addr-field').textContent = atob(addr_b64);
-</script>
