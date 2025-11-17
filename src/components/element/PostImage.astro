@@ -19,7 +19,7 @@ const { src, alt, title } = Astro.props;
 >
   {/* NOTE: post-img is utilized by ImageViewer */}
   <Image
-    {src} {alt}
+    {src} {alt} {title}
     class="rounded-md cursor-pointer post-img"
     client:idle
   />
