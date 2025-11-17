@@ -41,44 +41,44 @@ const {
   title={`${title} | Alan Kuan`}
   {desc}
 >
-  {
-    /* Banner */
-    banner_url &&
-    <Banner
-      url={banner_url}
-      pos={banner_pos}
-      class="mt-4"
-      client:idle
-    />
-  }
-
-  <div class="flex lt-md:justify-center">
-    {/* set it 0 to make sure it doesn't take space on narrow screens */}
-    <div class="w-0 md:w-25%">
-      <SidePanel {headings} client:load />
-    </div>
-    <main
-      class="
-        w-90% md:w-70% 2xl:w-50%
-        mt-8
-        md:px-12
-      "
-    >
-      {/* Title & Attributes */}
-      <div class="pb-4 border-b border-text-dark dark:border-text-light">
-        <h1 class="text-3xl font-medium">{title}</h1>
-        <div class="mt-2">
-          <PostAttr {date} {tags} />
+  <main>
+    {
+      /* Banner */
+      banner_url &&
+      <Banner
+        url={banner_url}
+        pos={banner_pos}
+        class="mt-4"
+        client:idle
+      />
+    }
+    <div class="flex lt-md:justify-center">
+      {/* set it 0 to make sure it doesn't take space on narrow screens */}
+      <div class="w-0 md:w-25%">
+        <SidePanel {headings} client:load />
+      </div>
+      <div
+        class="
+          w-90% md:w-70% 2xl:w-50%
+          mt-8
+          md:px-12
+        "
+      >
+        {/* Title & Attributes */}
+        <div class="pb-4 border-b border-text-dark dark:border-text-light">
+          <h1 class="text-3xl font-medium">{title}</h1>
+          <div class="mt-2">
+            <PostAttr {date} {tags} />
+          </div>
+        </div>
+        {/* Content */}
+        <div class="mt-5 pb-4 border-b border-text-dark dark:border-text-light md:text-lg">
+          <slot />
         </div>
       </div>
-      {/* Content */}
-      <div class="mt-5 pb-4 border-b border-text-dark dark:border-text-light md:text-lg">
-        <slot />
-      </div>
-
-      <Footer />
-    </main>
-  </div>
+    </div>
+  </main>
+  <Footer />
 
   <ScrollToTop
     class="fixed bottom-3 right-3 md:bottom-8 md:right-4"
