@@ -65,13 +65,14 @@ const post_link = `/${collection}/${id}`;
         class="
           font-medium
           text-xl
+          transition-150
           hover:text-article_card-link-light
           dark:hover:text-article_card-link-dark
         "
       >
         <a href={post_link}>{title}</a>
       </div>
-      <PostAttr class="mt-1" {date} {tags} />
+      <PostAttr {date} {tags} class="mt-2" />
       {
         excerpt &&
         <div class="h-18 mt-2 overflow-hidden">

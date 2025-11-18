@@ -12,12 +12,9 @@ defineProps<{
     :src="url"
     alt="Banner"
     class="
-      w-95% xl:w-300
-      lg:h-100
-      mx-auto
       rounded-3
       object-cover
     "
-    :style="`object-position: ${pos ?? 'center'}`"
+    :style="{ 'object-position': pos ?? 'center' }"
   />
 </template>
