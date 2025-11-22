@@ -8,13 +8,6 @@ import {
 const safe_list = [
   // for avatar image
   'rounded-xl',
-
-  // for post outline
-  '[pl~="2"]',
-  '[pl~="4"]',
-  '[pl~="6"]',
-  '[pl~="8"]',
-  '[pl~="10"]',
 ];
 const colors = {
   nav: {

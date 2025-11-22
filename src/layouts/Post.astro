@@ -4,14 +4,13 @@ import Banner from '@/components/Banner.vue';
 import Footer from '@/components/Footer.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
 import SidePanel from '@/components/post/SidePanel.vue';
-import Outline from '@/components/post/Outline.vue';
 import ScrollToTop from '@/components/ScrollToTop.vue';
 import ImageViewer from '@/components/overlay/ImageViewer.vue';
 
 import type { MarkdownHeading } from 'astro';
 import type { PostFrontmatter } from '@/types/content';
 
-type Props = PostFrontmatter | { headings: MarkdownHeading[] };
+type Props = PostFrontmatter & { headings: MarkdownHeading[] };
 
 const {
   title,
@@ -22,20 +21,9 @@ const {
   banner_pos,
   headings,
 } = Astro.props;
----
 
-{/*
-  Layouts:
-    1. <=md
-      - main width: 90% (center)
-      - side bar: hovering
-    2. >=lg
-      - main width: 70% (right)
-      - side bar: expanded
-    3. >=xl
-      - main width: 50% (center)
-      - side bar: expanded
-*/}
+const show_side_panel = headings.length > 0;
+---
 
 <BaseLayout
   title={`${title} | Alan Kuan`}
@@ -44,36 +32,58 @@ const {
   <main>
     {
       /* Banner */
-      banner_url &&
-      <Banner
-        url={banner_url}
-        pos={banner_pos}
-        class="w-95% xl:w-300 lg:h-100 mt-4 mx-auto"
-        client:idle
-      />
-    }
-    {
-      /* set it 0 to make sure it doesn't take space on narrow screens */
-      headings.length > 0 &&
-      <div class="w-0 md:w-25%">
-        <SidePanel {headings} client:load />
-      </div>
+      banner_url && (
+        <Banner
+          url={banner_url}
+          pos={banner_pos}
+          class="w-95% xl:w-300 lg:h-100 mt-4 mx-auto"
+          client:idle
+        />
+      )
     }
     <div
-      class="
-        w-90% md:w-80% xl:w-250
-        mx-auto
-      "
+      class:list={{
+        'w-90% md:w-75% xl:w-65% 2xl:w-998.4px mx-auto': !show_side_panel,
+
+        'md:grid': show_side_panel,
+        'md:grid-cols-[minmax(240px,25%)_minmax(0,75%)]': show_side_panel,
+        'xl:grid-cols-[25%_65%]': show_side_panel,
+        '2xl:grid-cols-[384px_998.4px]': show_side_panel,
+        'md:justify-center': show_side_panel
+      }}
     >
       {/* Title & Attributes */}
-      <div class="my-8">
+      <div
+        class:list={[
+          'my-8',
+          {
+            'lt-md:w-90% lt-md:mx-auto': show_side_panel,
+            'md:row-start-1 md:col-start-2': show_side_panel
+          }
+        ]}
+      >
         <h1 class="text-3xl font-medium">{title}</h1>
         <div class="mt-4">
           <PostAttr {date} {tags} />
         </div>
       </div>
+      {/* Side Panel */}
+      {
+        show_side_panel &&
+        <div class="md:px-4 md:row-start-2 md:col-start-1">
+          <SidePanel {headings} client:idle />
+        </div>
+      }
       {/* Content */}
-      <div class="md:pa-8 md:text-lg">
+      <div
+        class:list={[
+          'md:px-8',
+          {
+            'lt-md:w-90% lt-md:mx-auto': show_side_panel,
+            'md:row-start-2 md:col-start-2': show_side_panel,
+          }
+        ]}
+      >
         <slot />
       </div>
     </div>
