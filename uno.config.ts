@@ -130,13 +130,13 @@ function getCSS({ theme }: any) {
         line-height: 1.5rem;
       }
       h1, h2, h3, h4, h5, h6 {
-        margin: 1rem 0;
+        margin-bottom: 1rem;
         scroll-margin-top: 6rem;
         word-break: break-all;
       }
 
       ol {
-        margin: 1rem 0;
+        margin-bottom: 1rem;
         padding-left: 1rem;
         list-style-type: number;
       }
@@ -148,7 +148,7 @@ function getCSS({ theme }: any) {
         list-style-type: lower-roman;
       }
       ul {
-        margin: 1rem 0;
+        margin-bottom: 1rem;
         padding-left: 1rem;
         list-style-type: disc;
       }
@@ -164,7 +164,7 @@ function getCSS({ theme }: any) {
       }
 
       dl {
-        margin: 1rem 0;
+        margin-bottom: 1rem;
         dt {
           margin-top: 0.5rem;
           font-weight: bold;
@@ -221,7 +221,7 @@ function getCSS({ theme }: any) {
         background: ${theme.colors.code.dark};
       }
       pre {
-        margin: 1rem 0;
+        margin-bottom: 1rem;
         padding: 1rem;
         border-radius: 0.375rem;
         line-height: 1.2;
@@ -240,6 +240,7 @@ function getCSS({ theme }: any) {
       }
 
       [data-callout] {
+        margin-bottom: 1rem;
         padding: 1rem;
         border-radius: 0.25rem;
         background: ${theme.colors.callout.hint.light};
