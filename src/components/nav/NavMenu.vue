@@ -37,7 +37,7 @@ function onClick() {
     "
     :style="{ opacity: 1 - opacity }"
   >
-    <div class="inline-block">
+    <a :href="links[curr_idx].route" class="inline-block">
       {{ links[curr_idx].text }}
       <div
         class="
@@ -47,7 +47,7 @@ function onClick() {
           rounded-sm
         "
       />
-    </div>
+    </a>
   </div>
   <!-- Button -->
   <button @click="onClick" class="md:hidden pa-2 text-3xl">
