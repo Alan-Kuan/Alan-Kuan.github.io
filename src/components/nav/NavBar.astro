@@ -22,17 +22,13 @@ const curr_idx = route_prefix === '/' ? -1 : links.findIndex(link => link.route.
     text-text-light
   "
 >
-  <div>
-    <a href="/" class="inline-block">
-      <div class="dark:saturate-50">
-        <Image
-          src={logo_img}
-          alt="logo"
-          class="logo w-15"
-        />
-      </div>
-    </a>
-  </div>
+  <a href="/" class="inline-block dark:saturate-50">
+    <Image
+      src={logo_img}
+      alt="logo"
+      class="logo w-10 md:w-15"
+    />
+  </a>
 
   <div class="lt-md:hidden md:flex md:justify-center">
     <NavList {curr_idx} {links} client:load />
