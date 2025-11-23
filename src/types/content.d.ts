@@ -1,3 +1,8 @@
+export type NavLink = {
+  text: string,
+  route: string,
+};
+
 export interface Post extends PostFrontmatter {
   collection: string;
   id: string;

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import type { Link } from '@/types/profile';
+import type { NavLink } from '@/types/content';
 
-const props = defineProps<{
+defineProps<{
   curr_idx: number,
-  links: Link[],
+  links: NavLink[],
 }>();
 
 const show_menu = ref(false);
