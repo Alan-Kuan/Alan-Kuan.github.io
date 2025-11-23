@@ -8,11 +8,11 @@ const props = defineProps<{
   links: NavLink[],
 }>();
 
-const link_refs = ref([]);
-var link_widths = [];
+const link_refs = ref<HTMLAnchorElement[]>([]);
+var link_widths: number[] = [];
 
-const width = ref(null);
-const transform = ref(null);
+const width = ref('');
+const transform = ref('');
 
 onMounted(() => {
   link_refs.value.forEach((link_ele, i) => {
@@ -34,8 +34,8 @@ function onMouseOverLink(target_idx: number) {
 }
 
 function onMouseLeaveLink() {
-  width.value = null;
-  transform.value = null;
+  width.value = '';
+  transform.value = '';
 }
 </script>
 

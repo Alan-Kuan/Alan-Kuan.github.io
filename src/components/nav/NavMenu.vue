@@ -17,7 +17,7 @@ function onClick() {
 
   if (show_menu.value) {
     opacity.value = 1;
-    transform.value = null;
+    transform.value = '';
   } else {
     opacity.value = 0;
     transform.value = 'translateY(-140px)';
