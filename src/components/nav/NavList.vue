@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useStore } from '@nanostores/vue';
 
 import type { NavLink } from '@/types/content';
+import { show_nav_menu } from '@/stores/NavMenuStore';
 
 const props = defineProps<{
   curr_idx: number,
@@ -10,6 +12,7 @@ const props = defineProps<{
 
 const link_refs = ref<HTMLAnchorElement[]>([]);
 var link_widths: number[] = [];
+const $show_nav_menu = useStore(show_nav_menu);
 
 const width = ref('');
 const transform = ref('');
@@ -41,37 +44,46 @@ function onMouseLeaveLink() {
 
 <template>
   <div
-    v-for="link, idx in links"
-    class="
-      relative
-      flex flex-col items-center
-    "
+    :class="[
+      'flex', 'justify-center',
+      'transition-opacity', 'duration-500',
+      { 'lt-md:opacity-0': $show_nav_menu }
+    ]"
   >
-    <a
-      ref="link_refs"
-      :href="link.route"
-      @mouseover="onMouseOverLink(idx)"
-      @mouseleave="onMouseLeaveLink"
+    <div
+      v-for="link, idx in links"
       class="
-        mx-3 px-2 py-0.5
-        hover:bg-nav-highlight
-        text-xl
-        rounded-sm
+        relative
+        flex flex-col items-center
       "
     >
-      {{ link.text }}
-    </a>
-    <!-- current route indicator -->
-    <div
-      v-if="idx === curr_idx"
-      class="
-        absolute bottom--2
-        w-[calc(100%-1.5rem)] h-1
-        bg-nav-indicator-light dark:bg-nav-indicator-dark
-        rounded-sm
-        transition-shape duration-500
-      "
-      :style="{ width, transform }"
-    />
+      <a
+        ref="link_refs"
+        :href="link.route"
+        @mouseover="onMouseOverLink(idx)"
+        @mouseleave="onMouseLeaveLink"
+        :class="[
+          'mx-3', 'px-2', 'py-0.5',
+          'hover:bg-nav-highlight',
+          'text-xl',
+          'rounded-sm',
+          { 'lt-md:hidden': idx !== curr_idx }
+        ]"
+      >
+        {{ link.text }}
+      </a>
+      <!-- current route indicator -->
+      <div
+        v-if="idx === curr_idx"
+        class="
+          absolute bottom--2
+          w-[calc(100%-1.5rem)] h-1
+          bg-nav-indicator-light dark:bg-nav-indicator-dark
+          rounded-sm
+          transition-shape duration-500
+        "
+        :style="{ width, transform }"
+      />
+    </div>
   </div>
 </template>

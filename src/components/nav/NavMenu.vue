@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useStore } from '@nanostores/vue';
 
+import { show_nav_menu } from '@/stores/NavMenuStore';
 import type { NavLink } from '@/types/content';
 
 defineProps<{
@@ -8,47 +10,21 @@ defineProps<{
   links: NavLink[],
 }>();
 
-const show_menu = ref(false);
+const $show_menu = useStore(show_nav_menu);
 const transform = ref('translateY(-140px)');
-const opacity = ref(0);
 
 function onClick() {
-  show_menu.value = !show_menu.value;
+  show_nav_menu.set(!show_nav_menu.get());
 
-  if (show_menu.value) {
-    opacity.value = 1;
+  if (show_nav_menu.get()) {
     transform.value = '';
   } else {
-    opacity.value = 0;
     transform.value = 'translateY(-140px)';
   }
 }
 </script>
 
 <template>
-  <!-- Title -->
-  <div
-    v-if="curr_idx > -1"
-    class="
-      md:hidden
-      absolute top-6.5 left-0 right-0 mx-auto
-      text-center text-lg
-      transition-opacity duration-500
-    "
-    :style="{ opacity: 1 - opacity }"
-  >
-    <a :href="links[curr_idx].route" class="inline-block">
-      {{ links[curr_idx].text }}
-      <div
-        class="
-          mt-1
-          w-full h-1
-          bg-nav-indicator-light dark:bg-nav-indicator-dark
-          rounded-sm
-        "
-      />
-    </a>
-  </div>
   <!-- Button -->
   <button @click="onClick" class="md:hidden pa-2 text-3xl">
     <div class="i-mdi-hamburger-menu" />
@@ -67,11 +43,11 @@ function onClick() {
   >
     <div
       v-for="link, idx in links"
-      class="
-        pa-2
-        transition-opacity duration-500
-      "
-      :style="{ opacity }"
+      :class="[
+        'pa-2',
+        'transition-opacity', 'duration-500',
+        { 'opacity-0': !$show_menu },
+      ]"
     >
       <a :href="link.route" class="inline-block">
         {{ link.text }}
