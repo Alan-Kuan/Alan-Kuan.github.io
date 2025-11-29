@@ -271,7 +271,11 @@ function getCSS({ theme }: any) {
 
 export default defineConfig({
   presets: [
-    presetWind4({ reset: true }),
+    presetWind4({
+      preflights: {
+        reset: true,
+      },
+    }),
     presetIcons(),
     presetWebFonts({
       provider: 'bunny',
