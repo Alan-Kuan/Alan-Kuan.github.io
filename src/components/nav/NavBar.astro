@@ -31,9 +31,9 @@ const curr_idx =
 
   <NavList {curr_idx} {links} client:load />
 
-  <div class="justify-self-end md:pr-15">
+  <div class="justify-self-end lt-md:flex md:pr-15">
     <NavMenu {curr_idx} {links} client:load />
-    <DarkLightToggle client:load />
+    <DarkLightToggle client:idle />
   </div>
 </nav>
 

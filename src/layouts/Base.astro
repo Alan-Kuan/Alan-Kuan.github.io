@@ -13,6 +13,7 @@ const { title, desc } = Astro.props;
 <!doctype html>
 <html lang="zh-Hant-TW">
 	<head>
+		<title>{title}</title>
 		<meta charset="UTF-8" />
 		<meta name="description" content={desc} />
 		<meta name="viewport" content="width=device-width" />
@@ -22,13 +23,17 @@ const { title, desc } = Astro.props;
     <link rel="me" href="https://mastodon.social/@alankuan" />
     <meta name="fediverse:creator" content="@alankuan@mastodon.social">
 
-		<title>{title}</title>
     <script is:inline>
-      document.documentElement.classList.toggle(
-        'dark',
-        (!('light_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
-          !localStorage.light_mode,
-      );
+      function applyTheme() {
+        document.documentElement.classList.toggle(
+          'dark',
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
+            localStorage.getItem('theme') === 'dark',
+        );
+      }
+
+      document.addEventListener('astro:after-swap', applyTheme);
+      applyTheme();
     </script>
     <ClientRouter />
 	</head>

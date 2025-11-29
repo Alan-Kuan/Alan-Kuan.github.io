@@ -3,6 +3,7 @@ import {
   presetWind4,
   presetIcons,
   presetWebFonts,
+  transformerDirectives,
 } from 'unocss';
 
 const colors = {
@@ -302,5 +303,8 @@ export default defineConfig({
     'columns': 'grid grid-cols-16',
     'img-gap': 'gap-x-4 gap-y-2',
   },
+  transformers: [
+    transformerDirectives(),
+  ],
   theme: { colors },
 });
