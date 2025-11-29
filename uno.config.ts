@@ -5,10 +5,6 @@ import {
   presetWebFonts,
 } from 'unocss';
 
-const safe_list = [
-  // for avatar image
-  'rounded-xl',
-];
 const colors = {
   nav: {
     bar: {
@@ -302,6 +298,5 @@ export default defineConfig({
     'columns': 'grid grid-cols-16',
     'img-gap': 'gap-x-4 gap-y-2',
   },
-  safelist: safe_list,
   theme: { colors },
 });
