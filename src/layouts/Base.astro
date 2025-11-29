@@ -37,11 +37,11 @@ const { title, desc } = Astro.props;
     </script>
     <ClientRouter />
 	</head>
-	<body
-    class="
-      bg-body-light dark:bg-body-dark
-      text-text-dark dark:text-text-light
-    "
+  <body
+    class={`
+      bg-body-light text-text-dark
+      dark:bg-body-dark dark:text-text-light
+    `}
   >
     <NavBar />
     <slot />
