@@ -24,11 +24,11 @@ const { title, desc } = Astro.props;
 
 		<title>{title}</title>
     <script is:inline>
-      const light_mode = localStorage.getItem('light_mode');
-
-      if (light_mode === 'false') {
-        document.documentElement.classList.add('dark');
-      }
+      document.documentElement.classList.toggle(
+        'dark',
+        (!('light_mode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
+          !localStorage.light_mode,
+      );
     </script>
     <ClientRouter />
 	</head>
