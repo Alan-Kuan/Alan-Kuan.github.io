@@ -24,14 +24,17 @@ const { title, desc } = Astro.props;
     <meta name="fediverse:creator" content="@alankuan@mastodon.social">
 
     <script is:inline>
+      const media_query = window.matchMedia('(prefers-color-scheme: dark)');
+
       function applyTheme() {
         document.documentElement.classList.toggle(
           'dark',
-          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
+          (!('theme' in localStorage) && media_query.matches) ||
             localStorage.getItem('theme') === 'dark',
         );
       }
 
+      media_query.addEventListener('change', (e) => applyTheme(e.matches));
       document.addEventListener('astro:after-swap', applyTheme);
       applyTheme();
     </script>
