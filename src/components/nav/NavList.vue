@@ -46,7 +46,7 @@ function onMouseLeaveLink() {
   <div
     :class="[
       'flex', 'justify-center',
-      'transition-opacity', 'duration-500',
+      'transition-all', 'duration-500',
       { 'lt-md:opacity-0 lt-md:invisible': $show_nav_menu }
     ]"
   >

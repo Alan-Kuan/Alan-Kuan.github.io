@@ -37,7 +37,7 @@ function onClick() {
       pb-2
       bg-nav-bar-light dark:bg-nav-bar-dark
       text-center text-lg
-      transition-transform duration-1000
+      transition-transform duration-700
     "
     :style="{ transform }"
   >
@@ -45,7 +45,7 @@ function onClick() {
       v-for="link, idx in links"
       :class="[
         'pa-2',
-        'transition-opacity', 'duration-500',
+        'transition-all duration-300',
         { 'opacity-0 invisible': !$show_menu },
       ]"
     >
