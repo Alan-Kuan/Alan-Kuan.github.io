@@ -136,9 +136,9 @@ onMounted(() => {
 
 .chosen #sun { animation: spin-enter 0.5s forwards; }
 
-.chosen #star-1 { animation: drop-in-1 0.3s forwards; }
+.chosen #star-1 { animation: drop-in-1 0.5s forwards; }
 
-.chosen #star-2 { animation: drop-in-2 0.2s forwards; }
+.chosen #star-2 { animation: drop-in-2 0.4s forwards; }
 
 .chosen #blink { animation: spin-grow 0.5s forwards; }
 
