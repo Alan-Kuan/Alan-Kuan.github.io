@@ -49,12 +49,19 @@ function onClick() {
         { 'opacity-0 invisible': !$show_menu },
       ]"
     >
-      <a :href="link.route" class="inline-block">
+      <a
+        :href="link.route"
+        class="
+          relative
+          inline-block
+          px-2
+        "
+      >
         {{ link.text }}
         <div
           v-if="idx === curr_idx"
           class="
-            mt-1
+            absolute left-0 bottom--2
             w-full h-1
             bg-nav-indicator-light dark:bg-nav-indicator-dark
             rounded-sm

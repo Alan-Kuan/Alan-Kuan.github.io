@@ -65,7 +65,7 @@ function onMouseLeaveLink() {
         :class="[
           'mx-3', 'px-2', 'py-0.5',
           'hover:bg-nav-highlight',
-          'text-xl',
+          'text-lg', 'md:text-xl',
           'rounded-sm',
           { 'lt-md:hidden': idx !== curr_idx }
         ]"
