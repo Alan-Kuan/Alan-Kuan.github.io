@@ -80,7 +80,7 @@ function onMouseLeaveLink() {
           w-[calc(100%-1.5rem)] h-1
           bg-nav-indicator-light dark:bg-nav-indicator-dark
           rounded-sm
-          transition-shape duration-500
+          transition-[width,transform] duration-500
         "
         :style="{ width, transform }"
       />

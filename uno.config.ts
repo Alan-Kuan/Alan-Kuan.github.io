@@ -294,10 +294,6 @@ export default defineConfig({
     }),
   ],
   preflights: [{ getCSS }],
-  rules: [
-    ['transition-shape', { 'transition-property': 'width,transform' }],
-    ['transition-font-size', { 'transition-property': 'font-size' }],
-  ],
   shortcuts: {
     'margin-content': 'mb-4 xl:mb-6',
     'columns': 'grid grid-cols-16',
