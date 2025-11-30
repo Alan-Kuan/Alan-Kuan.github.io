@@ -296,8 +296,6 @@ export default defineConfig({
   preflights: [{ getCSS }],
   shortcuts: {
     'margin-content': 'mb-4 xl:mb-6',
-    'columns': 'grid grid-cols-16',
-    'img-gap': 'gap-x-4 gap-y-2',
   },
   transformers: [
     transformerDirectives(),
