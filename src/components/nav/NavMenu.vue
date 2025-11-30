@@ -46,7 +46,7 @@ function onClick() {
       :class="[
         'pa-2',
         'transition-opacity', 'duration-500',
-        { 'opacity-0': !$show_menu },
+        { 'opacity-0 invisible': !$show_menu },
       ]"
     >
       <a :href="link.route" class="inline-block">
