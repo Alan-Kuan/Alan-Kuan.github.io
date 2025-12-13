@@ -6,88 +6,49 @@ import {
   transformerDirectives,
 } from 'unocss';
 
+// TODO: create a concise and meaningful palette
 const colors = {
-  nav: {
-    bar: {
-      light: '#74482d',
-      dark: '#2e2a27',
+  light: {
+    bg: {
+      primary: '#ffeecd',
+      secondary: '#fee0a8',
+      tertiary: '#f6f0e4',
+      muted: '#cccccc',
     },
-    indicator: {
-      light: '#85c0da',
-      dark: '#7795e0',
+    text: {
+      primary: '#4e483f',
+      secondary: '#d77b00',
+      inverse: '#60a5fa',
     },
-    highlight: '#ffffff55',
+    primary: '#74482d',
+    secondary: '#85c0da',
+    tertiary: '#f87171',
+    accent: '',
+    success: '',
+    info: '',
   },
-  profile_card: {
-    light: '#fee0a8',
-    dark: '#454038',
-    link: {
-      light: '#7d5e4a',
-      dark: '#ba9073',
+  dark: {
+    bg: {
+      primary: '#61594b',
+      secondary: '#454038',
+      tertiary: '#7d7468',
+      muted: '#999999',
     },
-  },
-  article_card: {
-    img_bg: {
-      light: '#cccccc',
-      dark: '#999999',
+    text: {
+      primary: '#ffeecd',
+      secondary: '#eab18a',
+      inverse: '#b4d5fd',
     },
-    link: {
-      light: '#60a5fa',
-      dark: '#b4d5fd',
-    },
-  },
-  pagination: {
-    indicator: {
-      light: '#f87171',
-      dark: '#f87171',
-      hovered: {
-        light: 'orange',
-        dark: '#c68f77',
-      },
-    },
-  },
-  body: {
-    light: '#ffeecd',
-    dark: '#61594b',
-  },
-  page: {
-    light: '#f6f0e4',
-    dark: '#7d7468',
-  },
-  text: {
-    light: '#ffeecd',
-    dark: '#4e483f',
-  },
-  link: {
-    light: '#d77b00',
-    dark: '#eab18a',
-  },
-  table: {
-    header: {
-      light: '#9cd69c',
-      dark: '#ba9073',
-    },
-    body: {
-      light: '#ffffff',
-      dark: '#7d7468',
-    },
-  },
-  code: {
-    light: '#e7e0d5',
-    dark: '#454038',
-  },
-  blockquote: {
-    light: '#65c2fa',
-    dark: '#ba9073',
-  },
-  callout: {
-    hint: {
-      light: '#ffffff',
-      dark: '#867f6f',
-    },
+    primary: '#2e2a27',
+    secondary: '#7795e0',
+    tertiary: '#f87171',
+    accent: '',
+    success: '',
+    info: '',
   },
 };
 
+// TODO: update table, code block, etc.
 function getCSS({ theme }: any) {
   return `
     :root {
@@ -169,46 +130,46 @@ function getCSS({ theme }: any) {
       table {
         display: table;
         margin: 1rem auto;
-        color: ${theme.colors.text.dark};
+        color: ${theme.colors.dark.text.inverse};
         th, td {
           padding: 0.5rem 2rem;
           border-width: 0;
           border-style: solid;
-          border-color: ${theme.colors.body.light};
+          border-color: ${theme.colors.light.bg.muted};
         }
         th {
-          background: ${theme.colors.table.header.light};
+          background: ${theme.colors.light.bg.secondary};
         }
         td {
           border-top-width: 2px;
-          background: ${theme.colors.table.body.light};
+          background: ${theme.colors.light.bg.tertiary};
         }
         th:not(:first-child), td:not(:first-child) {
           border-left-width: 2px;
         }
       }
       .dark & table {
-        color: ${theme.colors.text.light};
+        color: ${theme.colors.dark.text.primary};
         th, td {
-          border-color: ${theme.colors.body.dark};
+          border-color: ${theme.colors.dark.bg.muted};
         }
         th {
-          background: ${theme.colors.table.header.dark};
+          background: ${theme.colors.dark.bg.secondary};
         }
         td {
-          background: ${theme.colors.table.body.dark};
+          background: ${theme.colors.dark.bg.muted};
         }
       }
 
       code:not(pre code) {
         padding: 0.1rem 0.5rem;
         border-radius: 0.25rem;
-        background: ${theme.colors.code.light};
+        background: ${theme.colors.light.bg.muted};
         white-space: pre-wrap;
         word-break: break-all;
       }
       .dark & code:not(pre code) {
-        background: ${theme.colors.code.dark};
+        background: ${theme.colors.dark.bg.secondary};
       }
       pre {
         margin-bottom: 1rem;
@@ -219,11 +180,11 @@ function getCSS({ theme }: any) {
 
       blockquote {
         padding: 0 1rem;
-        border-left: 3px solid ${theme.colors.blockquote.light};
+        border-left: 3px solid ${theme.colors.light.secondary};
         font-size: 1.25rem;
       }
       .dark & blockquote {
-        border-color: ${theme.colors.blockquote.dark};
+        border-color: ${theme.colors.dark.secondary};
       }
       blockquote p {
         padding: 0.25rem 0;
@@ -233,10 +194,10 @@ function getCSS({ theme }: any) {
         margin-bottom: 1rem;
         padding: 1rem;
         border-radius: 0.25rem;
-        background: ${theme.colors.callout.hint.light};
+        background: ${theme.colors.light.bg.tertiary};
       }
       .dark & [data-callout] {
-        background: ${theme.colors.callout.hint.dark};
+        background: ${theme.colors.dark.bg.muted};
       }
       [data-callout-body] {
         padding: 0 1rem;
@@ -262,10 +223,10 @@ function getCSS({ theme }: any) {
 
       hr {
         margin: 1.5rem 0;
-        border: 1px dashed ${theme.colors.text.dark};
+        border: 1px dashed ${theme.colors.light.text.secondary};
       }
       .dark & hr {
-        border: 1px dashed ${theme.colors.text.light};
+        border: 1px dashed ${theme.colors.dark.text.secondary};
       }
     }`;
 }

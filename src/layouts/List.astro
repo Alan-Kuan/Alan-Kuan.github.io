@@ -64,12 +64,13 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
             <span
               class="
                 mx-1 w-9 h-9
-                rounded-full border-2 border-pagination-indicator-light dark:border-pagination-indicator-dark
+                rounded-full border-2 border-light-tertiary dark:border-dark-tertiary
                 text-lg text-center
               "
             >
               {num}
             </span> :
+            /* TODO: hovered indicator color */
             <a
               href={`${prefix}/${num}`}
               class="

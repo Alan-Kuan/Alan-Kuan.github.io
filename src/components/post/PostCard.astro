@@ -24,11 +24,12 @@ const post_link = `/${collection}/${id}`;
     my-5
     overflow-hidden
     rounded-md
-    bg-page-light dark:bg-page-dark
+    bg-light-bg-tertiary dark:bg-dark-bg-tertiary
     drop-shadow-sm
   "
 >
   <div class="flex flex-col md:flex-row">
+    <!-- TODO: image place holder background -->
     <a
       href={post_link}
       class="
@@ -66,8 +67,8 @@ const post_link = `/${collection}/${id}`;
           font-medium
           text-xl
           transition-150
-          hover:text-article_card-link-light
-          dark:hover:text-article_card-link-dark
+          hover:text-light-text-inverse
+          dark:hover:text-dark-text-inverse
         "
       >
         <a href={post_link}>{title}</a>
