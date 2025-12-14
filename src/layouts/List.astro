@@ -57,19 +57,21 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
         <div class="i-mdi-menu-left menu-btn" />
       </a>
       {
+        /* show at most 5 page links (2 previous pages, current page and 2 next pages) */
         Array.from({ length: 5 }, (_, k) => k + page.currentPage - 2).map(num =>
           num <= 0 || num > page.lastPage ?
-            <span class="mx-1 w-9 text-lg"></span> :
+            /* out of range; create a placeholder */
+            <span class="mx-1 w-9 text-lg" /> :
           num == page.currentPage ?
+            /* current page */
             <span
               class="
                 mx-1 w-9 h-9
                 rounded-full border-2 border-pagination-indicator-light dark:border-pagination-indicator-dark
                 text-lg text-center
               "
-            >
-              {num}
-            </span> :
+            >{num}</span> :
+            /* other pages */
             <a
               href={`${prefix}/${num}`}
               class="
@@ -81,9 +83,7 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
                 transition-colors duration-200
                 text-lg text-center
               "
-            >
-              {num}
-            </a>
+            >{num}</a>
         )
       }
       <a
