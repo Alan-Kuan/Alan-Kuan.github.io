@@ -27,8 +27,8 @@ function onClick() {
       @click="onClick"
       class="
         pa-3 md:pa-4
-        bg-profile_card-link-light dark:bg-profile_card-link-dark
-        text-text-light dark:text-text-dark
+        bg-light-bg-top dark:bg-dark-bg-top
+        text-dark-text-normal
         rounded-50%
         shadow-sm
         hover:brightness-120

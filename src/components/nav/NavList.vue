@@ -64,7 +64,7 @@ function onMouseLeaveLink() {
         @mouseleave="onMouseLeaveLink"
         :class="[
           'mx-3', 'px-2', 'py-0.5',
-          'hover:bg-nav-highlight',
+          'hover:bg-#ffffff55',
           'text-lg', 'md:text-xl',
           'rounded-sm',
           { 'lt-md:hidden': idx !== curr_idx }
@@ -78,7 +78,7 @@ function onMouseLeaveLink() {
         class="
           absolute bottom--2
           w-[calc(100%-1.5rem)] h-1
-          bg-nav-indicator-light dark:bg-nav-indicator-dark
+          bg-light-indicator-info dark:bg-dark-indicator-info
           rounded-sm
           transition-[width,transform] duration-500
         "

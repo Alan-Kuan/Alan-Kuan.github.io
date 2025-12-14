@@ -25,8 +25,8 @@ const li_padding = [
     class="
       fixed md:hidden top-24 left-2 z-10
       pa-4
-      bg-profile_card-link-light dark:bg-profile_card-link-dark
-      text-text-light dark:text-text-dark
+      bg-light-bg-top dark:bg-dark-bg-top
+      text-dark-text-normal
       rounded-full
       shadow-2xl
       active:brightness-140
@@ -51,7 +51,7 @@ const li_padding = [
       class="
         flex flex-col gap-1
         px-8 py-4
-        bg-profile_card-light dark:bg-profile_card-dark
+        bg-light-bg-side dark:bg-dark-bg-side
         rounded-lg
       "
     >
@@ -65,7 +65,7 @@ const li_padding = [
         <a
           :href="`#${heading.slug}`"
           class="
-            text-profile_card-link-light dark:text-profile_card-link-dark
+            text-light-text-link dark:text-dark-text-link
             hover:brightness-120%
           "
         >

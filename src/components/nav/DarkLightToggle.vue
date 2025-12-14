@@ -42,7 +42,7 @@ onMounted(() => {
         pa-2
         rounded-full
         text-3xl
-        @hover:bg-nav-highlight
+        @hover:bg-#ffffff55
       "
     >
       <div
@@ -85,9 +85,9 @@ onMounted(() => {
       :class="[
         'absolute top-0 z-10',
         'grid justify-center',
-        'bg-page-light',
+        'bg-light-bg-card',
         'rounded-full',
-        'text-text-dark text-3xl',
+        'text-light-text-normal text-3xl',
         'shadow-lg',
         'transition-all duration-300',
         { 'opacity-0 invisible': !expanded },

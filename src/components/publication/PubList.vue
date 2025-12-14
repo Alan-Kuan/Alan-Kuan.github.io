@@ -14,7 +14,7 @@ defineProps<{
     class="
       ma-8
       px-8 py-5
-      bg-page-light dark:bg-page-dark
+      bg-light-bg-card dark:bg-dark-bg-card
       drop-shadow-sm
     "
   >

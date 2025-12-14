@@ -7,83 +7,38 @@ import {
 } from 'unocss';
 
 const colors = {
-  nav: {
-    bar: {
-      light: '#74482d',
-      dark: '#2e2a27',
+  light: {
+    bg: {
+      top: 'oklch(0.45 0.07 50)',
+      side: 'oklch(0.95 0.08 84)',
+      body: 'oklch(0.95 0.05 84)',
+      card: 'oklch(0.95 0.02 84)',
+      muted: 'oklch(0.91 0.02 79)',
+    },
+    text: {
+      normal: 'oklch(0.40 0.02 84)',
+      link: 'oklch(0.50 0.07 62)',
     },
     indicator: {
-      light: '#85c0da',
-      dark: '#7795e0',
-    },
-    highlight: '#ffffff55',
-  },
-  profile_card: {
-    light: '#fee0a8',
-    dark: '#454038',
-    link: {
-      light: '#7d5e4a',
-      dark: '#ba9073',
+      info: 'oklch(0.75 0.12 250)',
+      catchy: 'oklch(0.65 0.18 22)',
     },
   },
-  article_card: {
-    img_bg: {
-      light: '#cccccc',
-      dark: '#999999',
+  dark: {
+    bg: {
+      top: 'oklch(0.30 0.01 67)',
+      side: 'oklch(0.25 0.01 67)',
+      body: 'oklch(0.20 0.01 67)',
+      card: 'oklch(0.25 0.01 67)',
+      muted: 'oklch(0.25 0.02 79)',
     },
-    link: {
-      light: '#60a5fa',
-      dark: '#b4d5fd',
+    text: {
+      normal: 'oklch(0.95 0.05 84)',
+      link: 'oklch(0.65 0.08 62)',
     },
-  },
-  pagination: {
     indicator: {
-      light: '#f87171',
-      dark: '#f87171',
-      hovered: {
-        light: 'orange',
-        dark: '#c68f77',
-      },
-    },
-  },
-  body: {
-    light: '#ffeecd',
-    dark: '#61594b',
-  },
-  page: {
-    light: '#f6f0e4',
-    dark: '#7d7468',
-  },
-  text: {
-    light: '#ffeecd',
-    dark: '#4e483f',
-  },
-  link: {
-    light: '#d77b00',
-    dark: '#eab18a',
-  },
-  table: {
-    header: {
-      light: '#9cd69c',
-      dark: '#ba9073',
-    },
-    body: {
-      light: '#ffffff',
-      dark: '#7d7468',
-    },
-  },
-  code: {
-    light: '#e7e0d5',
-    dark: '#454038',
-  },
-  blockquote: {
-    light: '#65c2fa',
-    dark: '#ba9073',
-  },
-  callout: {
-    hint: {
-      light: '#ffffff',
-      dark: '#867f6f',
+      info: 'oklch(0.65 0.10 265)',
+      catchy: 'oklch(0.65 0.18 22)',
     },
   },
 };
@@ -169,46 +124,24 @@ function getCSS({ theme }: any) {
       table {
         display: table;
         margin: 1rem auto;
-        color: ${theme.colors.text.dark};
         th, td {
           padding: 0.5rem 2rem;
           border-width: 0;
-          border-style: solid;
-          border-color: ${theme.colors.body.light};
-        }
-        th {
-          background: ${theme.colors.table.header.light};
         }
         td {
-          border-top-width: 2px;
-          background: ${theme.colors.table.body.light};
-        }
-        th:not(:first-child), td:not(:first-child) {
-          border-left-width: 2px;
-        }
-      }
-      .dark & table {
-        color: ${theme.colors.text.light};
-        th, td {
-          border-color: ${theme.colors.body.dark};
-        }
-        th {
-          background: ${theme.colors.table.header.dark};
-        }
-        td {
-          background: ${theme.colors.table.body.dark};
+          border-top-width: 1px;
         }
       }
 
       code:not(pre code) {
         padding: 0.1rem 0.5rem;
         border-radius: 0.25rem;
-        background: ${theme.colors.code.light};
+        background: ${theme.colors.light.bg.muted};
         white-space: pre-wrap;
         word-break: break-all;
       }
       .dark & code:not(pre code) {
-        background: ${theme.colors.code.dark};
+        background: ${theme.colors.dark.bg.muted};
       }
       pre {
         margin-bottom: 1rem;
@@ -218,12 +151,14 @@ function getCSS({ theme }: any) {
       }
 
       blockquote {
-        padding: 0 1rem;
-        border-left: 3px solid ${theme.colors.blockquote.light};
-        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-left: 3px solid ${theme.colors.light.indicator.info};
+        background: ${theme.colors.light.bg.card};
       }
       .dark & blockquote {
-        border-color: ${theme.colors.blockquote.dark};
+        border-color: ${theme.colors.dark.indicator.info};
+        background: ${theme.colors.dark.bg.card};
       }
       blockquote p {
         padding: 0.25rem 0;
@@ -233,10 +168,10 @@ function getCSS({ theme }: any) {
         margin-bottom: 1rem;
         padding: 1rem;
         border-radius: 0.25rem;
-        background: ${theme.colors.callout.hint.light};
+        background: ${theme.colors.light.bg.card};
       }
       .dark & [data-callout] {
-        background: ${theme.colors.callout.hint.dark};
+        background: ${theme.colors.dark.bg.card};
       }
       [data-callout-body] {
         padding: 0 1rem;
@@ -262,10 +197,7 @@ function getCSS({ theme }: any) {
 
       hr {
         margin: 1.5rem 0;
-        border: 1px dashed ${theme.colors.text.dark};
-      }
-      .dark & hr {
-        border: 1px dashed ${theme.colors.text.light};
+        border: 1px dashed;
       }
     }`;
 }

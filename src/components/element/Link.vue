@@ -10,7 +10,7 @@ const target = props.href.startsWith('/') ? '_self' : '_blank';
   <a
     :href :target
     class="
-      text-link-light dark:text-link-dark
+      text-light-text-link dark:text-dark-text-link
       hover:brightness-120
     "
   >

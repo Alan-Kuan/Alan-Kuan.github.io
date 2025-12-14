@@ -49,7 +49,7 @@ onMounted(() => {
             w-full mt-3
             flex flex-wrap justify-start
             gap-x-12 gap-y-1
-            text-profile_card-link-light dark:text-profile_card-link-dark
+            text-light-text-link dark:text-dark-text-link
             justify-around-if-narrow
           "
         >
