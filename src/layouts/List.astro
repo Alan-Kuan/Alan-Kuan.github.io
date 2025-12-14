@@ -54,7 +54,7 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
           { 'invisible': !page.url.prev },
         ]}
       >
-        <div class="i-mdi-triangle rotate-270"></div>
+        <div class="i-mdi-menu-left menu-btn" />
       </a>
       {
         Array.from({ length: 5 }, (_, k) => k + page.currentPage - 2).map(num =>
@@ -93,9 +93,18 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
           { 'invisible': !page.url.next },
         ]}
       >
-        <div class="i-mdi-triangle rotate-90"></div>
+        <div class="i-mdi-menu-right menu-btn" />
       </a>
     </div>
   </main>
   <Footer />
 </WithProfileLayout>
+
+<style>
+.menu-btn {
+  @apply text-4xl;
+  @apply transition-transform duration-200;
+  @apply hover:scale-120%;
+  @apply active:scale-80%;
+}
+</style>
