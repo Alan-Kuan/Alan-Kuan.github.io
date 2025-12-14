@@ -66,22 +66,20 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
             /* current page */
             <span
               class="
-                mx-1 w-9 h-9
-                rounded-full border-2 border-pagination-indicator-light dark:border-pagination-indicator-dark
-                text-lg text-center
+                page-link
+                border-pagination-indicator-light
+                dark:border-pagination-indicator-dark
               "
             >{num}</span> :
             /* other pages */
             <a
               href={`${prefix}/${num}`}
               class="
-                mx-1 w-9 h-9
-                rounded-full
-                border-2 border-transparent
+                page-link
+                border-transparent
+                transition-colors duration-200
                 hover:border-pagination-indicator-hovered-light
                 dark:hover:border-pagination-indicator-hovered-dark
-                transition-colors duration-200
-                text-lg text-center
               "
             >{num}</a>
         )
@@ -101,6 +99,12 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
 </WithProfileLayout>
 
 <style>
+.page-link {
+  @apply mx-1 w-9 h-9;
+  @apply rounded-full border-2;
+  @apply text-lg text-center;
+}
+
 .menu-btn {
   @apply text-4xl;
   @apply transition-transform duration-200;
