@@ -6,7 +6,7 @@ import Avatar from '@/components/Avatar.vue';
 import type { Profile } from '@/types/profile';
 
 const props = defineProps<Profile>();
-const email_addr = ref(null);
+const email_addr = ref();
 
 onMounted(() => {
   email_addr.value = atob(props.email.addr_b64);

@@ -10,7 +10,7 @@ const props = defineProps<{
 // Set `img_src` on mounted in case that the class list is
 // modified before Vue is mounted, which causes hydration
 // class mismatch error.
-const img_src = ref(null);
+const img_src = ref();
 onMounted(() => img_src.value = props.src);
 </script>
 

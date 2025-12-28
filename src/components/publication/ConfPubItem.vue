@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Publication } from '@/types/content';
 
-defineProps<Publication | { me: string }>();
+defineProps<Publication & { me: string }>();
 </script>
 
 <template>

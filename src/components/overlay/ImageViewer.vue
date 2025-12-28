@@ -15,14 +15,14 @@ function handleClose() {
   document.getElementsByTagName('body')[0].removeAttribute('style');
 }
 
-function onEscKeyDown(event) {
+function onEscKeyDown(event: KeyboardEvent) {
   if (event.key === 'Escape' && state.show) {
     handleClose();
   }
 }
 
-function onImgClicked(event) {
-  const el = event.target;
+function onImgClicked(event: MouseEvent) {
+  const el = event.target as HTMLImageElement;
   state.src = el.src;
   state.alt = el.alt;
   state.title = el.title;
@@ -34,7 +34,7 @@ function onImgClicked(event) {
 
 onMounted(() => {
   // add click handler to all post images
-  for (const img of document.getElementsByClassName('post-img')) {
+  for (const img of document.querySelectorAll<HTMLImageElement>('.post-img')) {
     img.addEventListener('click', onImgClicked);
   }
 

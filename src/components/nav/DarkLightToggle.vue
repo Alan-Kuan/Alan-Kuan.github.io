@@ -6,7 +6,7 @@ const theme = ref('');
 
 const indicator = useTemplateRef('indicator');
 
-function choose(chosen_theme: str) {
+function choose(chosen_theme: string) {
   // ensure the animation is played after some mode is chosen
   indicator.value.classList.add('chosen');
   theme.value = chosen_theme;
