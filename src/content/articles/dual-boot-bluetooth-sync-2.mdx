@@ -40,11 +40,11 @@ banner_pos: '0 40%'
     cd xxxxxxxxxxxx
     ```
 7. 找到自己配對的藍牙裝置，不同裝置會有自己的目錄
+    ```sh
+    cd yyyyyyyyyyyy
+    ```
     - 要注意的是，有些藍牙裝置會在某次配對成功後將自己的 MAC 位址加一，所以會和 Windows 上的位址不一樣
     - 照理說同個裝置的 MAC 位址在 Windows 上的會比 Linux 上的還大，因為是後配對的
-    ```sh
-    cd xxxxxxxxxxxx
-    ```
 8. 列出當前目錄的內容時，應該會看到如下的資訊：
     ```
     Node has 0 subkeys and 9 values
@@ -59,7 +59,7 @@ banner_pos: '0 40%'
          4  4 REG_DWORD          <CEntralIRKStatus>         1 [0x1]
          4  4 REG_DWORD          <AuthReq>                 45 [0x2d]
     ```
-    我們會需要記下的是 `<LTK>`、`<IRK>`、`<ERand>` 和 `<EDIV>` 的值
+    - 我們會需要記下的是 `<LTK>`、`<IRK>`、`<ERand>` 和 `<EDIV>` 的值
 
 > [!HINT]
 > 在 `chntpw` 的 shell 裡面有這些指令可以用：
