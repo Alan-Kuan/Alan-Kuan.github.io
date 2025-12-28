@@ -15,6 +15,7 @@ export interface PostFrontmatter {
   date?: string;
   tags: string[];
   banner_url?: string;
+  banner_pos?: string;
 };
 
 export interface Publication {
