@@ -76,13 +76,10 @@ const show_side_panel = headings.length > 0;
       }
       {/* Content */}
       <div
-        class:list={[
-          'md:px-8',
-          {
-            'lt-md:w-90% lt-md:mx-auto': show_side_panel,
-            'md:row-start-2 md:col-start-2': show_side_panel,
-          }
-        ]}
+        class:list={{
+          'lt-md:w-90% lt-md:mx-auto': show_side_panel,
+          'md:row-start-2 md:col-start-2': show_side_panel,
+        }}
       >
         <slot />
       </div>
