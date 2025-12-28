@@ -67,24 +67,27 @@ article {
   ol {
     @apply margin-content;
     @apply pl-8;
-    @apply list-decimal-inside;
+    @apply list-decimal;
   }
   ol ol {
-    @apply list-alpha-inside;
+    @apply list-alpha;
   }
   ol ol ol {
-    @apply list-roman-inside
+    @apply list-roman:
   }
   ul {
     @apply margin-content;
     @apply pl-8;
-    @apply list-disc-inside;
+    @apply list-disc;
   }
   ul ul {
-    @apply list-circle-inside;
+    @apply list-circle;
   }
   ul ul ul {
-    @apply list-square-inside
+    @apply list-square;
+  }
+  li {
+    @apply leading-8;
   }
 
   dl {
