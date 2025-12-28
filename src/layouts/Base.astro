@@ -1,6 +1,8 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+
 import NavBar from '@/components/nav/NavBar.astro';
-import { ClientRouter } from 'astro:transitions'
+import '@/styles/base.css';
 
 interface Props {
   title: string;
@@ -50,30 +52,3 @@ const { title, desc } = Astro.props;
     <slot />
 	</body>
 </html>
-
-<style is:global>
-	html {
-    font-family: 'Noto Sans', 'Noto Sans TC', sans-serif;
-    scroll-behavior: smooth;
-	}
-	code {
-		font-family: 'Source Code Pro', monospace;
-	}
-
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    border-radius: 5px;
-  }
-  ::-webkit-scrollbar-track:hover {
-    background: #2c2c2c;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #afafaf;
-    border-radius: 5px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #8d8d8d;
-  }
-</style>

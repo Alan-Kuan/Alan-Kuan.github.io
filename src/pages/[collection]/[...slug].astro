@@ -2,7 +2,6 @@
 import { getCollection, render } from 'astro:content';
 
 import PostLayout from '@/layouts/Post.astro';
-import Paragraph from '@/components/element/Paragraph.vue';
 import Link from '@/components/element/Link.vue';
 import PostImage from '@/components/element/PostImage.astro';
 import GitHubCard from '@/components/element/GitHubCard.astro';
@@ -29,15 +28,139 @@ const { Content, headings, components } = await render(post);
 ---
 
 <PostLayout {...post.data} {headings}>
-  <article class="content">
+  <article>
     <Content
       components={{
         ...components,
         a: Link,
-        p: Paragraph,
         img: PostImage,
         GitHubCard,
       }}
     />
   </article>
 </PostLayout>
+
+<style>
+article {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply margin-content;
+    @apply scroll-mt-[var(--navbar-height)];
+  }
+
+  p, img {
+    @apply margin-content;
+  }
+
+  a {
+    @apply underline;
+  }
+
+  ol {
+    @apply margin-content;
+    @apply pl-8;
+    @apply list-decimal-inside;
+  }
+  ol ol {
+    @apply list-alpha-inside;
+  }
+  ol ol ol {
+    @apply list-roman-inside
+  }
+  ul {
+    @apply margin-content;
+    @apply pl-8;
+    @apply list-disc-inside;
+  }
+  ul ul {
+    @apply list-circle-inside;
+  }
+  ul ul ul {
+    @apply list-square-inside
+  }
+
+  dl {
+    @apply margin-content;
+    dt {
+      @apply mt-2;
+      @apply font-bold font-italic;
+    }
+    dd {
+      @apply pl-8;
+    }
+  }
+
+  table {
+    @apply mx-auto margin-content;
+    th, td {
+      @apply px-8 py-2;
+      @apply border-0;
+    }
+    td {
+      @apply border-t-1;
+    }
+  }
+
+  code:not(pre code) {
+    @apply px-2;
+    @apply rounded-lg;
+    @apply bg-light-bg-muted;
+    @apply whitespace-pre-wrap;
+    @apply break-all;
+  }
+  .dark & code:not(pre code) {
+    @apply bg-dark-bg-muted;
+  }
+  pre {
+    @apply margin-content;
+    @apply pa-4;
+    @apply rounded-lg;
+  }
+
+  blockquote {
+    @apply margin-content;
+    @apply pa-4;
+    @apply border-l-4 border-l-light-indicator-info;
+    @apply bg-light-bg-card;
+  }
+  .dark & blockquote {
+    @apply border-l-dark-indicator-info;
+    @apply bg-dark-bg-card;
+  }
+
+  [data-callout] {
+    @apply margin-content;
+    @apply pa-4;
+    @apply rounded-lg;
+    @apply bg-light-bg-card;
+  }
+  .dark & [data-callout] {
+    @apply bg-dark-bg-card;
+  }
+  [data-callout-body] {
+    @apply px-4;
+  }
+  [data-callout-title] {
+    @apply flex items-center;
+    @apply pb-2;
+    @apply font-700;
+  }
+  [data-callout-type="hint"] [data-callout-title]::before {
+    content: '';
+    @apply i-mdi-bulb;
+  }
+
+  hr {
+    @apply my-6;
+    @apply border-1 border-dashed;
+  }
+}
+</style>

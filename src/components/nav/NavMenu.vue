@@ -33,7 +33,7 @@ function onClick() {
   <div
     class="
       md:hidden
-      fixed z--1 w-full top-15 left-0
+      fixed z--1 w-full top-[var(--navbar-height)] left-0
       pb-2
       bg-light-bg-top dark:bg-dark-bg-top
       text-center text-lg

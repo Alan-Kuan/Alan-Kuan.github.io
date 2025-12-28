@@ -38,8 +38,8 @@ const li_padding = [
   <aside
     :class="[
       'fixed', 'top-38', 'z-10',
-      'md:sticky', 'md:top-28',
-      'max-h-[calc(100vh-7rem-var(--footer-height))]',
+      'md:sticky', 'md:top-[calc(2rem+var(--navbar-height))]',
+      'max-h-[calc(100vh-2rem-var(--navbar-height)-var(--footer-height))]',
       'overflow-auto',
       'lt-md:transition-translate', 'lt-md:duration-500',
       'lt-md:translate-x-[-100vw]',

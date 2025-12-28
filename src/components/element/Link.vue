@@ -21,17 +21,15 @@ const target = props.href.startsWith('/') ? '_self' : '_blank';
 <style scoped>
 a[target="_blank"]::after {
   content: '';
-  display: inline-block;
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-left: 0.125rem;
-  vertical-align: sub;
-  background: #d77b00;
-  mask-image: url(/open-in-new.svg);
-  mask-size: contain;
+  @apply inline-block;
+  @apply ml-0.5;
+  @apply text-xs;
+  @apply align-sub;
+  @apply bg-light-text-link;
+  @apply i-mdi-open-in-new;
 }
 
 .dark a[target="_blank"]::after {
-  background: #eab18a;
+  @apply bg-dark-text-link;
 }
 </style>
