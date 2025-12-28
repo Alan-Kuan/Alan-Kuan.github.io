@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { type DataEntryMap, getCollection, render } from 'astro:content';
 
 import PostLayout from '@/layouts/Post.astro';
 import Link from '@/components/element/Link.vue';
@@ -11,7 +11,7 @@ import { collections } from '@/content.config.ts';
 export async function getStaticPaths() {
   const all_posts = await Promise.all(
     Object.keys(collections).map(async (collection) => {
-      const posts = await getCollection(collection);
+      const posts = await getCollection(collection as keyof DataEntryMap);
       return posts ?
         posts.map(post => ({
           params: { collection, slug: post.id },
@@ -24,14 +24,13 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content, headings, components } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <PostLayout {...post.data} {headings}>
   <article>
     <Content
       components={{
-        ...components,
         a: Link,
         img: PostImage,
         GitHubCard,
