@@ -42,7 +42,14 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
 
     {/* Post List */}
     <div class="pb-3">
-      { posts.map(post => <PostCard {...post} />) }
+      {
+        posts.length === 0 &&
+          <div class="my-4">
+            <div class="i-mdi-sign-caution mx-auto text-[10rem]" />
+            <div class="text-center text-3xl">There'll be something one day...</div>
+          </div> ||
+          posts.map(post => <PostCard {...post} />)
+      }
     </div>
 
     {/* Pagination */}
