@@ -26,7 +26,7 @@ const li_padding = [
       fixed md:hidden top-24 left-2 z-10
       pa-4
       bg-bg-top
-      text-dark-text-normal
+      text-text-light
       rounded-full
       shadow-2xl
       active:brightness-140
