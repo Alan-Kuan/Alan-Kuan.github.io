@@ -30,7 +30,7 @@ function onClick() {
         bg-bg-top
         text-text-light
         rounded-50%
-        shadow-sm
+        shadow-lg
         hover:brightness-120
         active:brightness-140
       "
