@@ -35,7 +35,7 @@ function onClick() {
       md:hidden
       fixed z--1 w-full top-[var(--navbar-height)] left-0
       pb-2
-      bg-light-bg-top dark:bg-dark-bg-top
+      bg-bg-top
       text-center text-lg
       transition-transform duration-700
     "
@@ -63,7 +63,7 @@ function onClick() {
           class="
             absolute left-0 bottom--2
             w-full h-1
-            bg-light-indicator-info dark:bg-dark-indicator-info
+            bg-indicator-info
             rounded-sm
           "
         />

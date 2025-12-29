@@ -85,9 +85,9 @@ onMounted(() => {
       :class="[
         'absolute top-0 z-10',
         'grid justify-center',
-        'bg-light-bg-card',
+        'bg-bg-card',
         'rounded-full',
-        'text-light-text-normal text-3xl',
+        'text-text-normal text-3xl',
         'shadow-lg',
         'transition-all duration-300',
         { 'opacity-0 invisible': !expanded },

@@ -27,8 +27,8 @@ function onClick() {
       @click="onClick"
       class="
         pa-3 md:pa-4
-        bg-light-bg-top dark:bg-dark-bg-top
-        text-dark-text-normal
+        bg-bg-top
+        text-text-light
         rounded-50%
         shadow-sm
         hover:brightness-120

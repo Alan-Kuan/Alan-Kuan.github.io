@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 
 import NavBar from '@/components/nav/NavBar.astro';
 import '@/styles/base.css';
+import '@/styles/theme.css';
 
 interface Props {
   title: string;
@@ -42,12 +43,7 @@ const { title, desc } = Astro.props;
     </script>
     <ClientRouter />
 	</head>
-  <body
-    class={`
-      bg-light-bg-body text-light-text-normal
-      dark:bg-dark-bg-body dark:text-dark-text-normal
-    `}
-  >
+  <body class="bg-bg-body text-text-normal">
     <NavBar />
     <slot />
 	</body>

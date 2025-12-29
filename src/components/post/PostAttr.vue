@@ -25,10 +25,10 @@ defineProps<{
           px-2 py-1
           rounded-full
           transition-150
-          bg-light-text-link/30 dark:bg-dark-text-link/30
-          text-light-text-link dark:text-dark-text-link
-          hover:bg-light-text-link dark:hover:bg-dark-text-link
-          hover:text-white dark:hover:text-light-text
+          bg-text-link/30
+          text-text-link
+          hover:bg-text-link
+          hover:text-white
           text-sm
         "
       >

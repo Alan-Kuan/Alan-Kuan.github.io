@@ -24,7 +24,7 @@ const post_link = `/${collection}/${id}`;
     my-5
     overflow-hidden
     rounded-md
-    bg-light-bg-card dark:bg-dark-bg-card
+    bg-bg-card
     drop-shadow-sm
   "
 >
@@ -53,7 +53,7 @@ const post_link = `/${collection}/${id}`;
       <div
         class:list={[
           thumbnail_icon,
-          'text-light-text-normal',
+          'text-text-dark',
           'text-7xl', 'group-hover:text-8xl',
           'transition-[font-size]',
           'duration-300',
@@ -67,8 +67,7 @@ const post_link = `/${collection}/${id}`;
           font-medium
           text-xl
           transition-150
-          hover:text-light-indicator-info
-          dark:hover:text-dark-indicator-info
+          hover:text-indicator-info
         "
       >
         <a href={post_link}>{title}</a>

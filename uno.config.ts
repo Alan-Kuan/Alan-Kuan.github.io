@@ -6,43 +6,6 @@ import {
   transformerDirectives,
 } from 'unocss';
 
-const colors = {
-  light: {
-    bg: {
-      top: 'oklch(0.45 0.07 50)',
-      side: 'oklch(0.95 0.08 84)',
-      body: 'oklch(0.95 0.05 84)',
-      card: 'oklch(0.95 0.02 84)',
-      muted: 'oklch(0.91 0.02 79)',
-    },
-    text: {
-      normal: 'oklch(0.40 0.02 84)',
-      link: 'oklch(0.50 0.07 62)',
-    },
-    indicator: {
-      info: 'oklch(0.75 0.12 250)',
-      catchy: 'oklch(0.65 0.18 22)',
-    },
-  },
-  dark: {
-    bg: {
-      top: 'oklch(0.30 0.01 67)',
-      side: 'oklch(0.25 0.01 67)',
-      body: 'oklch(0.20 0.01 67)',
-      card: 'oklch(0.25 0.01 67)',
-      muted: 'oklch(0.25 0.02 79)',
-    },
-    text: {
-      normal: 'oklch(0.95 0.05 84)',
-      link: 'oklch(0.65 0.08 62)',
-    },
-    indicator: {
-      info: 'oklch(0.65 0.10 265)',
-      catchy: 'oklch(0.65 0.18 22)',
-    },
-  },
-};
-
 export default defineConfig({
   presets: [
     presetWind4({
@@ -72,5 +35,25 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
   ],
-  theme: { colors },
+  theme: {
+    colors: {
+      bg: {
+        top: 'var(--bg-top)',
+        side: 'var(--bg-side)',
+        body: 'var(--bg-body)',
+        card: 'var(--bg-card)',
+        muted: 'var(--bg-muted)',
+      },
+      text: {
+        normal: 'var(--text-normal)',
+        link: 'var(--text-link)',
+        light: 'var(--text-light)',
+        dark: 'var(--text-dark)',
+      },
+      indicator: {
+        info: 'var(--indicator-info)',
+        catchy: 'var(--indicator-catchy)',
+      },
+    },
+  },
 });

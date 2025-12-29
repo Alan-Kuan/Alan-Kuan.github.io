@@ -25,7 +25,7 @@ const li_padding = [
     class="
       fixed md:hidden top-24 left-2 z-10
       pa-4
-      bg-light-bg-top dark:bg-dark-bg-top
+      bg-bg-top
       text-dark-text-normal
       rounded-full
       shadow-2xl
@@ -51,7 +51,7 @@ const li_padding = [
       class="
         flex flex-col gap-1
         px-8 py-4
-        bg-light-bg-side dark:bg-dark-bg-side
+        bg-bg-side
         rounded-lg
       "
     >
@@ -65,7 +65,7 @@ const li_padding = [
         <a
           :href="`#${heading.slug}`"
           class="
-            text-light-text-link dark:text-dark-text-link
+            text-text-link
             hover:brightness-120%
           "
         >

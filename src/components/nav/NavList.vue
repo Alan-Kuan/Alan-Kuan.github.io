@@ -78,7 +78,7 @@ function onMouseLeaveLink() {
         class="
           absolute bottom--2
           w-[calc(100%-1.5rem)] h-1
-          bg-light-indicator-info dark:bg-dark-indicator-info
+          bg-indicator-info
           rounded-sm
           transition-[width,transform] duration-500
         "

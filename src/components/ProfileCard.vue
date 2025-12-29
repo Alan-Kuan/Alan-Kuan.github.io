@@ -49,7 +49,7 @@ onMounted(() => {
             w-full mt-3
             flex flex-wrap justify-start
             gap-x-12 gap-y-1
-            text-light-text-link dark:text-dark-text-link
+            text-text-link
             justify-around-if-narrow
           "
         >

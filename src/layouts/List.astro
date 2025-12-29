@@ -74,8 +74,7 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
             <span
               class="
                 page-link
-                border-light-indicator-catchy
-                dark:border-dark-indicator-catchy
+                border-indicator-catchy
               "
             >{num}</span> :
             /* other pages */
@@ -85,8 +84,7 @@ const posts = page.data.map(({ collection, id, body, data }) => ({
                 page-link
                 border-transparent
                 transition-colors duration-200
-                hover:border-light-indicator-catchy/50
-                dark:hover:border-dark-indicator-catchy/50
+                hover:border-indicator-catchy/50
               "
             >{num}</a>
         )
