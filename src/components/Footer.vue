@@ -7,6 +7,7 @@ const this_year = new Date().getFullYear();
     class="
       flex justify-center items-center
       h-[var(--footer-height)]
+      mt-4
     "
   >
     © Alan Kuan 2024 – {{this_year}}
