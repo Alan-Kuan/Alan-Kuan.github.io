@@ -10,11 +10,6 @@
         }
     }
 
-    html {
-        /* Make scroll-to-element animation smooth */
-        scroll-behavior: smooth;
-    }
-
     /* Overwrite default scrollbar style on webkit */
     ::-webkit-scrollbar {
         width: 5px;

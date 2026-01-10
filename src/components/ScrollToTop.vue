@@ -3,21 +3,26 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 const show = ref(false);
 
-onMounted(() => {
-  window.addEventListener('scroll', onScroll);
-});
-onUnmounted(() => {
-  window.removeEventListener('scroll', onScroll);
-});
-
 function onScroll() {
   const visible_height = document.documentElement.clientHeight;
-  show.value = window.scrollY > visible_height;
+  const content = document.getElementById('base-content')!;
+  show.value = content.scrollTop > visible_height;
 }
 
 function onClick() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const content = document.getElementById('base-content')!;
+  content.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+onMounted(() => {
+  const content = document.getElementById('base-content')!;
+  content.addEventListener('scroll', onScroll);
+});
+
+onUnmounted(() => {
+  const content = document.getElementById('base-content')!;
+  content.removeEventListener('scroll', onScroll);
+});
 </script>
 
 <template>

@@ -10,9 +10,6 @@ const state = reactive({
 
 function handleClose() {
   state.show = false;
-
-  // re-enable scrolling
-  document.getElementsByTagName('body')[0].removeAttribute('style');
 }
 
 function onEscKeyDown(event: KeyboardEvent) {
@@ -27,9 +24,6 @@ function onImgClicked(event: MouseEvent) {
   state.alt = el.alt;
   state.title = el.title;
   state.show = true;
-
-  // disable scrolling
-  document.getElementsByTagName('body')[0].style = 'overflow: hidden';
 }
 
 onMounted(() => {

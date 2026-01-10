@@ -30,6 +30,7 @@ function onClick() {
     <div class="i-mdi-hamburger-menu" />
   </button>
   <!-- Menu -->
+  <!-- NOTE: z-index is relative to nav bar's -->
   <div
     class="
       md:hidden

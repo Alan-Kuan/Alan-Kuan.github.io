@@ -57,9 +57,15 @@ const curr_idx = route_prefix === '/' ?
 	</head>
 
   <body class="bg-bg-body text-text-normal">
+    <!-- Navbar -->
+    <!--
+      NOTE:
+      - set position to relative so that z-index is applicable
+      - set z-index to 10 so that nav menu can show under nav bar
+    -->
     <nav
       class={`
-        sticky top-0 z-10
+        relative z-10
         grid grid-cols-[1fr_auto_1fr] items-center
         w-full h-[var(--navbar-height)]
         px-5
@@ -73,13 +79,18 @@ const curr_idx = route_prefix === '/' ?
 
       <NavList {curr_idx} {links} client:load />
 
-      <div class="justify-self-end lt-md:flex md:pr-15">
+      <div class="justify-self-end flex md:pr-15">
         <NavMenu {curr_idx} {links} client:load />
         <DarkLightToggle client:idle />
       </div>
     </nav>
-
-    <slot />
+    <!-- Content -->
+    <div
+      id="base-content"
+      class="h-[calc(100vh-var(--navbar-height))] overflow-y-scroll scroll-smooth"
+    >
+      <slot />
+    </div>
 	</body>
 </html>
 

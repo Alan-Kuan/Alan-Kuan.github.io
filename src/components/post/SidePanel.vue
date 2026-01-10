@@ -23,7 +23,7 @@ const li_padding = [
   <button
     @click="show = !show"
     class="
-      fixed md:hidden top-24 left-2 z-10
+      fixed md:hidden top-24 left-2 z-5
       pa-4
       bg-bg-top
       text-text-light
@@ -37,9 +37,9 @@ const li_padding = [
   <!-- Side Panel -->
   <aside
     :class="[
-      'fixed', 'top-38', 'z-10',
-      'md:sticky', 'md:top-[calc(2rem+var(--navbar-height))]',
-      'max-h-[calc(100vh-2rem-var(--navbar-height)-var(--footer-height))]',
+      'fixed', 'top-38', 'z-5',
+      'md:sticky', 'md:top-8',
+      'max-h-[calc(100vh-8*var(--spacing)-var(--navbar-height)-var(--footer-height))]',
       'overflow-auto',
       'lt-md:transition-translate', 'lt-md:duration-500',
       'lt-md:translate-x-[-100vw]',
