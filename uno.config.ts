@@ -30,7 +30,7 @@ export default defineConfig({
     }),
   ],
   shortcuts: {
-    'margin-content': 'not-last:mb-4 xl:not-last:mb-6',
+    'margin-content': 'mb-4 xl:mb-6',
   },
   transformers: [
     transformerDirectives(),

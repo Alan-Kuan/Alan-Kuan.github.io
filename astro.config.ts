@@ -3,6 +3,7 @@ import UnoCSS from 'unocss/astro';
 import vue from '@astrojs/vue';
 import mdx from '@astrojs/mdx';
 import remarkCallout from '@r4ai/remark-callout';
+import remarkSectionize from 'remark-sectionize';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,6 +11,7 @@ export default defineConfig({
     shikiConfig: { theme: 'ayu-dark' },
     remarkPlugins: [
       remarkCallout,
+      remarkSectionize,
     ],
   },
   integrations: [
