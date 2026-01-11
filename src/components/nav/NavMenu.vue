@@ -25,50 +25,52 @@ function onClick() {
 </script>
 
 <template>
-  <!-- Button -->
-  <button @click="onClick" class="md:hidden pa-2 text-3xl">
-    <div class="i-mdi-hamburger-menu" />
-  </button>
-  <!-- Menu -->
-  <!-- NOTE: z-index is relative to nav bar's -->
-  <div
-    class="
-      md:hidden
-      fixed z--1 w-full top-[var(--navbar-height)] left-0
-      pb-2
-      bg-bg-top
-      text-center text-lg
-      transition-transform duration-700
-    "
-    :style="{ transform }"
-  >
+  <div>
+    <!-- Button -->
+    <button @click="onClick" class="md:hidden pa-2 text-3xl">
+      <div class="i-mdi-hamburger-menu" />
+    </button>
+    <!-- Menu -->
+    <!-- NOTE: z-index is relative to nav bar's -->
     <div
-      v-for="link, idx in links"
-      :class="[
-        'pa-2',
-        'transition-all duration-300',
-        { 'opacity-0 invisible': !$show_menu },
-      ]"
+      class="
+        md:hidden
+        fixed z--1 w-full top-[var(--navbar-height)] left-0
+        pb-2
+        bg-bg-top
+        text-center text-lg
+        transition-transform duration-700
+      "
+      :style="{ transform }"
     >
-      <a
-        :href="link.route"
-        class="
-          relative
-          inline-block
-          px-2
-        "
+      <div
+        v-for="link, idx in links"
+        :class="[
+          'pa-2',
+          'transition-all duration-300',
+          { 'opacity-0 invisible': !$show_menu },
+        ]"
       >
-        {{ link.text }}
-        <div
-          v-if="idx === curr_idx"
+        <a
+          :href="link.route"
           class="
-            absolute left-0 bottom--2
-            w-full h-1
-            bg-indicator-info
-            rounded-sm
+            relative
+            inline-block
+            px-2
           "
-        />
-      </a>
+        >
+          {{ link.text }}
+          <div
+            v-if="idx === curr_idx"
+            class="
+              absolute left-0 bottom--2
+              w-full h-1
+              bg-indicator-info
+              rounded-sm
+            "
+          />
+        </a>
+      </div>
     </div>
   </div>
 </template>
