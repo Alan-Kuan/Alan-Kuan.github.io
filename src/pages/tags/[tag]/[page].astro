@@ -1,15 +1,23 @@
 ---
+import type { GetStaticPaths, Page } from 'astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry, CollectionKey } from 'astro:content';
 
 import ListLayout from '@/layouts/List.astro';
-import { collections } from '@/content.config.ts';
 
-export async function getStaticPaths({ paginate }) {
+import { collections } from '@/content.config.ts';
+import { byDate } from '@/post_sorting.ts';
+
+interface Props {
+  page: Page<CollectionEntry<CollectionKey>>;
+}
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const all_posts = await Promise.all(
-    Object.keys(collections).map(async (collection) => await getCollection(collection) ?? [])
+    Object.keys(collections).map(async (collection) =>
+      await getCollection(collection as CollectionKey) ?? [])
   );
-  const posts = all_posts.flat()
-    .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+  const posts = all_posts.flat().sort((a, b) => byDate(a, b));
   const unique_tags = [...new Set(posts.map(({ data }) => data.tags).flat())];
 
   return unique_tags.map(tag => {

@@ -1,10 +1,21 @@
 ---
+import type { Page } from 'astro';
+import type { CollectionEntry, CollectionKey } from 'astro:content';
 import MarkdownIt from 'markdown-it';
 import { parse as parseHtml } from 'node-html-parser';
 
 import WithProfileLayout from '@/layouts/WithProfile.astro';
 import PostCard from '@/components/post/PostCard.astro';
 import Footer from '@/components/Footer.vue';
+import type { Post } from '@/types/content';
+
+interface Props {
+  title: string;
+  desc: string;
+  category?: string;
+  page: Page<CollectionEntry<CollectionKey>>;
+  prefix: string;
+}
 
 const parser = MarkdownIt();
 function getExcerpt(body: string) {
@@ -23,15 +34,11 @@ const {
   prefix,
 } = Astro.props;
 
-const posts = page.data.map(({ collection, id, body, data }) => ({
-  collection: collection,
-  id: id,
+const posts: Post[] = page.data.map(({ collection, id, body, data }) => ({
+  collection,
+  id,
   excerpt: body ? getExcerpt(body) : '',
-  title: data.title,
-  desc: data.desc,
-  date: data.date,
-  tags: data.tags,
-  banner_url: data.banner_url,
+  ...data,
 }));
 ---
 

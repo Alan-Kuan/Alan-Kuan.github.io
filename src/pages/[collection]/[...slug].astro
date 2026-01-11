@@ -1,5 +1,7 @@
 ---
-import { type DataEntryMap, getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry, CollectionKey } from 'astro:content';
 
 import PostLayout from '@/layouts/Post.astro';
 import Link from '@/components/element/Link.vue';
@@ -8,10 +10,14 @@ import GitHubCard from '@/components/element/GitHubCard.astro';
 
 import { collections } from '@/content.config.ts';
 
-export async function getStaticPaths() {
+interface Props {
+  post: CollectionEntry<CollectionKey>;
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
   const all_posts = await Promise.all(
     Object.keys(collections).map(async (collection) => {
-      const posts = await getCollection(collection as keyof DataEntryMap);
+      const posts = await getCollection(collection as CollectionKey);
       return posts ?
         posts.map(post => ({
           params: { collection, slug: post.id },
@@ -19,7 +25,6 @@ export async function getStaticPaths() {
         })) : [];
     })
   );
-
   return all_posts.flat();
 }
 
