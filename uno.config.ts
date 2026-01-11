@@ -18,8 +18,8 @@ export default defineConfig({
       provider: 'bunny',
       fonts: {
         sans: [
-          'Noto Sans:300,400,500,700',
-          'Noto Sans TC:300,400,500,700',
+          'Noto Sans:300,400,500,600,700',
+          'Noto Sans TC:300,400,500,600,700',
         ],
         serif: [
           'Noto Serif',

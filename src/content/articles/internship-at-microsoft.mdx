@@ -34,9 +34,11 @@ export const repos = [
   'ft-prepare',
 ];
 
-<div class="grid grid-cols-[max-content] lg:grid-cols-[repeat(2,max-content)] gap-2 justify-left margin-content">
-  { repos.map(repo => <GitHubCard user="Alan-Kuan" repo={repo} />) }
-</div>
+<Group desc="My Internship Projects on GitHub">
+  <div class="grid grid-cols-[max-content] lg:grid-cols-[repeat(2,max-content)] gap-2 justify-left">
+    { repos.map(repo => <GitHubCard user="Alan-Kuan" repo={repo} />) }
+  </div>
+</Group>
 
 Besides building demos, I sometimes assisted the tour when guests visiting our office.
 I was mainly responsible for showing internal demos that utilize Azure services or introducing Microsoft's products,
