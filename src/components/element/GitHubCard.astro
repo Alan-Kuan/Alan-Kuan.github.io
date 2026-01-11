@@ -1,6 +1,4 @@
 ---
-import Image from '@/components/Image.vue';
-
 interface Props {
   user: string;
   repo: string;
@@ -14,16 +12,14 @@ const dark_img_url = `${img_url}&theme=noctis_minimus`;
 ---
 
 <a href={repo_url} target="_blank">
-  <Image
+  <img
     src={img_url}
     alt={repo}
-    class="dark:hidden"
-    client:idle
+    class="dark:hidden mb-0!"
   />
-  <Image
+  <img
     src={dark_img_url}
     alt={repo}
-    class="hidden! dark:flex!"
-    client:idle
+    class="hidden dark:inline-block mb-0!"
   />
 </a>
