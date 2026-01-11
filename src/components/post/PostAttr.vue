@@ -14,7 +14,7 @@ defineProps<{
       class="flex items-center gap-1"
     >
       <div class="i-mdi-calendar text-text-link text-xl" />
-      <span class="font-thin">{{ date }}</span>
+      <span class="font-light">{{ date }}</span>
     </div>
     <!-- Tags -->
     <div
