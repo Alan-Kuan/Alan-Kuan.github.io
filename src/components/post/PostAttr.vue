@@ -7,10 +7,16 @@ defineProps<{
 
 <template>
   <div>
-    <div v-if="date" class="flex items-center gap-1">
-      <div class="i-mdi-calendar" />
+    <!-- Date -->
+    <div
+      v-if="date"
+      title="Authored Date"
+      class="flex items-center gap-1"
+    >
+      <div class="i-mdi-calendar text-text-link text-xl" />
       <span class="font-thin">{{ date }}</span>
     </div>
+    <!-- Tags -->
     <div
       v-if="tags.length > 0"
       class="
