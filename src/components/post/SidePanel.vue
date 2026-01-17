@@ -106,6 +106,7 @@ onUnmounted(() => {
         <li
           :class="[
             li_padding[heading.depth - 1],
+            'pr-2',
             'break-all',
           ]"
         >
