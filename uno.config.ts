@@ -22,10 +22,10 @@ export default defineConfig({
           'Noto Sans TC:300,400,500,600,700',
         ],
         serif: [
-          'Noto Serif',
-          'Noto Serif TC',
+          'Noto Serif:400,700',
+          'Noto Serif TC:400,700',
         ],
-        mono: 'Source Code Pro',
+        mono: 'Source Code Pro:400,700',
       },
     }),
   ],
