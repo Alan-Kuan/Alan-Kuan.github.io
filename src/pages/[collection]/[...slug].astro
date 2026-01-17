@@ -141,11 +141,31 @@ article {
   }
 
   blockquote {
-    @apply md:w-90%;
+    @apply relative;
+    @apply inline-block;
     @apply margin-content;
-    @apply pa-4;
-    @apply border-l-4 border-l-indicator-info;
-    @apply bg-bg-card;
+    @apply px-8 py-4;
+    @apply font-serif;
+    @apply italic;
+
+    &::before {
+      content: '';
+      @apply block;
+      @apply absolute top--2 left-0;
+      @apply i-mdi-format-quote-open;
+      @apply text-3xl;
+    }
+    &::after {
+      content: '';
+      @apply block;
+      @apply absolute right-0 bottom--2;
+      @apply i-mdi-format-quote-close;
+      @apply text-3xl;
+    }
+
+    :last-child {
+      @apply mb-0;
+    }
   }
 
   [data-callout] {
