@@ -3,6 +3,11 @@
         /* Absolute Color */
         --text-light: oklch(0.95 0.05 84);
         --text-dark: oklch(0.40 0.02 84);
+        --indicator-info: oklch(0.75 0.12 250);
+        --indicator-hint: oklch(0.75 0.10 120);
+        --indicator-warning: oklch(0.75 0.20 85);
+        --indicator-error: oklch(0.65 0.18 22);
+        --indicator-catchy: var(--indicator-error);
 
         --bg-top: oklch(0.45 0.07 50);
         --bg-side: oklch(0.95 0.08 84);
@@ -11,8 +16,6 @@
         --bg-muted: oklch(0.91 0.02 79);
         --text-normal: oklch(0.40 0.02 84);
         --text-link: oklch(0.50 0.07 62);
-        --indicator-info: oklch(0.75 0.12 250);
-        --indicator-catchy: oklch(0.65 0.18 22);
     }
     .dark {
         --bg-top: oklch(0.37 0.01 67);
@@ -22,7 +25,5 @@
         --bg-muted: oklch(0.25 0.02 79);
         --text-normal: oklch(0.95 0.05 84);
         --text-link: oklch(0.80 0.08 62);
-        --indicator-info: oklch(0.65 0.10 265);
-        --indicator-catchy: oklch(0.65 0.18 22);
     }
 }

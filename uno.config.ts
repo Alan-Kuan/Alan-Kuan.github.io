@@ -52,6 +52,9 @@ export default defineConfig({
       },
       indicator: {
         info: 'var(--indicator-info)',
+        hint: 'var(--indicator-hint)',
+        warning: 'var(--indicator-warning)',
+        error: 'var(--indicator-error)',
         catchy: 'var(--indicator-catchy)',
       },
     },
