@@ -8,7 +8,7 @@ import mdx from '@astrojs/mdx';
 import remarkCallout from '@r4ai/remark-callout';
 import remarkSectionize from 'remark-sectionize';
 
-import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
+import ecConfig from './ec.config';
 
 export default defineConfig({
   markdown: {
@@ -20,31 +20,7 @@ export default defineConfig({
   integrations: [
     UnoCSS({ injectReset: true }),
     vue(),
-    expressiveCode({
-      themes: ['ayu-dark', 'everforest-light'],
-      useDarkModeMediaQuery: false,
-      themeCssSelector: (theme, _context) => {
-        return theme.name === 'ayu-dark' ?
-          '.dark &' : ':root';
-      },
-      plugins: [
-        pluginLineNumbers(),
-      ],
-      defaultProps: {
-        frame: 'none',
-        overridesByLang: {
-          // disable for empty language and `sh`
-          ',sh': {
-            showLineNumbers: false,
-          },
-        },
-      },
-      styleOverrides: {
-        frames: {
-          frameBoxShadowCssValue: 'none',
-        },
-      },
-    }),
+    expressiveCode(ecConfig),
     mdx(),
   ],
   site: 'https://Alan-Kuan.github.io',
