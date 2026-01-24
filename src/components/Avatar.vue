@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Image from '@/components/Image.vue';
-
 defineProps<{
   avatar_urls: {
     [key: string]: string,
@@ -9,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <Image
+  <img
     v-for="(url, mode) in avatar_urls"
     :src="url"
     :alt="`My avatar in ${mode} style`"
