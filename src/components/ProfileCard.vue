@@ -20,17 +20,49 @@ onMounted(() => {
     --------
 
   In Narrow Container:
-    --------
-    |Avatar|
-    --------
+            ----------
+            |        |
+            | Avatar |
+            |        |
+            ----------
     [Details (hide link texts)]
+
+  Note:
+    Most div tags' classes are ordered by common style,
+    wide-container style and narrow-container style.
 -->
 
 <template>
   <div class="@container/card">
-    <div class="flex flex-col @md/card:flex-row gap-8 items-center-if-narrow">
-      <Avatar :avatar_urls />
-      <div class="flex flex-col items-start @md/card:justify-center items-center-if-narrow">
+    <div
+      class="
+        flex gap-8
+
+        @md/card:flex-row
+
+        flex-col items-center-if-narrow
+      "
+    >
+      <!-- Avatar -->
+      <Avatar
+        :avatar_urls
+        class="
+          flex-shrink-0
+
+          @md/card:w-40 @md/card:h-40
+
+          w-50 h-50
+        "
+      />
+      <div
+        class="
+          flex
+
+          @md/card:justify-center items-start
+
+          flex-col items-center-if-narrow
+        "
+      >
         <!-- Name -->
         <div
           class="font-medium text-xl md:text-2xl">
@@ -46,10 +78,13 @@ onMounted(() => {
         <!-- Links -->
         <div
           class="
-            w-full mt-3
-            flex flex-wrap justify-start
-            gap-x-12 gap-y-1
+            w-full
+            mt-3
+            flex flex-wrap gap-x-12 gap-y-1
             text-text-link
+
+            justify-start
+
             justify-around-if-narrow
           "
         >
