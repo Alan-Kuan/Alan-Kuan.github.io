@@ -24,19 +24,12 @@ const dark_img_url = `${img_url}&theme=noctis_minimus`;
     <img
       :src="img_url"
       :alt="repo"
-      class="dark:hidden card"
+      class="dark:hidden rounded-md"
     />
     <img
       :src="dark_img_url"
       :alt="repo"
-      class="hidden dark:inline-block card"
+      class="hidden dark:inline-block rounded-md"
     />
   </a>
 </template>
-
-<style scoped>
-.card {
-  @apply mb-0!;
-  @apply rounded-md;
-}
-</style>
