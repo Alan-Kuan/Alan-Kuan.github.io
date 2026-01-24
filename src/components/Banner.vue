@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Image from '@/components/Image.vue';
+import LazyImage from '@/components/LazyImage.vue';
 
 defineProps<{
   url: string,
@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <Image
+  <LazyImage
     :src="url"
     alt="Banner"
     class="
