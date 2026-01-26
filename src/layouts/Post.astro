@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '@/layouts/Base.astro';
-import Banner from '@/components/Banner.vue';
-import Footer from '@/components/Footer.vue';
+import LazyImage from '@/components/LazyImage.vue';
 import PostAttr from '@/components/post/PostAttr.vue';
 import SidePanel from '@/components/post/SidePanel.vue';
+import Footer from '@/components/Footer.vue';
 import ScrollToTop from '@/components/ScrollToTop.vue';
 import ImageViewer from '@/components/overlay/ImageViewer.vue';
 
@@ -17,8 +17,7 @@ const {
   desc,
   date,
   tags,
-  banner_url,
-  banner_pos,
+  banner,
   headings,
 } = Astro.props;
 
@@ -32,11 +31,21 @@ const show_side_panel = headings.length > 0;
   <main>
     {
       /* Banner */
-      banner_url && (
-        <Banner
-          url={banner_url}
-          pos={banner_pos}
-          class="w-95% xl:w-300 lg:h-100 mt-4 mx-auto"
+      /* TODO: adjust width/height */
+      banner && (
+        <LazyImage
+          src={banner.url}
+          blurhash={Astro.locals.blurhash_of_src?.[banner.url]}
+          width={1400}
+          height={400}
+          alt="A banner image for this post"
+          class={`
+            w-95% xl:w-300 lg:h-100
+            mt-4 mx-auto
+            rounded-3
+            object-cover
+          `}
+          style={{ 'object-position': banner.pos ?? 'center' }}
           client:idle
         />
       )

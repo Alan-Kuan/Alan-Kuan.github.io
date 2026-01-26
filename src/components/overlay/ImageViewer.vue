@@ -19,23 +19,26 @@ function onEscKeyDown(event: KeyboardEvent) {
 }
 
 function onImgClicked(event: MouseEvent) {
-  const el = event.target as HTMLImageElement;
-  state.src = el.src;
-  state.alt = el.alt;
-  state.title = el.title;
-  state.show = true;
+  const container = event.currentTarget as HTMLDivElement;
+  const img = container.querySelector<HTMLImageElement>('img');
+  if (img) {
+    state.src = img.src;
+    state.alt = img.alt;
+    state.title = img.title;
+    state.show = true;
+  }
 }
 
 onMounted(() => {
   // add click handler to all post images
-  for (const img of document.querySelectorAll<HTMLImageElement>('.post-img')) {
-    img.addEventListener('click', onImgClicked);
+  for (const container of document.querySelectorAll<HTMLDivElement>('.post-img')) {
+    container.addEventListener('click', onImgClicked);
   }
-
   document.addEventListener('keydown', onEscKeyDown);
 });
 
 onUnmounted(() => {
+  document.removeEventListener('click', onImgClicked);
   document.removeEventListener('keydown', onEscKeyDown);
 });
 </script>

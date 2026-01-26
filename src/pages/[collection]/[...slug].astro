@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
-import type { CollectionEntry, CollectionKey } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 import PostLayout from '@/layouts/Post.astro';
 import Link from '@/components/element/Link.vue';
@@ -9,28 +9,29 @@ import PostImage from '@/components/element/PostImage.astro';
 import Group from '@/components/element/Group.vue';
 import GitHubCard from '@/components/element/GitHubCard.vue';
 
-import { collections } from '@/content.config.ts';
-
 interface Props {
-  post: CollectionEntry<CollectionKey>;
+  post: CollectionEntry<'articles'>;
+  blurhash_of_src?: Record<string, string>;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const all_posts = await Promise.all(
-    Object.keys(collections).map(async (collection) => {
-      const posts = await getCollection(collection as CollectionKey);
-      return posts ?
-        posts.map(post => ({
-          params: { collection, slug: post.id },
-          props: { post },
-        })) : [];
-    })
-  );
-  return all_posts.flat();
+  const posts = await getCollection('articles');
+  const blurhashes = await getCollection('blurhashes');
+  const blurhashes_of_post = new Map(blurhashes.map(b => [b.id, b.data]));
+
+  return posts.map(post => ({
+    params: { collection: 'articles', slug: post.id },
+    props: {
+      post,
+      blurhash_of_src: blurhashes_of_post.get(`articles/${post.id}`),
+    },
+  }));
 }
 
-const { post } = Astro.props;
+const { post, blurhash_of_src } = Astro.props;
 const { Content, headings } = await render(post);
+
+Astro.locals.blurhash_of_src = blurhash_of_src;
 ---
 
 <PostLayout {...post.data} {headings}>

@@ -1,13 +1,16 @@
 ---
-import Image from '@/components/Image.vue';
+import LazyImage from '@/components/LazyImage.vue';
 
 interface Props {
   src: string;
+  width?: number;
+  height?: number;
   alt: string;
   title?: string;
 }
 
-const { src, alt, title } = Astro.props;
+const { src, width, height, alt, title } = Astro.props;
+const blurhash = Astro.locals.blurhash_of_src?.[src];
 ---
 
 <div
@@ -18,8 +21,12 @@ const { src, alt, title } = Astro.props;
   "
 >
   {/* NOTE: post-img is utilized by ImageViewer */}
-  <Image
-    {src} {alt} {title}
+  {/* TODO: adjust width/height */}
+  <LazyImage
+    {src} {blurhash}
+    width={width ?? 600}
+    height={height ?? 400}
+    {alt} {title}
     class="rounded-md cursor-pointer post-img"
     client:idle
   />

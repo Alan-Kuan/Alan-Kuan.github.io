@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const articles = defineCollection({
@@ -8,8 +8,10 @@ const articles = defineCollection({
     desc: z.string(),
     date: z.string(),
     tags: z.array(z.string()),
-    banner_url: z.string().optional(),
-    banner_pos: z.string().optional(),
+    banner: z.object({
+      url: z.string(),
+      pos: z.string().optional(),
+    }).optional(),
   }),
 });
 
@@ -19,11 +21,20 @@ const projects = defineCollection({
     title: z.string(),
     desc: z.string(),
     tags: z.array(z.string()),
-    banner_url: z.string().optional(),
+    banner: z.object({
+      url: z.string(),
+      pos: z.string().optional(),
+    }).optional(),
   }),
+});
+
+const blurhashes = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/blurhashes' }),
+  schema: z.record(z.string()),
 });
 
 export const collections = {
   articles,
   projects,
+  blurhashes,
 };

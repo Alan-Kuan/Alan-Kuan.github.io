@@ -14,8 +14,11 @@ export interface PostFrontmatter {
   desc: string;
   date?: string;
   tags: string[];
-  banner_url?: string;
-  banner_pos?: string;
+  banner?: {
+    url: string;
+    pos?: string;
+  };
+  blurhash_of_src?: Record<string, string>;
 };
 
 export interface Publication {

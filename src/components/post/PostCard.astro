@@ -11,7 +11,7 @@ const {
   desc,
   date,
   tags,
-  banner_url,
+  banner,
 } = Astro.props;
 
 const thumbnail_icon = collection === 'projects' ? 'i-mdi-bulletin-board' : 'i-mdi-book-open-variant-outline';
@@ -40,9 +40,9 @@ const post_link = `/${collection}/${id}`;
       "
     >
     {
-      banner_url &&
+      banner &&
       <img
-        src={banner_url}
+        src={banner.url}
         class="
           w-full h-full
           object-cover
