@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky"
   },
   "engine": {
     "node": "^20.11.0"
@@ -38,7 +39,15 @@
     "@iconify-json/vscode-icons": "^1.2.40",
     "@types/markdown-it": "^14.1.2",
     "@unocss/reset": "^66.5.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "typescript": "^5.9.3",
     "unocss": "^66.5.6"
+  },
+  "lint-staged": {
+    "src/content/articles/*.{mdx}": [
+      "pnpx tsx scripts/gen_blurhash.ts",
+      "git add src/content/blurhashes/articles"
+    ]
   }
 }
