@@ -3,14 +3,12 @@ import LazyImage from '@/components/LazyImage.vue';
 
 interface Props {
   src: string;
-  width?: number;
-  height?: number;
   alt: string;
   title?: string;
 }
 
-const { src, width, height, alt, title } = Astro.props;
-const blurhash = Astro.locals.blurhash_of_src?.[src];
+const { src, alt, title } = Astro.props;
+const img_attr = Astro.locals.img_attr_of_src?.[src];
 ---
 
 <div
@@ -21,18 +19,14 @@ const blurhash = Astro.locals.blurhash_of_src?.[src];
   "
 >
   {/* NOTE: post-img is utilized by ImageViewer */}
-  {/* TODO: adjust width/height */}
   <LazyImage
-    {src} {blurhash}
-    width={width ?? 600}
-    height={height ?? 400}
-    {alt} {title}
-    class="rounded-md cursor-pointer post-img"
+    {src} {img_attr} {alt} {title}
+    class="aspect-3/2 rounded-md cursor-pointer post-img"
     client:idle
   />
   {
     title &&
-    <figcaption class="mt-1 text-center lt-md:text-sm">
+    <figcaption class="mt-1 px-4 lt-md:text-sm">
       {title}
     </figcaption>
   }

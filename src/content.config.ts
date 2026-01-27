@@ -30,7 +30,10 @@ const projects = defineCollection({
 
 const blurhashes = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/blurhashes' }),
-  schema: z.record(z.string()),
+  schema: z.record(z.object({
+    blurhash: z.string(),
+    aspect_ratio: z.number(),
+  })),
 });
 
 export const collections = {

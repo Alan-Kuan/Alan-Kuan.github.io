@@ -1,3 +1,5 @@
+import type { ImgAttr } from '@/types/image';
+
 export type NavLink = {
   text: string,
   route: string,
@@ -18,7 +20,7 @@ export interface PostFrontmatter {
     url: string;
     pos?: string;
   };
-  blurhash_of_src?: Record<string, string>;
+  img_attr_of_src?: Record<string, ImgAttr>;
 };
 
 export interface Publication {

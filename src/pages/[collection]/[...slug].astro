@@ -9,9 +9,11 @@ import PostImage from '@/components/element/PostImage.astro';
 import Group from '@/components/element/Group.vue';
 import GitHubCard from '@/components/element/GitHubCard.vue';
 
+import type { ImgAttr } from '@/types/image';
+
 interface Props {
   post: CollectionEntry<'articles'>;
-  blurhash_of_src?: Record<string, string>;
+  img_attr_of_src?: Record<string, ImgAttr>;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -23,15 +25,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { collection: 'articles', slug: post.id },
     props: {
       post,
-      blurhash_of_src: blurhashes_of_post.get(`articles/${post.id}`),
+      img_attr_of_src: blurhashes_of_post.get(`articles/${post.id}`),
     },
   }));
 }
 
-const { post, blurhash_of_src } = Astro.props;
+const { post, img_attr_of_src } = Astro.props;
 const { Content, headings } = await render(post);
 
-Astro.locals.blurhash_of_src = blurhash_of_src;
+Astro.locals.img_attr_of_src = img_attr_of_src;
 ---
 
 <PostLayout {...post.data} {headings}>

@@ -21,6 +21,7 @@ const {
   headings,
 } = Astro.props;
 
+const banner_img_attr = banner && Astro.locals.img_attr_of_src?.[banner.url];
 const show_side_panel = headings.length > 0;
 ---
 
@@ -31,21 +32,17 @@ const show_side_panel = headings.length > 0;
   <main>
     {
       /* Banner */
-      /* TODO: adjust width/height */
       banner && (
         <LazyImage
           src={banner.url}
-          blurhash={Astro.locals.blurhash_of_src?.[banner.url]}
-          width={1400}
-          height={400}
+          img_attr={banner_img_attr}
           alt="A banner image for this post"
+          obj_pos={banner.pos ?? 'center'}
           class={`
             w-95% xl:w-300 lg:h-100
             mt-4 mx-auto
-            rounded-3
-            object-cover
+            rounded-xl
           `}
-          style={{ 'object-position': banner.pos ?? 'center' }}
           client:idle
         />
       )

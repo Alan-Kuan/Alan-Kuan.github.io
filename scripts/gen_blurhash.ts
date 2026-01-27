@@ -8,6 +8,11 @@ const img_pattern = /!\[.*?\]\((https?:\/\/[^\s)]+)(?:\s+".*?")?\)/g;
 const frontmatter_pattern = /^---\r?\n([\s\S]*?)\r?\n---/;
 const banner_url_pattern = /banner:\s*\r?\n\s+url:\s*(?:'([^']+)'|"([^"]+)"|([^\s]+))/;
 
+type ImgAttr = {
+  blurhash: string,
+  aspect_ratio: number,
+};
+
 async function main() {
   const args = process.argv.slice(2);
 
@@ -37,8 +42,8 @@ async function processFile(file_path: string, blurhash_dir: string) {
   const file_name = path.basename(file_path, path.extname(file_path));
   const cache_path = path.join(blurhash_dir, `${file_name}.json`);
 
-  let existing_cache: Record<string, string> = {};
-  const new_cache: Record<string, string> = {};
+  let existing_cache: Record<string, ImgAttr> = {};
+  const new_cache: Record<string, ImgAttr> = {};
 
   const post_content = fs.readFileSync(file_path, 'utf-8');
   const img_urls = extractImageUrls(post_content);
@@ -50,7 +55,7 @@ async function processFile(file_path: string, blurhash_dir: string) {
 
   // update blurhash cache
   for (const img_url of img_urls) {
-    new_cache[img_url] = existing_cache[img_url] ?? await calculateBlurhash(img_url);
+    new_cache[img_url] = existing_cache[img_url] ?? await getImageAttr(img_url);
   }
 
   // update cache file only if there're changes
@@ -65,7 +70,7 @@ async function processFile(file_path: string, blurhash_dir: string) {
   }
 }
 
-function keysAreAllSame(a: Record<string, string>, b: Record<string, string>) {
+function keysAreAllSame(a: Record<string, any>, b: Record<string, any>) {
   if (Object.keys(a).length !== Object.keys(b).length) return false;
   return Object.keys(a).every(key => Object.hasOwn(b, key));
 }
@@ -92,7 +97,7 @@ function extractImageUrls(content: string) {
   return Array.from(urls);
 }
 
-async function calculateBlurhash(url: string) {
+async function getImageAttr(url: string) {
   console.log(`[blurhash] Fetching ${url}`);
 
   try {
@@ -108,7 +113,10 @@ async function calculateBlurhash(url: string) {
       .resize(32, 32, { fit: 'inside' })
       .toBuffer({ resolveWithObject: true });
 
-    return encode(new Uint8ClampedArray(data), info.width, info.height, 4, 4);
+    return {
+      blurhash: encode(new Uint8ClampedArray(data), info.width, info.height, 4, 4),
+      aspect_ratio: info.width / info.height,
+    };
   } catch (err) {
     console.error(`[blurhash] Error processing ${url}:`, err);
     return undefined;
