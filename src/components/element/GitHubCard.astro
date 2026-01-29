@@ -1,0 +1,60 @@
+---
+import LazyImage from '@/components/LazyImage.vue';
+
+interface Props {
+  user: string;
+  repo: string;
+}
+
+const { user, repo } = Astro.props;
+
+const repo_url = `https://github.com/${user}/${repo}`;
+const img_url_light = `https://github-readme-stats-alan-kuan.vercel.app/api/pin/?username=${user}&repo=${repo}&hide_border=true`;
+const img_url_dark = `${img_url_light}&theme=noctis_minimus`;
+
+const img_attr_light = {
+  blurhash: 'UZS$loogjY%M_4WYbHoft7ofWBay~qoeaef6',
+  aspect_ratio: 3.33,
+}
+const img_attr_dark = {
+  blurhash: 'U142uG?bsle?.9tRSgNHMwV@ozWqtSnOxGxZ',
+  aspect_ratio: 3.33,
+}
+---
+
+<a
+  href={repo_url}
+  target="_blank"
+  class="`
+    group
+    relative
+    block
+    w-85vw md:w-400px
+    min-h-[calc(85vw/3.33)] md:min-h-120px
+  `"
+>
+  <div
+    class="
+      absolute z-2
+      w-full h-full
+      rounded-md
+      bg-gray-300
+      opacity-0
+      group-hover:opacity-10
+    "
+  />
+  <LazyImage
+    src={img_url_light}
+    alt={repo}
+    img_attr={img_attr_light}
+    class="w-full h-full dark:hidden rounded-md"
+    client:idle
+  />
+  <LazyImage
+    src={img_url_dark}
+    alt={repo}
+    img_attr={img_attr_dark}
+    class="w-full h-full hidden dark:block rounded-md"
+    client:idle
+  />
+</a>
