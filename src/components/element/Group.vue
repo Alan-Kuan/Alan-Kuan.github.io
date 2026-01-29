@@ -9,7 +9,14 @@ const props = defineProps<{
     <div v-if="desc" class="mb-1 text-sm font-semibold">
       {{ desc }}
     </div>
-    <div class="inline-block pa-4 border-1 border-gray rounded-lg">
+    <div
+      class="
+        inline-block
+        pa-2 md:pa-4
+        border-1 border-gray
+        rounded-lg
+      "
+    >
       <slot />
     </div>
   </div>
