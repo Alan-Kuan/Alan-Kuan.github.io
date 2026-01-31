@@ -75,6 +75,17 @@ onMounted(() => {
         'transition-opacity duration-500',
       ]"
     />
+    <!-- Skeleton (Animation) -->
+    <div
+      v-else
+      :class="[
+        'absolute inset-0',
+        'bg-bg-card',
+        'brightness-110',
+        is_loading ? 'animate-pulse' : 'opacity-0',
+        'transition-opacity duration-500',
+      ]"
+    />
     <!-- Image -->
     <img
       ref="img"
