@@ -9,21 +9,24 @@ interface Props {
 
 const { src, alt, title } = Astro.props;
 const img_attr = Astro.locals.img_attr_of_src?.[src];
+const aspect_ratio = img_attr?.aspect_ratio ?? 1.5;
 ---
 
 {/* NOTE: post-img is used in styling and utilized by ImageViewer */}
 <div
-  class="
-    relative
-    md:w-90% lg:w-75%
-    margin-content
-    post-img
-  "
+  class:list={[
+    'relative',
+    aspect_ratio > 1 ?
+      'md:w-90% lg:w-75%' :
+      'md:w-75% lg:w-50%',
+    'margin-content',
+    'post-img',
+  ]}
 >
   <LazyImage
     {src} {img_attr} {alt} {title}
     class="rounded-md has-[img:not(.error)]:cursor-pointer"
-    style={{ 'aspect-ratio': img_attr?.aspect_ratio ?? '3 / 2' }}
+    style={{ 'aspect-ratio': aspect_ratio }}
     client:idle
   />
   {
