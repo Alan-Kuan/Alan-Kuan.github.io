@@ -21,7 +21,7 @@ function onEscKeyDown(event: KeyboardEvent) {
 function onImgClicked(event: MouseEvent) {
   const container = event.currentTarget as HTMLDivElement;
   const img = container.querySelector<HTMLImageElement>('img');
-  if (img) {
+  if (img && img.naturalWidth > 0) {
     state.src = img.src;
     state.alt = img.alt;
     state.title = img.title;

@@ -87,6 +87,7 @@ onMounted(() => {
       ]"
     />
     <!-- Image -->
+    <!-- Note: the class "error" is used by PostImage -->
     <img
       ref="img"
       :src
@@ -96,7 +97,7 @@ onMounted(() => {
       @error="onError"
       :class="[
         'w-full h-full object-cover',
-        { 'pa-2': is_error },
+        { 'pa-2 error': is_error },
       ]"
       :style="obj_pos && { 'object-position': obj_pos }"
     />

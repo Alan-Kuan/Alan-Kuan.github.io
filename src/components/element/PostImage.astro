@@ -22,7 +22,7 @@ const img_attr = Astro.locals.img_attr_of_src?.[src];
 >
   <LazyImage
     {src} {img_attr} {alt} {title}
-    class="rounded-md cursor-pointer"
+    class="rounded-md has-[img:not(.error)]:cursor-pointer"
     style={{ 'aspect-ratio': img_attr?.aspect_ratio ?? '3 / 2' }}
     client:idle
   />
