@@ -101,8 +101,8 @@ article {
      *  For each block element, if it's last child or its next element
      *  is not a block element, remove its bottom margin.
      */
-    .post-img, .expressive-code {
-      &:last-child, &:has(+ :not(.post-img):not(.expressive-code)) {
+    figure, .expressive-code {
+      &:last-child, &:has(+ :not(figure):not(.expressive-code)) {
         @apply mb-0;
       }
     }

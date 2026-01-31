@@ -12,8 +12,8 @@ const img_attr = Astro.locals.img_attr_of_src?.[src];
 const aspect_ratio = img_attr?.aspect_ratio ?? 1.5;
 ---
 
-{/* NOTE: post-img is used in styling and utilized by ImageViewer */}
-<div
+{/* NOTE: post-img is utilized by ImageViewer */}
+<figure
   class:list={[
     'relative',
     aspect_ratio > 1 ?
@@ -35,4 +35,4 @@ const aspect_ratio = img_attr?.aspect_ratio ?? 1.5;
       {title}
     </figcaption>
   }
-</div>
+</figure>

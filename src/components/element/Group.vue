@@ -5,10 +5,10 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="margin-content">
-    <div v-if="desc" class="ml-4 mb-1 text-sm font-semibold">
+  <figure class="margin-content">
+    <figcaption v-if="desc" class="ml-4 mb-1 text-sm font-semibold">
       {{ desc }}
-    </div>
+    </figcaption>
     <div
       class="
         inline-block
@@ -19,5 +19,5 @@ const props = defineProps<{
     >
       <slot />
     </div>
-  </div>
+  </figure>
 </template>
