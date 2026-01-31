@@ -96,8 +96,18 @@ article {
   }
   li {
     @apply leading-8;
-    * {
-      @apply mb-0!;
+
+    /*
+     *  For each block element, if it's last child or its next element
+     *  is not a block element, remove its bottom margin.
+     */
+    .post-img, .expressive-code {
+      &:last-child, &:has(+ :not(.post-img):not(.expressive-code)) {
+        @apply mb-0;
+      }
+    }
+    ol, ul {
+      @apply mb-0;
     }
   }
 

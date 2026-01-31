@@ -11,17 +11,18 @@ const { src, alt, title } = Astro.props;
 const img_attr = Astro.locals.img_attr_of_src?.[src];
 ---
 
+{/* NOTE: post-img is used in styling and utilized by ImageViewer */}
 <div
   class="
     relative
     md:w-90% lg:w-75%
     margin-content
+    post-img
   "
 >
-  {/* NOTE: post-img is utilized by ImageViewer */}
   <LazyImage
     {src} {img_attr} {alt} {title}
-    class="rounded-md cursor-pointer post-img"
+    class="rounded-md cursor-pointer"
     style={{ 'aspect-ratio': img_attr?.aspect_ratio ?? '3 / 2' }}
     client:idle
   />
