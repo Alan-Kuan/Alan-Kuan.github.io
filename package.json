@@ -45,7 +45,7 @@
     "unocss": "^66.5.6"
   },
   "lint-staged": {
-    "src/content/articles/*.{mdx}": [
+    "src/content/articles/*.mdx": [
       "pnpx tsx scripts/gen_blurhash.ts",
       "git add src/content/blurhashes/articles"
     ]
