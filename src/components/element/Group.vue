@@ -6,14 +6,14 @@ const props = defineProps<{
 
 <template>
   <div class="margin-content">
-    <div v-if="desc" class="mb-1 text-sm font-semibold">
+    <div v-if="desc" class="ml-4 mb-1 text-sm font-semibold">
       {{ desc }}
     </div>
     <div
       class="
         inline-block
         pa-2 md:pa-4
-        border-1 border-gray
+        bg-bg-muted
         rounded-lg
       "
     >
