@@ -37,22 +37,6 @@ const curr_idx = route_prefix === '/' ?
     <link rel="me" href="https://mastodon.social/@alankuan" />
     <meta name="fediverse:creator" content="@alankuan@mastodon.social">
 
-    <script is:inline>
-      const media_query = window.matchMedia('(prefers-color-scheme: dark)');
-
-      function applyTheme() {
-        document.documentElement.classList.toggle(
-          'dark',
-          (!('theme' in localStorage) && media_query.matches) ||
-            localStorage.getItem('theme') === 'dark',
-        );
-      }
-
-      media_query.addEventListener('change', (e) => applyTheme(e.matches));
-      document.addEventListener('astro:after-swap', applyTheme);
-      applyTheme();
-    </script>
-
     <ClientRouter />
 	</head>
 
@@ -108,3 +92,19 @@ const curr_idx = route_prefix === '/' ?
       drop-shadow(0 -2px 2px rgba(255, 255, 255, 0.5));
   }
 </style>
+
+<script>
+const media_query = window.matchMedia('(prefers-color-scheme: dark)');
+
+function applyTheme() {
+  document.documentElement.classList.toggle(
+    'dark',
+    (!('theme' in localStorage) && media_query.matches) ||
+      localStorage.getItem('theme') === 'dark',
+  );
+}
+
+media_query.addEventListener('change', applyTheme);
+document.addEventListener('astro:after-swap', applyTheme);
+applyTheme();
+</script>
