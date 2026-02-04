@@ -99,3 +99,31 @@ const show_side_panel = headings.length > 0;
   />
   <ImageViewer client:idle />
 </BaseLayout>
+
+<script>
+import { show_viewer, zoomed_img } from '@/stores/ImageViewerStore';
+
+function onImgClicked(event: MouseEvent) {
+  const container = event.currentTarget as HTMLDivElement;
+  const img = container.querySelector<HTMLImageElement>('img');
+  if (img && img.naturalWidth > 0) {
+    zoomed_img.set({
+      src: img.src,
+      alt: img.alt,
+      title: img.title,
+    });
+    show_viewer.set(true);
+  }
+}
+
+function initViewerAndImages() {
+  zoomed_img.set({ src: '', alt: '' });
+  show_viewer.set(false);
+  document.querySelectorAll<HTMLImageElement>('.post-img').forEach(img => {
+    img.addEventListener('click', onImgClicked);
+  });
+}
+
+document.addEventListener('astro:after-swap', initViewerAndImages);
+initViewerAndImages();
+</script>

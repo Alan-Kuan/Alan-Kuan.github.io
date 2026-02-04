@@ -12,7 +12,6 @@ const img_attr = Astro.locals.img_attr_of_src?.[src];
 const aspect_ratio = img_attr?.aspect_ratio ?? 1.5;
 ---
 
-{/* NOTE: post-img is utilized by ImageViewer */}
 <figure
   class:list={[
     'relative',
@@ -20,12 +19,19 @@ const aspect_ratio = img_attr?.aspect_ratio ?? 1.5;
       'md:w-90% lg:w-75%' :
       'md:w-75% lg:w-50%',
     'margin-content',
-    'post-img',
   ]}
 >
+  {/* Note: post-img is used in post layout */}
   <LazyImage
     {src} {img_attr} {alt} {title}
-    class="rounded-md has-[img:not(.error)]:cursor-pointer"
+    class={`
+      rounded-md
+      transition-all
+      has-[img:not(.error)]:cursor-pointer
+      has-[img:not(.error)]:hover:shadow-md
+      has-[img:not(.error)]:hover:scale-101
+      post-img
+    `}
     style={{ 'aspect-ratio': aspect_ratio }}
     client:idle
   />
@@ -36,3 +42,7 @@ const aspect_ratio = img_attr?.aspect_ratio ?? 1.5;
     </figcaption>
   }
 </figure>
+
+<style scoped>
+
+</style>
