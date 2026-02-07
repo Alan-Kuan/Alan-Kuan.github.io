@@ -25,6 +25,7 @@
     "astro-expressive-code": "^0.41.6",
     "blurhash": "^2.0.5",
     "markdown-it": "^14.1.0",
+    "motion-v": "^1.10.2",
     "nanostores": "^1.1.0",
     "node-html-parser": "^6.1.13",
     "remark-sectionize": "^2.1.0",

@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { onMounted, ref, useTemplateRef } from 'vue';
+import { motion } from 'motion-v';
+import { onMounted, ref } from 'vue';
 
-const expanded = ref(false);
 const theme = ref('');
-
-const indicator = useTemplateRef('indicator');
+const choice_made = ref(false);
+const expanded = ref(false);
 
 function choose(chosen_theme: string) {
-  // ensure the animation is played after some mode is chosen
-  indicator.value!.classList.add('chosen');
   theme.value = chosen_theme;
+  // ensure the animation is played after some mode is chosen
+  choice_made.value = true;
 
   if (chosen_theme === 'system') {
     localStorage.removeItem('theme');
@@ -34,7 +34,6 @@ onMounted(() => {
   <div class="relative">
     <!-- Indicator -->
     <button
-      ref="indicator"
       @click="expanded = true"
       @blur="expanded = false"
       class="
@@ -45,22 +44,28 @@ onMounted(() => {
         @hover:bg-#ffffff55
       "
     >
-      <div
+      <motion.div
         v-if="theme === 'light'"
-        id="sun"
+        :initial="choice_made ? {} : false"
+        :animate="{ rotate: '90deg' }"
+        :transition="{ duration: 0.5 }"
         class="i-mdi-white-balance-sunny"
       />
       <div v-else-if="theme === 'dark'">
-        <div
-          id="star-1"
+        <motion.div
+          :initial="choice_made ? { opacity: 0, y: '-0.5rem' } : false"
+          :animate="{ opacity: 100, y: 0 }"
+          :transition="{ duration: 0.5 }"
           class="
             i-tabler-star-filled
             absolute top-2 right-3
             text-[8px]
           "
         />
-        <div
-          id="star-2"
+        <motion.div
+          :initial="choice_made ? { opacity: 0, y: '-1rem' } : false"
+          :animate="{ opacity: 100, y: 0 }"
+          :transition="{ duration: 0.4 }"
           class="
             i-tabler-star-filled
             absolute top-4 right-1
@@ -71,8 +76,10 @@ onMounted(() => {
       </div>
       <div v-else-if="theme === 'system'">
         <div class="i-mdi-monitor" />
-        <div
-          id="blink"
+        <motion.div
+          :initial="choice_made ? { scale: 0.5, rotate: '-90deg' } : false"
+          :animate="{ scale: 1, rotate: '0deg' }"
+          :transition="{ duration: 0.5 }"
           class="
             i-mdi-star-four-points-small
             absolute top-1.2
@@ -132,33 +139,5 @@ onMounted(() => {
     pa-2
     rounded-full
     @hover:bg-#ccc/50;
-}
-
-.chosen #sun { animation: spin-enter 0.5s forwards; }
-
-.chosen #star-1 { animation: drop-in-1 0.5s forwards; }
-
-.chosen #star-2 { animation: drop-in-2 0.4s forwards; }
-
-.chosen #blink { animation: spin-grow 0.5s forwards; }
-
-@keyframes spin-enter {
-  0% { @apply rotate--90deg; }
-  100% { @apply rotate-0deg; }
-}
-
-@keyframes drop-in-1 {
-  0% { @apply opacity-0 top-0; }
-  100% { @apply opacity-100 top-2; }
-}
-
-@keyframes drop-in-2 {
-  0% { @apply opacity-0 top-2; }
-  100% { @apply opacity-100 top-4; }
-}
-
-@keyframes spin-grow {
-  0% { @apply scale-50% rotate--90deg; }
-  100% { @apply scale-100% rotate-0deg; }
 }
 </style>
