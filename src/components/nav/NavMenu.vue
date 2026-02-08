@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useStore } from '@nanostores/vue';
+import { motion } from 'motion-v';
 
 import { show_nav_menu } from '@/stores/NavMenuStore';
 import type { NavLink } from '@/types/content';
@@ -11,37 +11,31 @@ defineProps<{
 }>();
 
 const $show_menu = useStore(show_nav_menu);
-const transform = ref('translateY(-140px)');
-
-function onClick() {
-  show_nav_menu.set(!show_nav_menu.get());
-
-  if (show_nav_menu.get()) {
-    transform.value = '';
-  } else {
-    transform.value = 'translateY(-140px)';
-  }
-}
 </script>
 
 <template>
   <div>
     <!-- Button -->
-    <button @click="onClick" class="md:hidden pa-2 text-3xl">
+    <button
+      @click="show_nav_menu.set(!$show_menu)"
+      @blur="show_nav_menu.set(false)"
+      class="md:hidden pa-2 text-3xl"
+    >
       <div class="i-mdi-hamburger-menu" />
     </button>
     <!-- Menu -->
     <!-- NOTE: z-index is relative to nav bar's -->
-    <div
+    <motion.div
+      :initial="{ y: '-100%' }"
+      :animate="{ y: $show_menu ? 0 : '-100%' }"
+      :transition="{ duration: 0.7 }"
       class="
         md:hidden
         fixed z--1 w-full top-[var(--navbar-height)] left-0
         pb-2
         bg-bg-top
         text-center text-lg
-        transition-transform duration-700
       "
-      :style="{ transform }"
     >
       <div
         v-for="link, idx in links"
@@ -71,6 +65,6 @@ function onClick() {
           />
         </a>
       </div>
-    </div>
+    </motion.div>
   </div>
 </template>
