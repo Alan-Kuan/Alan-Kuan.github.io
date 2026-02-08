@@ -61,10 +61,10 @@ const curr_idx = route_prefix === '/' ?
         <Image src={logo_img} alt="logo" class="logo w-10 md:w-15" />
       </a>
 
-      <NavList {curr_idx} {links} client:load />
+      <NavList {curr_idx} {links} client:idle />
 
       <div class="justify-self-end flex md:pr-15">
-        <NavMenu {curr_idx} {links} client:load />
+        <NavMenu {curr_idx} {links} client:idle />
         <DarkLightToggle client:idle />
       </div>
     </nav>
