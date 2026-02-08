@@ -2,10 +2,12 @@
 import type { Page } from 'astro';
 import type { CollectionEntry, CollectionKey } from 'astro:content';
 import MarkdownIt from 'markdown-it';
+import { motion } from 'motion-v';
 import { parse as parseHtml } from 'node-html-parser';
 
 import WithProfileLayout from '@/layouts/WithProfile.astro';
 import PostCard from '@/components/post/PostCard.astro';
+import Pagination from '@/components/Pagination.vue';
 import Footer from '@/components/Footer.vue';
 import type { Post } from '@/types/content';
 
@@ -60,67 +62,14 @@ const posts: Post[] = page.data.map(({ collection, id, body, data }) => ({
     </div>
 
     {/* Pagination */}
-    <div class="flex justify-center items-center">
-      <a
-        href={page.url.prev}
-        class:list={[
-          'mr-1',
-          { 'invisible': !page.url.prev },
-        ]}
-      >
-        <div class="i-mdi-menu-left menu-btn" />
-      </a>
-      {
-        /* show at most 5 page links (2 previous pages, current page and 2 next pages) */
-        Array.from({ length: 5 }, (_, k) => k + page.currentPage - 2).map(num =>
-          num <= 0 || num > page.lastPage ?
-            /* out of range; create a placeholder */
-            <span class="mx-1 w-9 text-lg" /> :
-          num == page.currentPage ?
-            /* current page */
-            <span
-              class="
-                page-link
-                border-indicator-catchy
-              "
-            >{num}</span> :
-            /* other pages */
-            <a
-              href={`${prefix}/${num}`}
-              class="
-                page-link
-                border-transparent
-                transition-colors duration-200
-                hover:border-indicator-catchy/50
-              "
-            >{num}</a>
-        )
-      }
-      <a
-        href={page.url.next}
-        class:list={[
-          'ml-1',
-          { 'invisible': !page.url.next },
-        ]}
-      >
-        <div class="i-mdi-menu-right menu-btn" />
-      </a>
-    </div>
+    <Pagination
+      {prefix}
+      curr_page={page.currentPage}
+      last_page={page.lastPage}
+      prev_page_url={page.url.prev}
+      next_page_url={page.url.next}
+      client:idle
+    />
   </main>
   <Footer />
 </WithProfileLayout>
-
-<style>
-.page-link {
-  @apply mx-1 w-9 h-9;
-  @apply rounded-full border-2;
-  @apply text-lg text-center;
-}
-
-.menu-btn {
-  @apply text-4xl;
-  @apply transition-transform duration-200;
-  @apply hover:scale-120%;
-  @apply active:scale-80%;
-}
-</style>

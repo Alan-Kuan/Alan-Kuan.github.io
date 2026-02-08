@@ -48,7 +48,7 @@ const highlighted_idx = ref(props.curr_idx);
       <!-- current route indicator -->
       <motion.div
         v-if="idx === highlighted_idx"
-        layout-id="indicator"
+        layout-id="route-indicator"
         class="
           absolute bottom--2
           w-full h-1
