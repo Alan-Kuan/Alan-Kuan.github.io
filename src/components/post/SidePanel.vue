@@ -48,6 +48,7 @@ onUnmounted(() => {
   <!-- Side Panel Toggle -->
   <button
     @click="show = !show"
+    @blur="show = false"
     class="
       md:hidden
       fixed z-5
