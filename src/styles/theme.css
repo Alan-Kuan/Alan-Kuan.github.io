@@ -18,10 +18,10 @@
         --text-link: oklch(0.50 0.07 62);
     }
     .dark {
-        --bg-top: oklch(0.37 0.01 67);
-        --bg-side: oklch(0.40 0.01 67);
-        --bg-body: oklch(0.30 0.01 67);
-        --bg-card: oklch(0.35 0.01 67);
+        --bg-top: oklch(0.34 0.01 67);
+        --bg-side: oklch(0.30 0.01 67);
+        --bg-body: oklch(0.25 0.01 67);
+        --bg-card: oklch(0.35 0.01 90);
         --bg-muted: oklch(0.37 0.01 67);
         --text-normal: oklch(0.95 0.05 84);
         --text-link: oklch(0.80 0.08 62);
