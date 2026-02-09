@@ -6,8 +6,6 @@ import {
   transformerDirectives,
 } from 'unocss';
 
-import { icon_map } from './src/ec_plugin_lang_icon';
-
 export default defineConfig({
   presets: [
     presetWind4({
@@ -61,5 +59,4 @@ export default defineConfig({
       },
     },
   },
-  safelist: Object.values(icon_map),
 });

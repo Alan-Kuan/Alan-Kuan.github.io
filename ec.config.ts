@@ -1,7 +1,6 @@
 import { defineEcConfig } from 'astro-expressive-code';
 
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
-import { pluginLangIcon } from './src/ec_plugin_lang_icon';
 
 export default defineEcConfig({
   themes: ['ayu-dark', 'everforest-light'],
@@ -12,7 +11,6 @@ export default defineEcConfig({
   },
   plugins: [
     pluginLineNumbers(),
-    pluginLangIcon(),
   ],
   defaultProps: {
     frame: 'none',
