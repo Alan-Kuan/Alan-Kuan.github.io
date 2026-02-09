@@ -74,10 +74,11 @@ article {
 
   ol {
     @apply margin-content;
-    @apply pl-8;
+    @apply pl-6 md:pl-8;
     @apply list-decimal;
   }
   ol ol {
+    @apply pl-2 md:pl-4 lg:pl-8;
     @apply list-alpha;
   }
   ol ol ol {
@@ -85,10 +86,11 @@ article {
   }
   ul {
     @apply margin-content;
-    @apply pl-8;
+    @apply pl-6 md:pl-8;
     @apply list-disc;
   }
   ul ul {
+    @apply pl-2 md:pl-4 lg:pl-8;
     @apply list-circle;
   }
   ul ul ul {
@@ -147,6 +149,7 @@ article {
   }
   /* code block */
   .expressive-code {
+    @apply lg:w-90% xl:w-70%;
     @apply margin-content;
   }
 
@@ -179,7 +182,7 @@ article {
   }
 
   [data-callout] {
-    @apply md:w-90%;
+    @apply lg:w-90% xl:w-70%;
     @apply margin-content;
     @apply pa-4;
     @apply rounded-lg;
