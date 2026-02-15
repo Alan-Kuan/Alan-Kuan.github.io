@@ -1,12 +1,12 @@
 @layer base {
     :root {
-        --navbar-height: calc(var(--spacing) * 15);
+        --navbar-height: calc(var(--spacing) * 12);
         --footer-height: calc(var(--spacing) * 12);
     }
 
     @screen md {
         :root {
-            --navbar-height: calc(var(--spacing) * 20);
+            --navbar-height: calc(var(--spacing) * 15);
         }
     }
 

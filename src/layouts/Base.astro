@@ -52,18 +52,18 @@ const curr_idx = route_prefix === '/' ?
         relative z-10
         grid grid-cols-[1fr_auto_1fr] items-center
         w-full h-[var(--navbar-height)]
-        px-5
+        px-2 md:px-5
         bg-bg-top
         text-text-light
       `}
     >
       <a href="/" class="justify-self-start inline-block dark:saturate-70">
-        <Image src={logo_img} alt="logo" class="logo w-10 md:w-15" />
+        <Image src={logo_img} alt="logo" class="logo w-8 md:w-12" />
       </a>
 
       <NavList {curr_idx} {links} client:idle />
 
-      <div class="justify-self-end flex md:pr-15">
+      <div class="justify-self-end flex md:pr-10">
         <NavMenu {curr_idx} {links} client:idle />
         <DarkLightToggle client:idle />
       </div>

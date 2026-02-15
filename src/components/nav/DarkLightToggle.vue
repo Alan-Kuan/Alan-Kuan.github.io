@@ -36,54 +36,38 @@ onMounted(() => {
     <button
       @click="expanded = true"
       @blur="expanded = false"
-      class="
-        relative
-        pa-2
-        rounded-full
-        text-3xl
-        @hover:bg-#ffffff55
-      "
+      class="indicator-btn"
     >
-      <motion.div
-        v-if="theme === 'light'"
-        :initial="choice_made ? {} : false"
-        :animate="{ rotate: '90deg' }"
-        :transition="{ duration: 0.5 }"
-        class="i-mdi-white-balance-sunny"
-      />
-      <div v-else-if="theme === 'dark'">
+      <div v-if="theme === 'light'" class="icon-wrapper">
+        <motion.div
+          :initial="choice_made ? {} : false"
+          :animate="{ rotate: '90deg' }"
+          :transition="{ duration: 0.5 }"
+          class="i-mdi-white-balance-sunny"
+        />
+      </div>
+      <div v-else-if="theme === 'dark'" class="icon-wrapper">
         <motion.div
           :initial="choice_made ? { opacity: 0, y: '-0.5rem' } : false"
           :animate="{ opacity: 100, y: 0 }"
           :transition="{ duration: 0.5 }"
-          class="
-            i-tabler-star-filled
-            absolute top-2 right-3
-            text-[8px]
-          "
+          class="icon-star-1"
         />
         <motion.div
           :initial="choice_made ? { opacity: 0, y: '-1rem' } : false"
           :animate="{ opacity: 100, y: 0 }"
           :transition="{ duration: 0.4 }"
-          class="
-            i-tabler-star-filled
-            absolute top-4 right-1
-            text-[9px]
-          "
+          class="icon-star-2"
         />
         <div class="i-tabler-moon" />
       </div>
-      <div v-else-if="theme === 'system'">
+      <div v-else-if="theme === 'system'" class="icon-wrapper">
         <div class="i-mdi-monitor" />
         <motion.div
           :initial="choice_made ? { scale: 0.5, rotate: '-90deg' } : false"
           :animate="{ scale: 1, rotate: '0deg' }"
           :transition="{ duration: 0.5 }"
-          class="
-            i-mdi-star-four-points-small
-            absolute top-1.2
-          "
+          class="icon-spark"
         />
       </div>
     </button>
@@ -94,50 +78,78 @@ onMounted(() => {
         'grid justify-center',
         'bg-bg-card',
         'rounded-full',
-        'text-text-normal text-3xl',
         'shadow-lg',
         'transition-all duration-300',
         { 'opacity-0 invisible': !expanded },
       ]"
     >
-      <button @click="() => choose('light')" class="btn">
-        <div class="i-mdi-white-balance-sunny" />
+      <button @click="() => choose('light')" class="menu-btn">
+        <div class="icon-wrapper">
+          <div class="i-mdi-white-balance-sunny" />
+        </div>
       </button>
-      <button @click="() => choose('dark')" class="btn relative">
-        <div
-          class="
-            i-tabler-star-filled
-            absolute top-2 right-3
-            text-[8px]
-          "
-        />
-        <div
-          class="
-            i-tabler-star-filled
-            absolute top-4 right-1
-            text-[9px]
-          "
-        />
-        <div class="i-tabler-moon" />
+      <button @click="() => choose('dark')" class="menu-btn">
+        <div class="icon-wrapper">
+          <div class="icon-star-1" />
+          <div class="icon-star-2" />
+          <div class="i-tabler-moon" />
+        </div>
       </button>
-      <button @click="() => choose('system')" class="btn relative">
-        <div class="i-mdi-monitor" />
-        <div
-          class="
-            i-mdi-star-four-points-small
-            absolute top-1.2
-          "
-        />
+      <button @click="() => choose('system')" class="menu-btn">
+        <div class="icon-wrapper">
+          <div class="i-mdi-monitor" />
+          <div class="icon-spark" />
+        </div>
       </button>
     </div>
   </div>
 </template>
 
-<style scoped>
-.btn {
+<style lang="scss" scoped>
+%btn {
   @apply
-    pa-2
-    rounded-full
+    flex justify-center items-center
+    w-9.2 h-9.2 md:w-11.5 md:h-11.5
+    pa-1.6 md:pa-2
+    rounded-full;
+}
+.indicator-btn {
+  @extend %btn;
+  @apply
+    @hover:bg-#ffffff55;
+}
+.menu-btn {
+  @extend %btn;
+  @apply
+    text-text-normal
     @hover:bg-#ccc/50;
+}
+
+.icon-wrapper {
+  @apply
+    relative
+    pa-2
+    text-3xl
+    lt-md:scale-80;
+}
+
+.icon-star-1 {
+  @apply
+    i-tabler-star-filled
+    absolute top-2 right-3
+    text-[8px];
+}
+
+.icon-star-2 {
+  @apply
+    i-tabler-star-filled
+    absolute top-4 right-1
+    text-[9px];
+}
+
+.icon-spark {
+  @apply
+    i-mdi-star-four-points-small
+    absolute top-1.2;
 }
 </style>

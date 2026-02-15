@@ -37,9 +37,9 @@ const highlighted_idx = ref(props.curr_idx);
       <a
         :href="link.route"
         class="
-          px-2 py-0.5
+          px-1
           hover:bg-#ffffff55
-          text-lg md:text-xl
+          text-md md:text-lg
           rounded-sm
         "
       >
@@ -50,8 +50,8 @@ const highlighted_idx = ref(props.curr_idx);
         v-if="idx === highlighted_idx"
         layout-id="route-indicator"
         class="
-          absolute bottom--2
-          w-full h-1
+          absolute bottom--1 md:bottom--1.5
+          w-full h-0.75
           bg-indicator-info
           rounded-sm
         "

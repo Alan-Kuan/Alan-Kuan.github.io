@@ -19,7 +19,7 @@ const $show_menu = useStore(show_nav_menu);
     <button
       @click="show_nav_menu.set(!$show_menu)"
       @blur="show_nav_menu.set(false)"
-      class="md:hidden pa-2 text-3xl"
+      class="md:hidden pa-1.6 text-2xl"
     >
       <div class="i-mdi-hamburger-menu" />
     </button>
@@ -34,7 +34,7 @@ const $show_menu = useStore(show_nav_menu);
         fixed z--1 w-full top-[var(--navbar-height)] left-0
         pb-2
         bg-bg-top
-        text-center text-lg
+        text-center
       "
     >
       <div
@@ -50,15 +50,15 @@ const $show_menu = useStore(show_nav_menu);
           class="
             relative
             inline-block
-            px-2
+            px-1
           "
         >
           {{ link.text }}
           <div
             v-if="idx === curr_idx"
             class="
-              absolute left-0 bottom--2
-              w-full h-1
+              absolute left-0 bottom--1
+              w-full h-0.75
               bg-indicator-info
               rounded-sm
             "
