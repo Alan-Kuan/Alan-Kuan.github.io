@@ -1,12 +1,26 @@
 <script setup lang="ts">
+import { motion } from 'motion-v';
 import { onMounted, onUnmounted, ref } from 'vue';
 
-const show = ref(false);
+let ticking = false;
+let last_scroll_top = 0;
+const show_top = ref(false);
+const show_bottom = ref(false);
 
-function onScroll() {
-  const visible_height = document.documentElement.clientHeight;
-  const content = document.getElementById('base-content')!;
-  show.value = content.scrollTop > visible_height;
+function onScroll(e: Event) {
+  if (ticking) return;
+
+  setTimeout(() => {
+    const content = e.target as HTMLDivElement;
+    const curr_scroll_top = content.scrollTop;
+    show_top.value = curr_scroll_top < last_scroll_top &&
+      curr_scroll_top > 0;
+    show_bottom.value = curr_scroll_top > content.clientHeight;
+    last_scroll_top = curr_scroll_top;
+    ticking = false;
+  }, 20);
+
+  ticking = true;
 }
 
 function onClick() {
@@ -26,31 +40,53 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Transition>
-    <button
-      v-show="show"
-      @click="onClick"
-      class="
-        pa-3 md:pa-4
-        bg-bg-top
-        text-text-light
-        rounded-50%
-        shadow-lg
-        hover:brightness-120
-        active:brightness-140
-      "
-    >
-      <div class="i-mdi-arrow-up text-xl" />
-    </button>
-  </Transition>
+  <!-- For Narrow Screen -->
+  <motion.button
+    :initial="{ y: -100 }"
+    :animate="{ y: show_top ? 0 : -100 }"
+    @click="onClick"
+    class="
+      md:hidden
+      fixed left-1/2 -translate-x-1/2
+      top-[calc(var(--navbar-height)+var(--spacing))]
+      flex items-center
+      pa-1
+      bg-bg-card
+      rounded-full
+      shadow-lg
+      active:brightness-120
+    "
+  >
+    <div class="pa-1 icon">
+      <div class="i-mdi-arrow-up" />
+    </div>
+    <div class="mx-1">Back to top</div>
+  </motion.button>
+
+  <!-- For Wide Screen -->
+  <motion.button
+    :initial="{ y: 100 }"
+    :animate="{ y: show_bottom ? 0 : 100 }"
+    @click="onClick"
+    class="
+      lt-md:hidden
+      fixed bottom-8 right-4 z-10
+      pa-4
+      shadow-lg
+      hover:brightness-120
+      active:brightness-140
+      icon
+    "
+  >
+    <div class="i-mdi-arrow-up text-xl" />
+  </motion.button>
 </template>
 
 <style scoped>
-.v-enter-active, .v-leave-active {
-  transition: transform 0.25s ease;
-}
-
-.v-enter-from, .v-leave-to {
-  transform: translateY(100px);
+.icon {
+  @apply
+    bg-bg-top
+    text-text-light
+    rounded-50%;
 }
 </style>
