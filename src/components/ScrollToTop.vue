@@ -48,7 +48,8 @@ onUnmounted(() => {
     class="
       md:hidden
       fixed left-1/2 -translate-x-1/2
-      top-[calc(var(--navbar-height)+var(--spacing))]
+      top-[calc(var(--navbar-height)+3*var(--spacing))]
+      z-8
       flex items-center
       pa-1
       bg-bg-card
