@@ -1,12 +1,4 @@
----
-import WithProfileLayout from '@/layouts/WithProfile.astro';
-import PubList from '@/components/publication/PubList.vue';
-import Footer from '@/components/Footer.vue';
-
-const title = 'Publications - Alan Kuan | 官澔恩';
-const desc = 'Publications Alan Kuan have gotten involved with';
-
-const pubs = {
+export const pubs = {
   Conference: [
     {
       title: 'Towards Low-Latency GPU-Aware Pub/Sub Communication for Real-Time Edge Computing',
@@ -31,12 +23,3 @@ const pubs = {
     },
   ],
 };
-const me = 'Hao-En Kuan';
----
-
-<WithProfileLayout {title} {desc}>
-  <main>
-    <PubList {pubs} {me} />
-  </main>
-  <Footer />
-</WithProfileLayout>

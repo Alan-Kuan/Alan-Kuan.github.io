@@ -10,31 +10,15 @@ defineProps<{
 </script>
 
 <template>
-  <div
-    class="
-      ma-8
-      px-8 py-5
-      bg-bg-card
-      drop-shadow-sm
-    "
-  >
+  <div>
     <div v-for="sub_pubs, cat in pubs">
-      <h1 class="text-2xl font-medium">
-        {{ cat }}
-      </h1>
+      <h2 class="text-lg">{{ cat }}</h2>
       <ul class="pt-3 pl-8 list-disc">
         <template
           v-if="cat === 'Conference'"
           v-for="pub in sub_pubs"
         >
-          <ConfPubItem
-            :authors="pub.authors"
-            :title="pub.title"
-            :conference="pub.conference"
-            :location="pub.location"
-            :time="pub.time"
-            :me="me"
-          />
+          <ConfPubItem v-bind="pub" :me />
         </template>
       </ul>
     </div>

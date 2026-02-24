@@ -18,8 +18,8 @@ const { title, desc } = Astro.props;
 
 const route_prefix = Astro.url.pathname.split('/').splice(0, 2).join('/');
 const curr_idx = route_prefix === '/' ?
-  -1 :
-  links.findIndex((link) => link.route.startsWith(route_prefix));
+  links.findIndex(link => link.route === '/') :
+  links.findIndex(link => link.route.startsWith(route_prefix));
 ---
 
 <!doctype html>
@@ -55,9 +55,16 @@ const curr_idx = route_prefix === '/' ?
         text-text-light
       `}
     >
-      <a href="/" class="justify-self-start inline-block dark:saturate-70">
-        <img src="/favicon.svg" alt="logo" class="logo w-8 md:w-12" />
-      </a>
+      <img
+        src="/favicon.svg"
+        alt="logo"
+        class:list={`
+          justify-self-start
+          w-8 md:w-12
+          dark:saturate-70
+          logo
+        `}
+      />
 
       <NavList {curr_idx} {links} client:idle />
 
