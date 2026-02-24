@@ -1,12 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 
 import NavList from '@/components/nav/NavList.vue';
 import NavMenu from '@/components/nav/NavMenu.vue';
 import DarkLightToggle from '@/components/nav/DarkLightToggle.vue';
 
-import logo_img from '@/assets/logo.webp';
 import { links } from "@/content/nav_links";
 import '@/styles/base.css';
 import '@/styles/theme.css';
@@ -31,7 +29,7 @@ const curr_idx = route_prefix === '/' ?
 		<meta charset="UTF-8" />
 		<meta name="description" content={desc} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/x-icon" href="/favicon.svg" />
 
     {/* Mastodon */}
     <link rel="me" href="https://mastodon.social/@alankuan" />
@@ -58,7 +56,7 @@ const curr_idx = route_prefix === '/' ?
       `}
     >
       <a href="/" class="justify-self-start inline-block dark:saturate-70">
-        <Image src={logo_img} alt="logo" class="logo w-8 md:w-12" />
+        <img src="/favicon.svg" alt="logo" class="logo w-8 md:w-12" />
       </a>
 
       <NavList {curr_idx} {links} client:idle />
