@@ -86,7 +86,7 @@ const highlighted_page = ref(props.curr_page);
 .page-link {
   @apply relative;
   @apply w-9 h-9 mx-1;
-  @apply flex justify-center items-center;
+  @apply grid place-items-center;
   @apply text-lg;
 }
 

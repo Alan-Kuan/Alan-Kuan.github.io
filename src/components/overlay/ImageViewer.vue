@@ -55,7 +55,7 @@ onUnmounted(() => {
         @click.stop
         class="
           absolute bottom-0
-          flex justify-center items-center
+          grid place-items-center
           w-full min-h-20
           pa-3
           bg-black/50

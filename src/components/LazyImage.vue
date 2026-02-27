@@ -105,7 +105,7 @@ onMounted(() => {
     <div
       :class="[
         'absolute inset-0 z--1',
-        'flex justify-center items-center',
+        'grid place-items-center',
         'bg-gray-300 dark:bg-gray-500',
         { 'invisible opacity-0': !is_error },
         'transition-opacity duration-500',

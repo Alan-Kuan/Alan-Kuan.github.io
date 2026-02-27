@@ -5,7 +5,7 @@ const this_year = new Date().getFullYear();
 <template>
   <footer
     class="
-      flex justify-center items-center
+      grid place-items-center
       h-[var(--footer-height)]
       mt-4
     "
