@@ -68,7 +68,7 @@ onUnmounted(() => {
   </Transition>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .v-enter-active, .v-leave-active {
   /* Note: add this so that the overlay waits the image */
   transition-duration: 0.3s;

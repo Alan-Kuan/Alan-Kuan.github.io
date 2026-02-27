@@ -36,7 +36,7 @@ onMounted(() => {
     <button
       @click="expanded = true"
       @blur="expanded = false"
-      class="indicator-btn"
+      class="btn indicator-btn"
     >
       <template v-if="theme === 'light'">
         <motion.div
@@ -83,15 +83,15 @@ onMounted(() => {
         { 'opacity-0 invisible': !expanded },
       ]"
     >
-      <button @click="() => choose('light')" class="menu-btn">
+      <button @click="() => choose('light')" class="btn menu-btn">
         <div class="i-mdi-white-balance-sunny" />
       </button>
-      <button @click="() => choose('dark')" class="menu-btn">
+      <button @click="() => choose('dark')" class="btn menu-btn">
         <div class="icon-star-1" />
         <div class="icon-star-2" />
         <div class="i-tabler-moon" />
       </button>
-      <button @click="() => choose('system')" class="menu-btn">
+      <button @click="() => choose('system')" class="btn menu-btn">
         <div class="i-mdi-monitor" />
         <div class="icon-spark" />
       </button>
@@ -99,8 +99,8 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
-%btn {
+<style scoped>
+.btn {
   @apply
     relative
     w-11.5 h-11.5
@@ -110,12 +110,10 @@ onMounted(() => {
     lt-md:zoom-80;
 }
 .indicator-btn {
-  @extend %btn;
   @apply
     @hover:bg-#ffffff55;
 }
 .menu-btn {
-  @extend %btn;
   @apply
     text-text-normal
     @hover:bg-#ccc/50;
