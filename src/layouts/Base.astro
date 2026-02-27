@@ -55,16 +55,17 @@ const curr_idx = route_prefix === '/' ?
         text-text-light
       `}
     >
-      <img
-        src="/favicon.svg"
-        alt="logo"
-        class:list={`
-          justify-self-start
-          w-8 md:w-12
-          dark:saturate-70
-          logo
-        `}
-      />
+      <a href="/" class="justify-self-start">
+        <img
+          src="/favicon.svg"
+          alt="logo"
+          class:list={`
+            w-8 md:w-12
+            dark:saturate-70
+            logo
+          `}
+        />
+      </a>
 
       <NavList {curr_idx} {links} client:idle />
 
