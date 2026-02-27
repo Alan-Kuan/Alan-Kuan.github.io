@@ -38,15 +38,15 @@ onMounted(() => {
       @blur="expanded = false"
       class="indicator-btn"
     >
-      <div v-if="theme === 'light'" class="icon-wrapper">
+      <template v-if="theme === 'light'">
         <motion.div
           :initial="choice_made ? {} : false"
           :animate="{ rotate: '90deg' }"
           :transition="{ duration: 0.5 }"
           class="i-mdi-white-balance-sunny"
         />
-      </div>
-      <div v-else-if="theme === 'dark'" class="icon-wrapper">
+      </template>
+      <template v-else-if="theme === 'dark'">
         <motion.div
           :initial="choice_made ? { opacity: 0, y: '-0.5rem' } : false"
           :animate="{ opacity: 100, y: 0 }"
@@ -60,8 +60,8 @@ onMounted(() => {
           class="icon-star-2"
         />
         <div class="i-tabler-moon" />
-      </div>
-      <div v-else-if="theme === 'system'" class="icon-wrapper">
+      </template>
+      <template v-else-if="theme === 'system'">
         <div class="i-mdi-monitor" />
         <motion.div
           :initial="choice_made ? { scale: 0.5, rotate: '-90deg' } : false"
@@ -69,7 +69,7 @@ onMounted(() => {
           :transition="{ duration: 0.5 }"
           class="icon-spark"
         />
-      </div>
+      </template>
     </button>
     <!-- Menu -->
     <div
@@ -84,22 +84,16 @@ onMounted(() => {
       ]"
     >
       <button @click="() => choose('light')" class="menu-btn">
-        <div class="icon-wrapper">
-          <div class="i-mdi-white-balance-sunny" />
-        </div>
+        <div class="i-mdi-white-balance-sunny" />
       </button>
       <button @click="() => choose('dark')" class="menu-btn">
-        <div class="icon-wrapper">
-          <div class="icon-star-1" />
-          <div class="icon-star-2" />
-          <div class="i-tabler-moon" />
-        </div>
+        <div class="icon-star-1" />
+        <div class="icon-star-2" />
+        <div class="i-tabler-moon" />
       </button>
       <button @click="() => choose('system')" class="menu-btn">
-        <div class="icon-wrapper">
-          <div class="i-mdi-monitor" />
-          <div class="icon-spark" />
-        </div>
+        <div class="i-mdi-monitor" />
+        <div class="icon-spark" />
       </button>
     </div>
   </div>
@@ -108,10 +102,12 @@ onMounted(() => {
 <style lang="scss" scoped>
 %btn {
   @apply
-    flex justify-center items-center
-    w-9.2 h-9.2 md:w-11.5 md:h-11.5
-    pa-1.6 md:pa-2
-    rounded-full;
+    relative
+    w-11.5 h-11.5
+    pa-2
+    text-3xl
+    rounded-full
+    lt-md:zoom-80;
 }
 .indicator-btn {
   @extend %btn;
@@ -123,14 +119,6 @@ onMounted(() => {
   @apply
     text-text-normal
     @hover:bg-#ccc/50;
-}
-
-.icon-wrapper {
-  @apply
-    relative
-    pa-2
-    text-3xl
-    lt-md:scale-80;
 }
 
 .icon-star-1 {

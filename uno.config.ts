@@ -29,6 +29,9 @@ export default defineConfig({
       },
     }),
   ],
+  rules: [
+    [/^zoom-(\d+)$/, ([, d]) => ({ zoom: `${d}%` })],
+  ],
   shortcuts: {
     'margin-content': 'mb-4 xl:mb-6',
   },
