@@ -23,11 +23,16 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   return all_posts.flat();
 }
 
+function capitalize(str: string) {
+  if (!str) return str;
+  return str[0].toUpperCase() + str.slice(1);
+}
+
 const { collection } = Astro.params;
 const { page } = Astro.props;
 
-const title = 'Alan Kuan | 官澔恩';
-const desc = 'A place telling things about Alan Kuan';
+const title = `${capitalize(collection as string)} (${page.currentPage}/${page.lastPage}) | Alan Kuan`;
+const desc = `Alan's ${collection}`;
 ---
 
 <ListLayout

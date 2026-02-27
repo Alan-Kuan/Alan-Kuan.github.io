@@ -30,8 +30,8 @@ const { tag } = Astro.params;
 const { page } = Astro.props;
 
 const props = {
-  title: 'Alan Kuan | 官澔恩',
-  desc: `Posts tagged with "${tag}"`,
+  title: `#${tag} (${page.currentPage}/${page.lastPage}) | Alan Kuan`,
+  desc: `Page ${page.currentPage} of the list of posts tagged with "${tag}"`,
   category: `Tag: ${tag}`,
   page,
   prefix: `/tags/${tag}`,
