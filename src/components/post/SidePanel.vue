@@ -49,34 +49,35 @@ onUnmounted(() => {
   <button
     @click="show = !show"
     @blur="show = false"
-    class="
-      md:hidden
-      fixed z-5
-      top-[calc(4*var(--spacing)+var(--navbar-height))] left-2
-      pa-4
-      bg-bg-top
-      text-text-light
-      rounded-full
-      shadow-2xl
-      active:brightness-140
-    "
+    :class="[
+      'md:hidden',
+      'fixed z-5',
+      'top-1/2 translate-y--1/2',
+      'w-5 h-10',
+      'bg-bg-top',
+      'text-text-light',
+      'rounded-e-full',
+      'active:brightness-140',
+    ]"
   >
-    <div class="i-mdi-format-list-bulleted" />
+    <div class="i-mdi-chevron-right" />
   </button>
   <!-- Side Panel -->
   <aside
     :class="[
       'sticky top-8',
-      'max-h-[calc(100vh-8*var(--spacing)-var(--navbar-height)-var(--footer-height))]',
       'overflow-auto',
-      'lt-md:fixed lt-md:top-38 lt-md:z-5',
-      'lt-md:pa-4',
+
+      'md:max-h-[calc(100vh-8*var(--spacing)-var(--navbar-height)-var(--footer-height))]',
+
+      'lt-md:fixed lt-md:top-0 lt-md:z-16',
+      'lt-md:w-80% lt-md:h-full',
+      'lt-md:pa-4 lt-md:pt-[calc(4*var(--spacing)+var(--navbar-height))]',
       'lt-md:bg-bg-card',
-      'lt-md:rounded-lg',
-      'lt-md:shadow-md',
+      'lt-md:text-xl',
       'lt-md:transition-translate lt-md:duration-500',
-      'lt-md:translate-x-[-100vw]',
-      { 'lt-md:translate-x-4!': show },
+      'lt-md:translate-x--100%',
+      { 'lt-md:translate-x-0!': show },
     ]"
   >
     <!-- Outline -->
@@ -107,7 +108,7 @@ onUnmounted(() => {
         <li
           :class="[
             li_padding[heading.depth - 1],
-            'pr-2',
+            'pr-2 lt-md:py-2',
             'break-all',
           ]"
         >
@@ -116,4 +117,13 @@ onUnmounted(() => {
       </a>
     </ul>
   </aside>
+  <!-- Overlay -->
+  <div
+    v-if="show"
+    class="
+      fixed top-0 left-0 w-full h-full z-15
+      bg-black/30
+      backdrop-blur-sm
+    "
+  />
 </template>
