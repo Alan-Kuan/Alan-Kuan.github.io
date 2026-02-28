@@ -26,6 +26,7 @@ const has_outline = headings.length > 0;
 ---
 
 <BaseLayout
+  post_title={title}
   title={`${title} | Alan Kuan`}
   {desc}
 >
@@ -34,6 +35,7 @@ const has_outline = headings.length > 0;
       /* Banner */
       banner && (
         <LazyImage
+          id="post-banner"
           src={banner.url}
           img_attr={banner_img_attr}
           alt="A banner image for this post"

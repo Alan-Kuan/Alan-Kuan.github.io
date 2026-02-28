@@ -1,25 +1,19 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 
-import NavList from '@/components/nav/NavList.vue';
-import NavMenu from '@/components/nav/NavMenu.vue';
-import DarkLightToggle from '@/components/nav/DarkLightToggle.vue';
+import NavBar from '@/components/nav/NavBar.vue';
 
-import { links } from "@/content/nav_links";
 import '@/styles/base.css';
 import '@/styles/theme.css';
 
 interface Props {
   title: string;
   desc: string;
+  post_title?: string;
 }
 
-const { title, desc } = Astro.props;
-
+const { title, desc, post_title } = Astro.props;
 const route_prefix = Astro.url.pathname.split('/').splice(0, 2).join('/');
-const curr_idx = route_prefix === '/' ?
-  links.findIndex(link => link.route === '/') :
-  links.findIndex(link => link.route.startsWith(route_prefix));
 ---
 
 <!doctype html>
@@ -39,42 +33,8 @@ const curr_idx = route_prefix === '/' ?
 	</head>
 
   <body class="bg-bg-body text-text-normal">
-    <!-- Navbar -->
-    <!--
-      NOTE:
-      - set position to relative so that z-index is applicable
-      - set z-index to 10 so that nav menu can show under nav bar
-    -->
-    <nav
-      class={`
-        relative z-10
-        grid grid-cols-[1fr_auto_1fr] items-center
-        w-full h-[var(--navbar-height)]
-        px-2 md:px-5
-        bg-bg-top
-        text-text-light
-      `}
-    >
-      <a href="/" class="justify-self-start">
-        <img
-          src="/favicon.svg"
-          alt="logo"
-          class:list={`
-            w-8 md:w-12
-            dark:saturate-70
-            logo
-          `}
-        />
-      </a>
-
-      <NavList {curr_idx} {links} client:idle />
-
-      <div class="justify-self-end flex md:pr-10">
-        <NavMenu {curr_idx} {links} client:idle />
-        <DarkLightToggle client:idle />
-      </div>
-    </nav>
-    <!-- Content -->
+    <NavBar {route_prefix} {post_title} client:idle />
+    {/* Content */}
     <div
       id="base-content"
       class="h-[calc(100vh-var(--navbar-height))] overflow-y-scroll scroll-smooth"
@@ -83,21 +43,6 @@ const curr_idx = route_prefix === '/' ?
     </div>
 	</body>
 </html>
-
-<style>
-  .logo {
-    filter: drop-shadow(0 1px rgba(255, 255, 255, 0.5))
-      drop-shadow(0 -1px rgba(255, 255, 255, 0.5))
-      drop-shadow(1px 0 rgba(255, 255, 255, 0.5))
-      drop-shadow(-1px 0 rgba(255, 255, 255, 0.5));
-  }
-  .logo:hover {
-    filter: drop-shadow(2px 0 2px rgba(255, 255, 255, 0.5))
-      drop-shadow(-2px 0 2px rgba(255, 255, 255, 0.5))
-      drop-shadow(0 2px 2px rgba(255, 255, 255, 0.5))
-      drop-shadow(0 -2px 2px rgba(255, 255, 255, 0.5));
-  }
-</style>
 
 <script>
 const media_query = window.matchMedia('(prefers-color-scheme: dark)');

@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { useStore } from '@nanostores/vue';
 import { motion } from 'motion-v';
 import { ref } from 'vue';
 
 import type { NavLink } from '@/types/content';
-import { show_nav_menu } from '@/stores/NavMenuStore';
 
 const props = defineProps<{
   curr_idx: number,
   links: NavLink[],
 }>();
 
-const $show_nav_menu = useStore(show_nav_menu);
 const highlighted_idx = ref(props.curr_idx);
 </script>
 
@@ -20,7 +17,6 @@ const highlighted_idx = ref(props.curr_idx);
     :class="[
       'flex justify-center',
       'transition-all duration-500',
-      { 'lt-md:opacity-0 lt-md:invisible': $show_nav_menu }
     ]"
   >
     <div
@@ -29,9 +25,8 @@ const highlighted_idx = ref(props.curr_idx);
       @mouseleave="highlighted_idx = curr_idx"
       :class="[
         'relative',
-        'mx-3',
+        'mx-1 md:mx-3',
         'flex flex-col items-center',
-        { 'lt-md:hidden': idx !== highlighted_idx },
       ]"
     >
       <a
@@ -39,7 +34,6 @@ const highlighted_idx = ref(props.curr_idx);
         class="
           px-1
           hover:bg-#ffffff55
-          text-md md:text-lg
           rounded-sm
         "
       >
