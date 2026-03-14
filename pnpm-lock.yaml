@@ -47,9 +47,6 @@ importers:
       remark-sectionize:
         specifier: ^2.1.0
         version: 2.1.0
-      sass:
-        specifier: ^1.98.0
-        version: 1.98.0
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -4617,6 +4614,7 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
+    optional: true
 
   chokidar@5.0.0:
     dependencies:
@@ -5121,7 +5119,8 @@ snapshots:
 
   husky@9.1.7: {}
 
-  immutable@5.1.5: {}
+  immutable@5.1.5:
+    optional: true
 
   inline-style-parser@0.2.7: {}
 
@@ -5888,7 +5887,8 @@ snapshots:
 
   radix3@1.1.2: {}
 
-  readdirp@4.1.2: {}
+  readdirp@4.1.2:
+    optional: true
 
   readdirp@5.0.0: {}
 
@@ -6098,6 +6098,7 @@ snapshots:
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.6
+    optional: true
 
   sax@1.5.0: {}
 
