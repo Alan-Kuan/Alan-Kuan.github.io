@@ -57,8 +57,9 @@ onUnmounted(() => {
         alt="logo"
         class="
           w-8 md:w-12
+          drop-shadow-outline
+          hover:drop-shadow-outline-lg
           dark:saturate-70
-          logo
         "
       />
     </a>
@@ -85,18 +86,3 @@ onUnmounted(() => {
     </div>
   </nav>
 </template>
-
-<style scoped>
-  .logo {
-    filter: drop-shadow(0 1px rgba(255, 255, 255, 0.5))
-      drop-shadow(0 -1px rgba(255, 255, 255, 0.5))
-      drop-shadow(1px 0 rgba(255, 255, 255, 0.5))
-      drop-shadow(-1px 0 rgba(255, 255, 255, 0.5));
-  }
-  .logo:hover {
-    filter: drop-shadow(2px 0 2px rgba(255, 255, 255, 0.5))
-      drop-shadow(-2px 0 2px rgba(255, 255, 255, 0.5))
-      drop-shadow(0 2px 2px rgba(255, 255, 255, 0.5))
-      drop-shadow(0 -2px 2px rgba(255, 255, 255, 0.5));
-  }
-</style>

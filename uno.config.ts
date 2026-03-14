@@ -61,5 +61,19 @@ export default defineConfig({
         catchy: 'var(--indicator-catchy)',
       },
     },
+    dropShadow: {
+      outline: [
+        '0 1px rgba(255,255,255,0.5)',
+        '0 -1px rgba(255,255,255,0.5)',
+        '1px 0 rgba(255,255,255,0.5)',
+        '-1px 0 rgba(255,255,255,0.5)',
+      ],
+      'outline-lg': [
+        '2px 0 2px rgba(255,255,255,0.5)',
+        '-2px 0 2px rgba(255,255,255,0.5)',
+        '0 2px 2px rgba(255,255,255,0.5)',
+        '0 -2px 2px rgba(255,255,255,0.5)',
+      ],
+    },
   },
 });
