@@ -40,8 +40,7 @@ onUnmounted(() => {
 <template>
   <nav
     :class="[
-      'relative z-10',
-      'grid grid-cols-[auto_auto_1fr_auto] items-center',
+      'grid grid-cols-[auto_1fr_auto] items-center',
       'w-full h-[var(--navbar-height)]',
       'px-2 md:px-5',
       'bg-bg-top',
@@ -61,34 +60,36 @@ onUnmounted(() => {
         "
       />
     </a>
-    <!-- Nav List -->
-    <div
-      :class="[
-        'ml-4',
-        'flex',
-        'lt-md:transition-opacity lt-md:duration-500',
-        { 'lt-md:opacity-0': below_post_title },
-      ]"
-    >
-      <NavList :curr_idx :links />
-      <div v-if="post_title" class="lt-md:hidden">｜</div>
-    </div>
-    <!-- Post Title -->
-    <AnimatePresence>
-      <motion.div
-        v-if="post_title && below_post_title"
-        :initial="{ y: -10, opacity: 0 }"
-        :animate="{ y: 0, opacity: 1 }"
-        :exit="{ y: -10, opacity: 0 }"
+    <div class="relative flex">
+      <!-- Nav List -->
+      <div
         :class="[
-          'lt-md:absolute',
-          'ml-14 md:ml-3',
-          'truncate',
+          'ml-4',
+          'flex',
+          'lt-md:transition-opacity lt-md:duration-500',
+          { 'lt-md:opacity-0': below_post_title },
         ]"
       >
-        {{ post_title }}
-      </motion.div>
-    </AnimatePresence>
+        <NavList :curr_idx :links />
+        <div v-if="post_title" class="lt-md:hidden">｜</div>
+      </div>
+      <!-- Post Title -->
+      <AnimatePresence>
+        <motion.div
+          v-if="post_title && below_post_title"
+          :initial="{ y: -10, opacity: 0 }"
+          :animate="{ y: 0, opacity: 1 }"
+          :exit="{ y: -10, opacity: 0 }"
+          :class="[
+            'lt-md:absolute lt-md:left-0 lt-md:top-0 lt-md:right-0',
+            'ml-3',
+            'truncate',
+          ]"
+        >
+          {{ post_title }}
+        </motion.div>
+      </AnimatePresence>
+    </div>
     <!-- Buttons -->
     <div class="ml-auto flex md:pr-10">
       <DarkLightToggle />
