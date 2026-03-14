@@ -62,7 +62,14 @@ onUnmounted(() => {
       />
     </a>
     <!-- Nav List -->
-    <div class="ml-4 flex">
+    <div
+      :class="[
+        'ml-4',
+        'flex',
+        'lt-md:transition-opacity lt-md:duration-500',
+        { 'lt-md:opacity-0': below_post_title },
+      ]"
+    >
       <NavList :curr_idx :links />
       <div v-if="post_title" class="lt-md:hidden">｜</div>
     </div>
@@ -73,7 +80,11 @@ onUnmounted(() => {
         :initial="{ y: -10, opacity: 0 }"
         :animate="{ y: 0, opacity: 1 }"
         :exit="{ y: -10, opacity: 0 }"
-        class="ml-3 truncate lt-md:hidden"
+        :class="[
+          'lt-md:absolute',
+          'ml-14 md:ml-3',
+          'truncate',
+        ]"
       >
         {{ post_title }}
       </motion.div>
