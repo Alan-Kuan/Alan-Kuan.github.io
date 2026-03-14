@@ -38,8 +38,10 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <!-- Note: add `relative z-10` to make nav bar over scroll-to-top button -->
   <nav
     :class="[
+      'relative z-10',
       'grid grid-cols-[auto_1fr_auto] items-center',
       'w-full h-[var(--navbar-height)]',
       'px-2 md:px-5',
