@@ -46,8 +46,6 @@ onUnmounted(() => {
       'px-2 md:px-5',
       'bg-bg-top',
       'md:text-lg text-text-light',
-      'lt-md:transition-all lt-md:duration-300',
-      { 'lt-md:h-0 lt-md:opacity-0': below_post_title }
     ]"
   >
     <!-- Logo -->
@@ -65,7 +63,7 @@ onUnmounted(() => {
     </a>
     <!-- Nav List -->
     <div class="ml-4 flex">
-      <NavList :curr_idx :links client:idle />
+      <NavList :curr_idx :links />
       <div v-if="post_title" class="lt-md:hidden">｜</div>
     </div>
     <!-- Post Title -->
@@ -82,7 +80,7 @@ onUnmounted(() => {
     </AnimatePresence>
     <!-- Buttons -->
     <div class="ml-auto flex md:pr-10">
-      <DarkLightToggle client:idle />
+      <DarkLightToggle />
     </div>
   </nav>
 </template>
