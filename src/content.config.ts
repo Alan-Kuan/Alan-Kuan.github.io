@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const articles = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
@@ -30,7 +31,7 @@ const projects = defineCollection({
 
 const blurhashes = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/blurhashes' }),
-  schema: z.record(z.object({
+  schema: z.record(z.string(), z.object({
     blurhash: z.string(),
     aspect_ratio: z.number(),
   })),
