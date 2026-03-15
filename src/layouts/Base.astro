@@ -10,9 +10,10 @@ interface Props {
   title: string;
   desc: string;
   post_title?: string;
+  has_outline?: boolean;
 }
 
-const { title, desc, post_title } = Astro.props;
+const { title, desc, post_title, has_outline } = Astro.props;
 const route_prefix = Astro.url.pathname.split('/').splice(0, 2).join('/');
 ---
 
@@ -33,7 +34,7 @@ const route_prefix = Astro.url.pathname.split('/').splice(0, 2).join('/');
 	</head>
 
   <body class="bg-bg-body text-text-normal">
-    <NavBar {route_prefix} {post_title} client:idle />
+    <NavBar {route_prefix} {post_title} {has_outline} client:idle />
     {/* Content */}
     <div
       id="base-content"

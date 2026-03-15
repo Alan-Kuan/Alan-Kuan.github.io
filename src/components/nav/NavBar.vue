@@ -11,11 +11,13 @@ import { links } from "@/content/nav_links";
 const props = defineProps<{
   route_prefix: string,
   post_title?: string,
+  has_outline?: boolean,
 }>();
 
 const curr_idx = props.route_prefix === '/' ?
   links.findIndex(link => link.route === '/') :
   links.findIndex(link => link.route.startsWith(props.route_prefix));
+const show_side_panel_toggle = props.post_title && props.has_outline;
 
 const below_post_title = ref(false);
 let observer: IntersectionObserver;
@@ -95,8 +97,8 @@ onUnmounted(() => {
     </div>
     <!-- Buttons -->
     <div class="ml-auto flex md:pr-10">
-      <DarkLightToggle :class="{ 'lt-md:hidden': post_title }" />
-      <SidePanelToggle v-if="post_title" class="md:hidden" />
+      <DarkLightToggle :class="{ 'lt-md:hidden': show_side_panel_toggle }" />
+      <SidePanelToggle v-if="show_side_panel_toggle" class="md:hidden" />
     </div>
   </nav>
 </template>
