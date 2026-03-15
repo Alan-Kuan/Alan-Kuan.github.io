@@ -1,13 +1,19 @@
 <script setup lang="ts">
+import { useStore } from '@nanostores/vue';
+import type { MarkdownHeading } from 'astro';
 import { ref, onMounted, onUnmounted } from 'vue';
 
-import type { MarkdownHeading } from 'astro';
+import DarkLightToggle from '@/components/nav/DarkLightToggle.vue';
+import { show_side_panel } from '@/stores/SidePanelStore';
+import { is_dark } from '@/stores/ThemeStore';
 
 defineProps<{
   headings: MarkdownHeading[],
 }>();
 
-const show = ref(false);
+const $show_side_panel = useStore(show_side_panel);
+const $is_dark = useStore(is_dark);
+
 const li_padding = [
   'pl-4',
   'pl-8',
@@ -45,23 +51,6 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- Side Panel Toggle -->
-  <button
-    @click="show = !show"
-    @blur="show = false"
-    :class="[
-      'md:hidden',
-      'fixed z-5',
-      'top-1/2 translate-y--1/2',
-      'w-5 h-10',
-      'bg-bg-top',
-      'text-text-light',
-      'rounded-e-full',
-      'active:brightness-140',
-    ]"
-  >
-    <div class="i-mdi-chevron-right" />
-  </button>
   <!-- Side Panel -->
   <aside
     :class="[
@@ -72,14 +61,61 @@ onUnmounted(() => {
 
       'lt-md:fixed lt-md:top-0 lt-md:z-16',
       'lt-md:w-80% lt-md:h-full',
-      'lt-md:pa-4 lt-md:pt-[calc(4*var(--spacing)+var(--navbar-height))]',
+      'lt-md:pa-4',
       'lt-md:bg-bg-card',
-      'lt-md:text-xl',
       'lt-md:transition-translate lt-md:duration-500',
       'lt-md:translate-x--100%',
-      { 'lt-md:translate-x-0!': show },
+      { 'lt-md:translate-x-0!': $show_side_panel },
     ]"
   >
+    <!-- Tool Bar -->
+    <div
+      class="
+        md:hidden
+        flex items-end
+        mb-4
+        border-b-1
+      "
+    >
+      <DarkLightToggle class="mb-2" />
+      <!-- Some Decorations -->
+      <div class="i-mdi-pine-tree ml-auto mb--0.5 text-2xl" />
+      <div
+        :class="[
+          'i-mdi-campfire',
+          'ml-5 text-xs',
+          'transition-opacity duration-500',
+          { 'opacity-0': !$is_dark }
+        ]"
+      />
+      <div
+        :class="[
+          'i-mdi-bird',
+          'mb-2',
+          'transition-opacity duration-500',
+          { 'opacity-0': $is_dark },
+        ]"
+      />
+      <div
+        :class="[
+          'i-tabler-tent',
+          'mb--0.5',
+          'text-xl',
+          'transition-opacity duration-500',
+          { 'opacity-0': !$is_dark }
+        ]"
+      />
+      <div
+        :class="[
+          'i-tabler-canary',
+          'ml-auto',
+          'text-sm',
+          'transition-opacity duration-500',
+          { 'opacity-0': $is_dark },
+        ]"
+      />
+      <div class="i-mdi-forest-outline ml-4 mr-2 text-xl" />
+    </div>
     <!-- Outline -->
     <div class="mb-2 font-bold">
       本文內容
@@ -93,6 +129,7 @@ onUnmounted(() => {
       <a
         v-for="heading in headings"
         :href="`#${heading.slug}`"
+        @click="show_side_panel.set(false)"
         :class="[
           'block',
           visible_section.has(heading.slug) ?
@@ -111,7 +148,7 @@ onUnmounted(() => {
         <li
           :class="[
             li_padding[heading.depth - 1],
-            'pr-2 lt-md:py-2',
+            'lt-md:py-1',
             'break-all',
           ]"
         >
@@ -122,7 +159,8 @@ onUnmounted(() => {
   </aside>
   <!-- Overlay -->
   <div
-    v-if="show"
+    v-if="$show_side_panel"
+    @click="show_side_panel.set(false)"
     class="
       fixed top-0 left-0 w-full h-full z-15
       bg-black/30

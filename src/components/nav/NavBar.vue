@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion-v';
 
 import NavList from '@/components/nav/NavList.vue';
 import DarkLightToggle from '@/components/nav/DarkLightToggle.vue';
+import SidePanelToggle from '@/components/nav/SidePanelToggle.vue';
 
 import { links } from "@/content/nav_links";
 
@@ -94,7 +95,8 @@ onUnmounted(() => {
     </div>
     <!-- Buttons -->
     <div class="ml-auto flex md:pr-10">
-      <DarkLightToggle />
+      <DarkLightToggle :class="{ 'lt-md:hidden': post_title }" />
+      <SidePanelToggle v-if="post_title" class="md:hidden" />
     </div>
   </nav>
 </template>
