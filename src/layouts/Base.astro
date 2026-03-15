@@ -45,14 +45,15 @@ const route_prefix = Astro.url.pathname.split('/').splice(0, 2).join('/');
 </html>
 
 <script>
+import { is_dark } from '@/stores/ThemeStore';
+
 const media_query = window.matchMedia('(prefers-color-scheme: dark)');
 
 function applyTheme() {
-  document.documentElement.classList.toggle(
-    'dark',
-    (!('theme' in localStorage) && media_query.matches) ||
-      localStorage.getItem('theme') === 'dark',
-  );
+  const chosen_theme = localStorage.getItem('theme');
+  is_dark.set((chosen_theme === null && media_query.matches) ||
+    chosen_theme === 'dark');
+  document.documentElement.classList.toggle('dark', is_dark.get());
 }
 
 media_query.addEventListener('change', applyTheme);

@@ -1,124 +1,80 @@
 <script setup lang="ts">
+import { useStore } from '@nanostores/vue';
 import { motion } from 'motion-v';
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 
-const theme = ref('');
-const choice_made = ref(false);
-const expanded = ref(false);
+import { is_dark } from '@/stores/ThemeStore';
 
-function choose(chosen_theme: string) {
-  theme.value = chosen_theme;
-  // ensure the animation is played after some mode is chosen
-  choice_made.value = true;
+const $is_dark = useStore(is_dark);
+const btn_clicked = ref(false);
+let chosen_theme: string | null = null;
 
-  if (chosen_theme === 'system') {
-    localStorage.removeItem('theme');
-    document.documentElement.classList.toggle(
-      'dark',
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    );
-  } else {
+function toggleTheme() {
+  // ensure the animation is played after the button is clicked
+  btn_clicked.value = true;
+  is_dark.set(!is_dark.get());
+
+  const should_be_dark = is_dark.get();
+  const media_query = window.matchMedia('(prefers-color-scheme: dark)');
+
+  document.documentElement.classList.toggle('dark', should_be_dark);
+
+  if (chosen_theme === null) {
+    chosen_theme = should_be_dark ? 'dark' : 'light';
     localStorage.setItem('theme', chosen_theme);
-    document.documentElement.classList.toggle('dark', chosen_theme === 'dark');
+  } else {
+    const system_prefers_dark = media_query.matches;
+    if ((should_be_dark && system_prefers_dark) || (!should_be_dark && !system_prefers_dark)) {
+      chosen_theme = null;
+      localStorage.removeItem('theme');
+    } else {
+      chosen_theme = should_be_dark ? 'dark' : 'light';
+      localStorage.setItem('theme', chosen_theme);
+    }
   }
 }
-
-onMounted(() => {
-  const theme_saved = localStorage.getItem('theme');
-  theme.value = theme_saved === null ?
-    'system' : theme_saved;
-});
 </script>
 
 <template>
-  <div class="relative">
-    <!-- Indicator -->
-    <button
-      @click="expanded = true"
-      @blur="expanded = false"
-      class="btn indicator-btn"
-    >
-      <template v-if="theme === 'light'">
-        <motion.div
-          :initial="choice_made ? {} : false"
-          :animate="{ rotate: '90deg' }"
-          :transition="{ duration: 0.5 }"
-          class="i-mdi-white-balance-sunny"
-        />
-      </template>
-      <template v-else-if="theme === 'dark'">
-        <motion.div
-          :initial="choice_made ? { opacity: 0, y: '-0.5rem' } : false"
-          :animate="{ opacity: 100, y: 0 }"
-          :transition="{ duration: 0.5 }"
-          class="icon-star-1"
-        />
-        <motion.div
-          :initial="choice_made ? { opacity: 0, y: '-1rem' } : false"
-          :animate="{ opacity: 100, y: 0 }"
-          :transition="{ duration: 0.4 }"
-          class="icon-star-2"
-        />
-        <div class="i-tabler-moon" />
-      </template>
-      <template v-else-if="theme === 'system'">
-        <div class="i-mdi-monitor" />
-        <motion.div
-          :initial="choice_made ? { scale: 0.5, rotate: '-90deg' } : false"
-          :animate="{ scale: 1, rotate: '0deg' }"
-          :transition="{ duration: 0.5 }"
-          class="icon-spark"
-        />
-      </template>
-    </button>
-    <!-- Menu -->
-    <div
-      :class="[
-        'absolute top-0 z-10',
-        'grid justify-center',
-        'bg-bg-card',
-        'rounded-full',
-        'shadow-lg',
-        'transition-all duration-300',
-        { 'opacity-0 invisible': !expanded },
-      ]"
-    >
-      <button @click="() => choose('light')" class="btn menu-btn">
-        <div class="i-mdi-white-balance-sunny" />
-      </button>
-      <button @click="() => choose('dark')" class="btn menu-btn">
-        <div class="icon-star-1" />
-        <div class="icon-star-2" />
-        <div class="i-tabler-moon" />
-      </button>
-      <button @click="() => choose('system')" class="btn menu-btn">
-        <div class="i-mdi-monitor" />
-        <div class="icon-spark" />
-      </button>
-    </div>
-  </div>
+  <button
+    @click="toggleTheme"
+    class="
+      relative
+      w-11.5 h-11.5
+      pa-2
+      text-3xl
+      rounded-full
+      lt-md:zoom-80
+      @hover:bg-#ffffff55
+    "
+  >
+    <template v-if="$is_dark">
+      <motion.div
+        :initial="btn_clicked ? { opacity: 0, y: '-0.5rem' } : false"
+        :animate="{ opacity: 100, y: 0 }"
+        :transition="{ duration: 0.5 }"
+        class="icon-star-1"
+      />
+      <motion.div
+        :initial="btn_clicked ? { opacity: 0, y: '-1rem' } : false"
+        :animate="{ opacity: 100, y: 0 }"
+        :transition="{ duration: 0.4 }"
+        class="icon-star-2"
+      />
+      <div class="i-tabler-moon" />
+    </template>
+    <template v-else>
+      <motion.div
+        :initial="btn_clicked ? {} : false"
+        :animate="{ rotate: '90deg' }"
+        :transition="{ duration: 0.5 }"
+        class="i-mdi-white-balance-sunny"
+      />
+    </template>
+  </button>
 </template>
 
 <style scoped>
-.btn {
-  @apply
-    relative
-    w-11.5 h-11.5
-    pa-2
-    text-3xl
-    rounded-full
-    lt-md:zoom-80;
-}
-.indicator-btn {
-  @apply
-    @hover:bg-#ffffff55;
-}
-.menu-btn {
-  @apply
-    text-text-normal
-    @hover:bg-#ccc/50;
-}
-
 .icon-star-1 {
   @apply
     i-tabler-star-filled
@@ -131,11 +87,5 @@ onMounted(() => {
     i-tabler-star-filled
     absolute top-4 right-1
     text-[9px];
-}
-
-.icon-spark {
-  @apply
-    i-mdi-star-four-points-small
-    absolute top-1.2;
 }
 </style>
