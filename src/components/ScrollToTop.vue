@@ -4,8 +4,8 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 let ticking = false;
 let last_scroll_top = 0;
-const show_top = ref(false);
-const show_bottom = ref(false);
+const show_narrow = ref(false);
+const show_wide = ref(false);
 
 function onScroll(e: Event) {
   if (ticking) return;
@@ -13,9 +13,16 @@ function onScroll(e: Event) {
   setTimeout(() => {
     const content = e.target as HTMLDivElement;
     const curr_scroll_top = content.scrollTop;
-    show_top.value = curr_scroll_top < last_scroll_top &&
-      curr_scroll_top > 0;
-    show_bottom.value = curr_scroll_top > content.clientHeight;
+
+    // On narrow screen, show scroll-to-top button when scrolling up at least 10px
+    show_narrow.value = curr_scroll_top > 0 &&
+      (show_narrow.value ?
+        last_scroll_top > curr_scroll_top :
+        last_scroll_top - curr_scroll_top > 10);
+
+    // On wide screen, show scroll-to-top button when the user scrolls past the content height
+    show_wide.value = curr_scroll_top > content.clientHeight;
+
     last_scroll_top = curr_scroll_top;
     ticking = false;
   }, 20);
@@ -42,13 +49,13 @@ onUnmounted(() => {
 <template>
   <!-- For Narrow Screen -->
   <motion.button
-    :initial="{ y: -100 }"
-    :animate="{ y: show_top ? 0 : -100 }"
+    :initial="{ y: 100 }"
+    :animate="{ y: show_narrow ? 0 : 100 }"
     @click="onClick"
     class="
       md:hidden
       fixed left-1/2 -translate-x-1/2
-      top-[calc(var(--navbar-height)+3*var(--spacing))]
+      bottom-[calc(10*var(--spacing))]
       z-8
       flex items-center
       pa-1
@@ -67,7 +74,7 @@ onUnmounted(() => {
   <!-- For Wide Screen -->
   <motion.button
     :initial="{ y: 100 }"
-    :animate="{ y: show_bottom ? 0 : 100 }"
+    :animate="{ y: show_wide ? 0 : 100 }"
     @click="onClick"
     class="
       lt-md:hidden
