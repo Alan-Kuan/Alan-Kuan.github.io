@@ -81,6 +81,9 @@ onUnmounted(() => {
     ]"
   >
     <!-- Outline -->
+    <div class="mb-2 font-bold">
+      本文內容
+    </div>
     <ul
       class="
         mb-4
