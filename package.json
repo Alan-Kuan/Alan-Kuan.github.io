@@ -15,32 +15,32 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.0",
-    "@astrojs/vue": "^6.0.0",
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/vue": "^6.0.1",
     "@expressive-code/plugin-line-numbers": "^0.41.7",
     "@nanostores/vue": "^1.1.0",
     "@r4ai/remark-callout": "^0.6.2",
-    "astro": "^6.0.4",
+    "astro": "^6.1.2",
     "astro-expressive-code": "^0.41.7",
     "blurhash": "^2.0.5",
     "markdown-it": "^14.1.1",
     "motion-v": "^1.10.3",
-    "nanostores": "^1.1.1",
+    "nanostores": "^1.2.0",
     "node-html-parser": "^6.1.13",
     "remark-sectionize": "^2.1.0",
     "sharp": "^0.33.5",
-    "vue": "^3.5.30"
+    "vue": "^3.5.31"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/tabler": "^1.2.31",
+    "@iconify-json/tabler": "^1.2.33",
     "@types/markdown-it": "^14.1.2",
-    "@unocss/astro": "^66.6.6",
-    "@unocss/reset": "^66.6.6",
+    "@unocss/astro": "^66.6.7",
+    "@unocss/reset": "^66.6.7",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "typescript": "^5.9.3",
-    "unocss": "^66.6.6"
+    "unocss": "^66.6.7"
   },
   "lint-staged": {
     "src/content/articles/*.mdx": [
