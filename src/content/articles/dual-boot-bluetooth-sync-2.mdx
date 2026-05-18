@@ -22,7 +22,7 @@ banner:
     - 我查過各大 Linux distro 的套件庫都有這兩個套件
 2. 掛載 Windows 的磁區
     ```sh
-    sudo mount /dev/your/windows/partition /mnt
+    sudo mount -t ntfs-3g /dev/your/windows/partition /mnt
     ```
 3. 進入登錄檔的目錄
     ```sh
